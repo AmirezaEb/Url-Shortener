@@ -1,0 +1,78 @@
+
+/*
+Developed by Hero Expert 
+Telegram channel: @HeroExpert_ir
+*/
+
+@media screen and (max-width: 1200px){
+    input[type=url] {
+        width: 65%;
+    }
+}
+@media screen and (max-width: 992px){
+    input[type=url] {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 768px){
+    #input-div{
+        display: block;
+    }
+    input[type=url]{
+        width: calc(100% - 30px);
+        font-size: 2vw;
+    }
+    .buttons {
+        margin-top: 25px;
+    }
+    .buttons button {
+        margin: 0;
+        width: calc(50% - 10px);
+    }
+    .button {
+        font-size: 2vw;
+    }
+    #new-url-label {
+        font-size: 1.7vw;
+    }
+    .copy-icon {
+        display: block;
+        color: white;
+    }
+    .copy-text {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 576px){
+    #header-div {
+        font-size: 4vw;
+        margin-bottom: 50px;
+        padding-top: 150px;
+    }
+    #content-div {
+        width: 90%;
+    }
+    .button {
+        font-size: 3vw;
+    }
+    #input-div {
+       width: 100%;
+    }
+    #output-div {
+        width: calc(100% - 7px);
+        margin-bottom: 0;
+    }
+    #new-url, #new-url-label {
+        font-size: 2.3vw;
+    }
+    input[type=url] {
+        font-size: 2.5vw;
+    } 
+}
+
+/*
+Developed by Hero Expert 
+Telegram channel: @HeroExpert_ir
+*/
