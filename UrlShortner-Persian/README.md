@@ -32,4 +32,3 @@ A Fast, Powerful And Simple URL Shortener Made By The Following Languages
 
 <a href="https://t.me/HeroExpert_ir">![Telegram Badge](https://img.shields.io/badge/Telegram-26A5E4?logo=telegram&logoColor=fff&style=flat)</a>
 <a href="https://www.linkedin.com/in/amirreza-ebrahimi-9623052a9">![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=fff&style=flat)</a>
-<a></a>#
