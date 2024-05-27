@@ -1,4 +1,4 @@
-<p align="center"><img src="https://s8.uupload.ir/files/_heroexpert_ir_000.png" width="300"></p>
+<p align="center"><img src="https://HeroExpert.ir/GitHub/Preview.png" width="300"></p>
 
 <p align="center">Url Shortener Response</p>
 
@@ -13,7 +13,7 @@ A Fast, Powerful And Simple URL Shortener Made By The Following Languages
 ![JavaScript Badge](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000&style=flat)
  
 
-![Tinre](https://s8.uupload.ir/files/_heroexpert_ir_kx76.gif)
+![Tinre](https://HeroExpert.ir/GitHub/Url-Shortener/Preview.gif)
 
 
 ## Requirements
