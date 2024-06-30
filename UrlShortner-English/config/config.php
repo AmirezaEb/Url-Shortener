@@ -7,14 +7,13 @@ Telegram channel : HeroExpert_ir
 
 #----- Constants -----#
 
-const URL = 'http://HeroExpert.ir/UrlShortner-English/'; # File Location Url
+const URL = 'https://HeroExpert.ir/UrlShortner-English/'; # File Location Url
 
 #----- DataBase -----#
 
 $userName = 'root'; # DataBase Username
 $dbName = 'heroexpert_ir'; # DataBase Name
 $passWord = ''; # DataBase password
-$table = 'urls'; # DataBase Table Name
 
 try {
     $connect = new PDO('mysql:host=localhost;dbname=' . $dbName, $userName, $passWord);

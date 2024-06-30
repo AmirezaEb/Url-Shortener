@@ -21,11 +21,12 @@ function shortUrlCreate()
 # Save The Url Information In The DataBase
 function saveUrl($Url, $shortUrl)
 {
-    global $table;
     global $connect;
-    $sql = "INSERT INTO $table (url,shortUrl) VALUES (:url,:shortUrl);";
+    $sql = "INSERT INTO urls (url,shortUrl) VALUES (:url,:shortUrl);";
     $stmt = $connect->prepare($sql);
-    $stmt->execute([':url' => $Url, ':shortUrl' => $shortUrl,]);
+    $stmt->bindParam(':url', $Url,PDO::PARAM_STR);
+    $stmt->bindParam(':shortUrl', $shortUrl,PDO::PARAM_STR);
+    $stmt->execute();
     $result = $stmt->rowCount();
     return $result;
 }
@@ -33,11 +34,11 @@ function saveUrl($Url, $shortUrl)
 # Get Information About The Existence Of A ShortUrl
 function receiveShortUrlCount($Url)
 {
-    global $table;
     global $connect;
-    $sql = "SELECT * FROM $table WHERE shortUrl = :shortUrl;";
+    $sql = "SELECT * FROM urls WHERE shortUrl = :shortUrl;";
     $stmt = $connect->prepare($sql);
-    $stmt->execute([':shortUrl' => $Url]);
+    $stmt->bindParam(':shortUrl', $Url,PDO::PARAM_STR);
+    $stmt->execute();
     $result = $stmt->rowCount();
     return $result;
 }
@@ -45,11 +46,11 @@ function receiveShortUrlCount($Url)
 # Get Information About The Existence Of A Url
 function receiveUrlCount($Url)
 {
-    global $table;
     global $connect;
-    $sql = "SELECT * FROM $table WHERE url = :url;";
+    $sql = "SELECT * FROM urls WHERE url = :url;";
     $stmt = $connect->prepare($sql);
-    $stmt->execute([':url' => $Url]);
+    $stmt->bindParam(':url', $Url,PDO::PARAM_STR);
+    $stmt->execute();
     $result = $stmt->rowCount();
     return $result;
 }
@@ -57,11 +58,11 @@ function receiveUrlCount($Url)
 # Get Information About The Existence Of A ShortUrl
 function receiveShortUrl($ShortUrl)
 {
-    global $table;
     global $connect;
-    $sql = "SELECT * FROM $table WHERE shortUrl = :shortUrl;";
+    $sql = "SELECT * FROM urls WHERE shortUrl = :shortUrl;";
     $stmt = $connect->prepare($sql);
-    $stmt->execute([':shortUrl' => $ShortUrl]);
+    $stmt->bindParam(':shortUrl', $ShortUrl,PDO::PARAM_STR);
+    $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     $result = $result['url'];
     return $result;
@@ -70,11 +71,11 @@ function receiveShortUrl($ShortUrl)
 # Get Information About The Existence Of A Url
 function receiveUrl($Url)
 {
-    global $table;
     global $connect;
-    $sql = "SELECT * FROM $table WHERE url = :url;";
+    $sql = "SELECT * FROM urls WHERE url = :url;";
     $stmt = $connect->prepare($sql);
-    $stmt->execute([':url' => $Url]);
+    $stmt->bindParam(':url', $Url,PDO::PARAM_STR);
+    $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     $result = $result['shortUrl'];
     return $result;
@@ -100,7 +101,7 @@ function alarm($mode, $message)
         title: '$message',
         icon: '$mode',
         toast: true,
-        position: 'top-start',
+        position: 'top-end',
         showConfirmButton: false,
         timer: 3500,
         timerProgressBar: true,
