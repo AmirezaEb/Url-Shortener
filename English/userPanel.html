@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>user panel</title>
+    <script src="assets/js/sweetalert2@11.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <link href="https://fonts.cdnfonts.com/css/going-to-school" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+
+<body>
+    <div class="panel-container">
+        <header class="header">
+            <div class="left-header">
+                <div class="left-header__profile">
+                    <div class="left-header__profile-div d-none">
+                        <span class="left-header__icons">
+                            <i class="ri-user-6-line left-header__icons-icon"></i>
+                        </span>
+                        <a href="#" class="left-header__user-email">
+                            Sina Silver
+                        </a>
+                    </div>
+
+                    <div class="burger-menu d-block">
+                        <div class="burger-menu__div">
+                            <button class="burger-menu__btn">
+                                <i class="ri-menu-fill burger-menu__icon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="right-header">
+                
+                <div class="right-header__brand">
+                    <h2 class="right-header__brand-title">Hero Expert</h2>
+                </div>
+
+                <div class="right-header__list">
+                    <a href="#" class="right-header__list-item">
+                        <i class="ri-home-4-line right-header__list-icons"></i>
+                    </a>
+                    <a href="#" class="right-header__list-item">
+                        <i class="ri-shut-down-line right-header__list-icons"></i>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="left-main">
+                <div class="left-main__list">
+                    <a href="#" class="left-main__list-item">
+                        <i class="ri-line-chart-line left-main__list-icon"></i>
+                        <p class="left-main__list-text">stats</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="right-main">
+                <table class="stats-table">
+                    <thead class="stats-table__head">
+                        <tr class="stats-table__head-row">
+                            <th class="stats-table__head-col">#</th>
+                            <th class="stats-table__head-col">Dest URL</th>
+                            <th class="stats-table__head-col">Short URL</th>
+                            <th class="stats-table__head-col">Views</th>
+                            <th class="stats-table__head-col">QR code</th>
+                            <th class="stats-table__head-col">Edit</th>
+                            <th class="stats-table__head-col">Copy</th>
+                            <th class="stats-table__head-col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody class="stats-table__body">
+                        <tr class="stats-table__body-row">
+                            <td class="stats-table__body-col">1</td>
+                            <td class="stats-table__body-col">heroexpert.ir</td>
+                            <td class="stats-table__body-col" id="testcopy">heroexpert.ir</td>
+                            <td class="stats-table__body-col">24</td>
+                            <td class="stats-table__body-col">
+                                <a href="#" class="QR-code-span"><i class="ri-qr-code-line QR-code-icon"></i></a>
+                            </td>
+                            <td class="stats-table__body-col">
+                                <a href="#" class="stats-table__body-icons"><i class="ri-edit-line stats-table-edit-icon"></i></a>
+                            </td>
+                            <td class="stats-table__body-col">
+                                <button class="stats-table__body-icons stats-table__copy-btn" data-clipboard-demo="" data-clipboard-target="#testcopy" data-clipboard-action="copy" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="bottom" data-bs-custom-class="custom-popover" data-bs-content="copied!">
+                                    <i class="ri-file-copy-2-line stats-table-copy-icon"></i>
+                                </button>
+                            </td>
+                            <td class="stats-table__body-col">
+                                <button class="stats-table__body-icons"><i class="ri-delete-bin-line stats-table-delete-icon"></i></button>
+                            </td>
+                        </tr>
+                        <tr class="stats-table__body-row">
+                            <td class="stats-table__body-col">2</td>
+                            <td class="stats-table__body-col">heroexpert.ir</td>
+                            <td class="stats-table__body-col" id="testcopy">heroexpert.ir</td>
+                            <td class="stats-table__body-col">24</td>
+                            <td class="stats-table__body-col">
+                                <a href="#" class="QR-code-span"><i class="ri-qr-code-line QR-code-icon"></i></a>
+                            </td>
+                            <td class="stats-table__body-col">
+                                <a href="#" class="stats-table__body-icons"><i class="ri-edit-line stats-table-edit-icon"></i></a>
+                            </td>
+                            <td class="stats-table__body-col">
+                                <button class="stats-table__body-icons stats-table__copy-btn" data-clipboard-demo="" data-clipboard-target="#testcopy" data-clipboard-action="copy" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="bottom" data-bs-custom-class="custom-popover" data-bs-content="copied!">
+                                    <i class="ri-file-copy-2-line stats-table-copy-icon"></i>
+                                </button>
+                            </td>
+                            <td class="stats-table__body-col">
+                                <button class="stats-table__body-icons"><i class="ri-delete-bin-line stats-table-delete-icon"></i></button>
+                            </td>
+                        </tr>
+                        <tr class="stats-table__body-row">
+                            <td class="stats-table__body-col">3</td>
+                            <td class="stats-table__body-col">heroexpert.ir</td>
+                            <td class="stats-table__body-col" id="testcopy">heroexpert.ir</td>
+                            <td class="stats-table__body-col">24</td>
+                            <td class="stats-table__body-col">
+                                <a href="QR.html" class="QR-code-span"><i class="ri-qr-code-line QR-code-icon"></i></a>
+                            </td>
+                            <td class="stats-table__body-col">
+                                <a href="editDestUrl.html" class="stats-table__body-icons"><i class="ri-edit-line stats-table-edit-icon"></i></a>
+                            </td>
+                            <td class="stats-table__body-col">
+                                <button class="stats-table__body-icons stats-table__copy-btn" data-clipboard-demo="" data-clipboard-target="#testcopy" data-clipboard-action="copy" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="bottom" data-bs-custom-class="custom-popover" data-bs-content="copied!">
+                                    <i class="ri-file-copy-2-line stats-table-copy-icon"></i>
+                                </button>
+                            </td>
+                            <td class="stats-table__body-col">
+                                <button class="stats-table__body-icons"><i class="ri-delete-bin-line stats-table-delete-icon"></i></button>
+                            </td>
+                        </tr>
+                        <tr class="stats-table__body-row">
+                            <td class="stats-table__body-col">4</td>
+                            <td class="stats-table__body-col">heroexpert.ir</td>
+                            <td class="stats-table__body-col" id="testcopy">heroexpert.ir</td>
+                            <td class="stats-table__body-col">24</td>
+                            <td class="stats-table__body-col">
+                                <a href="#" class="QR-code-span"><i class="ri-qr-code-line QR-code-icon"></i></a>
+                            </td>
+                            <td class="stats-table__body-col">
+                                <a href="#" class="stats-table__body-icons"><i class="ri-edit-line stats-table-edit-icon"></i></a>
+                            </td>
+                            <td class="stats-table__body-col">
+                                <button class="stats-table__body-icons stats-table__copy-btn" data-clipboard-demo="" data-clipboard-target="#testcopy" data-clipboard-action="copy" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="bottom" data-bs-custom-class="custom-popover" data-bs-content="copied!">
+                                    <i class="ri-file-copy-2-line stats-table-copy-icon"></i>
+                                </button>
+                            </td>
+                            <td class="stats-table__body-col">
+                                <button class="stats-table__body-icons"><i class="ri-delete-bin-line stats-table-delete-icon"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="user-panel-pagination">
+                    <div class="user-panel-pagination__container">
+                        <a href="#" class="user-panel__pagination-link"><i class="ri-arrow-left-s-line"></i></a>
+                        <a href="#" class="user-panel__pagination-link user-panel__pagination-link-active">1</a>
+                        <a href="#" class="user-panel__pagination-link">2</a>
+                        <a href="#" class="user-panel__pagination-link"><i class="ri-arrow-right-s-line"></i></a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="bg-blur"></div>
+    </div>
+
+    <!--App script-->
+    <script src="assets/js/popper.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+    <script src="assets/js/clipboard.min.js"></script>
+    <script src="assets/js/index.js"></script>
+</body>
+
+</html>

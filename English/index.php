@@ -41,6 +41,11 @@ if ($type == false) {
     -->
 
     <body>
+        <header>
+            <div class="user-panel">
+                <a href="login.html" class="user-panel-btn">user panel</a>
+            </div>
+        </header>
         <main>
             <!-- Error Handler -->
             <?php if (isset($_GET['message']) && $_GET['message'] == 'success') {
@@ -50,9 +55,7 @@ if ($type == false) {
                 echo alarm('error', 'Not Found This Page!');
             } ?>
 
-            <div class="test">
 
-            </div>
             <div id="header-div" class="">
                 <h1>Url Shortener</h1>
             </div>
