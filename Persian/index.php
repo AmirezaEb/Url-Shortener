@@ -41,6 +41,12 @@ if ($type == false) {
     -->
 
     <body>
+        <header>
+            <div class="user-panel">
+                <a href="login.html" class="user-panel-btn">پنل کاربری</a>
+            </div>
+        </header>
+
         <main>
             <!-- Error Handler -->
             <?php if (isset($_GET['message']) && $_GET['message'] == 'success') {

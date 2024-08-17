@@ -13,11 +13,13 @@ const verifyValidText = $.querySelector('.verify-validation-text')
 const verifyValidArrow = $.querySelector('.verify-validation-span')
 const verifyValidIcon = $.querySelector('.verify-valid-icon')
 
+const editDestInput = $.querySelector('#editDest-input')
+
 // ------------------------------- start user panel scripts -----------------------------
 
 const burgerMenuBtn = $.querySelector('.burger-menu__btn')
 const userPanelHeader = $.querySelector('.header')
-const burgerMenuDetails = $.querySelector('.left-main-dropdown')
+const burgerMenuDetails = $.querySelector('.right-main-dropdown')
 const closeBurgerMenu = $.querySelector('.close-menu__btn')
 const bgBlurZindex = $.querySelector('.bg-blur')
 
@@ -109,8 +111,12 @@ if (emailSubmitBtn) {
         emailInput.addEventListener('keyup', e => {
             if (emailInput.value.length >= 1) {
                 emailCheckOutTrue()
+                emailInput.classList.add('input-left')
+                emailInput.classList.add('input-left-valid')
             } else {
                 emailCheckOutFalse()
+                emailInput.classList.remove('input-left')
+                emailInput.classList.remove('input-left-valid')
             }
         })
     })
@@ -132,10 +138,24 @@ if (verifySubmitBtn) {
         verifyInput.addEventListener('keyup', e => {
             if (verifyInput.value.length >= 1) {
                 verifyCheckOutTrue()
+                verifyInput.classList.add('input-left')
+                verifyInput.classList.add('input-left-valid')
             } else {
                 verifyCheckOutFalse()
+                verifyInput.classList.remove('input-left')
+                verifyInput.classList.remove('input-left-valid')
             }
         })
+    })
+}
+
+if (editDestInput) {
+    editDestInput.addEventListener('keyup', event => {
+        if (editDestInput.value.length >= 1) {
+            editDestInput.classList.add('input-left')
+        } else {
+            editDestInput.classList.remove('input-left')
+        }
     })
 }
 
@@ -147,6 +167,13 @@ if (emailInput) {
             event.preventDefault()
         }
     })
+    emailInput.addEventListener('keyup', e => {
+        if (emailInput.value.length >= 1) {
+            emailInput.classList.add('input-left')
+        } else {
+            emailInput.classList.remove('input-left')
+        }
+    })
 }
 
 if (verifyInput) {
@@ -155,6 +182,13 @@ if (verifyInput) {
         console.log(word)
         if ((word < 48 || word > 57)) {
             event.preventDefault()
+        }
+    })
+    verifyInput.addEventListener('keyup', e => {
+        if (verifyInput.value.length >= 1) {
+            verifyInput.classList.add('input-left')
+        } else {
+            verifyInput.classList.remove('input-left')
         }
     })
 }
