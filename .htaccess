@@ -1,0 +1,6 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /Url-Shortener/index.php?path=$1 [NC,L,QSA]
+RewriteCond %{DOCUMENT_ROOT}/Url-Shortener/index.php !-f
+RewriteRule ^(.*)$ /index.php?path=$1 [L,QSA]
