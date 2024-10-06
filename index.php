@@ -1,11 +1,7 @@
 <?php
-include "vendor/autoload.php";
 
-use App\Core\Request;
+use App\Utilities\Lang;
 
-echo $_SERVER['REQUEST_URI'];
+include "bootstrap/bootstrap.php";
 
-
-
-$a = new Request();
-var_dump($a);
+view('userPanel.index');

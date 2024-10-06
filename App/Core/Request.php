@@ -6,7 +6,7 @@ class Request
 {
     public function __construct()
     {
-        echo "Request Class";;
+        echo "Request Class";
     }
     
 }
