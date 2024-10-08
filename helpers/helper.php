@@ -1,6 +1,6 @@
 <?php
 
-function siteUrl($route = '')
+function siteUrl($route = '') : string
 {
     return $_ENV['HOST'] . $route;
 }
@@ -8,18 +8,13 @@ function siteUrl($route = '')
 # Loading CSS And JS Files
 function assetUrl(string $file): string
 {
-    $assetsPath = $_ENV['HOST'] . "/resources/assets/{$file}";
+    $assetsPath = $_ENV['HOST'] . "resources/assets/{$file}";
     return $assetsPath;
 }
 
 # Display Pages
 function view(string $view, array $data = []): void
 {
-    $viewPath = BASEPATH . "/resources/views/" . str_replace('.', '/', $view) . ".php";
-
-    if (!file_exists($viewPath)) {
-        include BASEPATH . "/resources/views/errors/404.php";
-    } else {
-        include $viewPath;
-    }
+    $viewPath = BASEPATH . "resources/views/" . str_replace('.', '/', $view) . ".php";
+    include $viewPath;
 }

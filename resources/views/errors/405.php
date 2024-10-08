@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1 style="text-align:center; color:red;">Error 404</h1>
+    <h1 style="text-align:center; color:red;">Error 405 Server</h1>
 </body>
 </html>
