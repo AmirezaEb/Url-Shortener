@@ -5,7 +5,6 @@ if (file_exists(BASEPATH . 'vendor/autoload.php') && file_exists(BASEPATH . 'hel
     include BASEPATH . "vendor/autoload.php";
     $dotenv = Dotenv\Dotenv::createImmutable(BASEPATH);
     $dotenv->load();
-    $request = new App\Core\Request(); 
     $setLang = App\Utilities\Lang::set($_ENV['APP_LANG']);
     $runRoute = App\Core\Routing\Route::run();
     include BASEPATH . "helpers/helper.php";

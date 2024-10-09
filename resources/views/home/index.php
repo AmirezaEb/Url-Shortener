@@ -1,6 +1,4 @@
-<?php
-
-use App\Utilities\Lang; ?>
+<?php use App\Utilities\Lang; ?>
 <!DOCTYPE html>
 <html lang="<?= Lang::get('lang') ?>" dir="<?= Lang::get('dir') ?>">
 
@@ -32,10 +30,10 @@ use App\Utilities\Lang; ?>
         </div>
         <!-- Url input and shorten button -->
         <div id="content-div">
-            <form id="input-div" action="controller/createUrl.php" method="post">
+            <form id="input-div" action="/" method="post">
                 <input type="url" name="Url" class="content-row" placeholder="<?= Lang::get('yourlink') ?> . . ." id="input-field" required />
                 <div class="buttons">
-                    <button type="submit" name="submits" class="content-row button shortenURL"><?= Lang::get('short') ?></button>
+                    <button type="submit" name="sub-create" class="content-row button shortenURL"><?= Lang::get('short') ?></button>
                     <button type="button" id="clear-btn" class="content-row button"><?= Lang::get('clear') ?></button>
                 </div>
             </form>

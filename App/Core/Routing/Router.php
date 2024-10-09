@@ -73,8 +73,8 @@ class Router
             if(!method_exists($className,$methodName)){
                 throw new \Exception("Method '$methodName' Not Exists In Class '$className'");
             }
-            
-            $controller->{$methodName}();
+            $request = new Request();
+            $controller->{$methodName}($request);
         }
     }
 
