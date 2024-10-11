@@ -22,12 +22,12 @@ class Route
         include BASEPATH . 'routes/web.php';
     }
 
-    public static function get(string $uri,array|Closure|string $action = null): void
+    public static function get(string $uri, array|Closure|string $action = null): void
     {
         self::add('get', $uri, $action);
     }
 
-    public static function post(string $uri,array|Closure|string $action = null): void
+    public static function post(string $uri, array|Closure|string $action = null): void
     {
         self::add('post', $uri, $action);
     }

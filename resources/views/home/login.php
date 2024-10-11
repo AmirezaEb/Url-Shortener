@@ -17,14 +17,14 @@
     <main>
         <div class="email-div" id="email-div">
             <h2 class="email-header"><?= Lang::get('signin') ?></h2>
-            <form action="" class="email-form">
+            <form action="/auth" method="post" class="email-form">
                 <div class="email-val-div">
                     <i class="ri-error-warning-line email-valid-icon d-none"></i>
                     <input type="text" class="email-input" name="email" id="email-input" placeholder="<?= Lang::get('inputemail')?>" />
                     <p class="email-validation-text d-none"><?= Lang::get('pemail')?></p>
                     <span class="email-validation-span d-none"></span>
                 </div>
-                <button class="email-submit-btn"><?= Lang::get('sendcode'); ?></button>
+                <button name="sub-email" class="email-submit-btn"><?= Lang::get('sendcode'); ?></button>
             </form>
         </div>
         <div class="bg-blur"></div>
