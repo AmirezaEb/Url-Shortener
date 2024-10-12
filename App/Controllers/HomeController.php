@@ -24,4 +24,9 @@ class HomeController
             // if (isset($_COOKIE[''])){}
         }
     }
+
+    public function redirectUrl(Request $request){
+        echo "<pre>";
+        var_dump($request);
+    }
 }

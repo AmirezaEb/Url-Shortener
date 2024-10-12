@@ -7,6 +7,7 @@ return [
     'font' => 'https://fonts.cdnfonts.com/css/lalezar',
     'maincss' => 'css/fa/main.css',
     'resonsecss' => 'css/fa/responsive.css',
+    'emailcss' => 'css/fa/email.css',
     'appjs' => 'js/fa/app.js',
     'indexjs' => 'js/fa/index.js',
     'direction-1' => 'right',
@@ -44,8 +45,12 @@ return [
     'edit' => 'ویرایش',
     'delete' => 'حذف',
     'shorturl' => 'لینک کوتاه',
-    # English Words For Edit Url Panel View
+    # Persian Words For File Url Panel View
     'edit-title' => 'ویرایش لینک',
     'edit-h2' => 'ویرایش لینک مقصد',
     'edit-input' => 'لینک مقصد را وارد کنید...',
+    # Perian Worlds For Send Email
+    'emailMs' => 'رمز عبور یکبار مصرف شما : ',
+    'emailTitle' => 'کارشناس قهرمان',
+    'welcome' => 'سلام دوست گرامی',
 ];

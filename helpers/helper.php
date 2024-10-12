@@ -15,6 +15,7 @@ function assetUrl(string $file): string
 # Display Pages
 function view(string $view, array $data = []): void
 {
+    extract($data);
     $viewPath = BASEPATH . "resources/views/" . str_replace('.', '/', $view) . ".php";
     include $viewPath;
 }

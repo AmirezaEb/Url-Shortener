@@ -7,6 +7,7 @@ return [
     'font' => 'https://fonts.cdnfonts.com/css/going-to-school',
     'maincss' => 'css/en/main.css',
     'resonsecss' => 'css/en/responsive.css',
+    'emailcss' => 'css/en/email.css',
     'appjs' => 'js/en/app.js',
     'indexjs' => 'js/en/index.js',
     'direction-1' => 'left',
@@ -48,6 +49,13 @@ return [
     'edit-title' => 'Edit Url',
     'edit-h2' => 'Edit Destenition URL',
     'edit-input' => 'Enter Your Destenition Url...',
+    # English Worlds For Send Email
+    'emailMs'=>'Your New Account Password Is : ',
+    'emailTitle' => 'Hero Expert',
+    'welcome' => 'Welcome',
+
+
+
 ];
 
 ?>

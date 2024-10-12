@@ -10,7 +10,7 @@ class Router
     private $request;
     private $routes;
     private $currentRoute;
-    const NAMESPACE = 'App\Controllers\\' ;
+    const NAMESPACE = 'App\Controllers\\';
 
     public function __construct()
     {
@@ -22,8 +22,19 @@ class Router
     private function findRoute(Request $request): array|null
     {
         foreach ($this->routes as $route) {
-            if ($request->method() == $route['method'] && $request->uri() == $route['uri']) {
-                return $route;
+            if ($request->method() == $route['method']) {
+                if (strpos($route['uri'], '{') !== false) {
+                    $pattern = preg_replace('/\{([a-zA-Z_]+)\}/', '([a-zA-Z0-9_-]+)', $route['uri']);
+                    if (preg_match("#^$pattern$#", $request->uri(), $matches)) {
+                        array_shift($matches);
+                        $rote['params'] = $matches;
+                        return $route;
+                    }
+                } else {
+                    if ($request->uri() == $route['uri']) {
+                        return $route;
+                    }
+                }
             }
         }
         return null;
@@ -33,12 +44,13 @@ class Router
     {
         $foundRoute = false;
         foreach ($this->routes as $route) {
-            if ($request->uri() == $route['uri']) {
+            $pattern = preg_replace('/\{([a-zA-Z_]+)\}/', '([a-zA-Z0-9_-]+)', $route['uri']);
+            if (preg_match("#^$pattern$#", $request->uri())) {
                 $foundRoute = true;
-                if($request->method() == $route['method']){
+                if ($request->method() == $route['method']) {
                     return false;
                 }
-                return true;
+                // return true;
             }
         }
         return $foundRoute;
@@ -63,14 +75,14 @@ class Router
         if (is_array($action)) {
             $className = $action[0];
             $methodName = $action[1];
-        
+
             if (!class_exists($className)) {
                 throw new \Exception("Class '$className' Not Exists");
             }
 
             $controller = new $className();
-            
-            if(!method_exists($className,$methodName)){
+
+            if (!method_exists($className, $methodName)) {
                 throw new \Exception("Method '$methodName' Not Exists In Class '$className'");
             }
             $request = new Request();
