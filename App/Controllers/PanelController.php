@@ -10,14 +10,15 @@ use App\Utilities\Lang;
 
 class PanelController
 {
-    public function index(Request $request): void
+    public function index(Request $request)
     {
         $Cookie = Auth::chackLogin();
         if ($Cookie) {
             $user = User::where('email', $Cookie)->first();
             view('panel.index');
         } else {
-            ExceptionHandler::setErrorAndRedirect(Lang::get('Er-TryLogin'), './auth');
+            var_dump($Cookie);
+            // ExceptionHandler::setErrorAndRedirect(Lang::get('Er-TryLogin'), './auth');
         }
     }
 }

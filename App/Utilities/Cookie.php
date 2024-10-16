@@ -6,7 +6,7 @@ class Cookie
 {
     private static $key = '!@-HeroExpert-@!';
 
-    public static function setSecureCookie(string $name, string $value, int $expire = (3600 * 6), string $path = '/', string $domain = '', bool $secure = false, string $httponly = true,): void
+    public static function setSecureCookie(string $name, string $value, int $expire = (3600 * 6), string $path = '/', string $domain = '', bool $secure = false, bool $httponly = true): void
     {
         if (!self::isLocalhost()) {
             $secure = true;
@@ -15,7 +15,7 @@ class Cookie
         setcookie($name, $value, time() + $expire, $path, $domain, $secure, $httponly);
     }
 
-    public static function getCookie(string $name): bool|null
+    public static function getCookie(string $name): string|null
     {
         return isset($_COOKIE[$name]) ? $_COOKIE[$name] : null;
     }
@@ -55,7 +55,7 @@ class Cookie
         return $token;
     }
 
-    public static function validateCsrfToken(string $tokenName = 'csrf_token', string $userToken): string
+    public static function validateCsrfToken(string $tokenName = 'csrf_token', string $userToken): bool
     {
         $storedToken = self::getCookie($tokenName);
         return hash_equals($storedToken, $userToken);

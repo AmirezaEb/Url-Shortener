@@ -21,7 +21,7 @@
 <body>
     <header>
         <div class="user-panel">
-            <a href="/auth" class="user-panel-btn"><?= Lang::get('panel') ?></a>
+            <a href="./auth" class="user-panel-btn"><?= Lang::get('panel') ?></a>
         </div>
     </header>
     <main>

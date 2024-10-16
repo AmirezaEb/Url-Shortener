@@ -8,12 +8,12 @@ use App\Utilities\Auth;
 
 class HomeController
 {
-    public function index(): void
+    public function index()
     {
         return view('home.index');
     }
 
-    public function createUrl(Request $request): void
+    public function createUrl(Request $request)
     {
 
         if ($request->method() === 'post' && isset($request->params()['sub-create']) && !empty($request->params()['Url'])) {
@@ -22,7 +22,7 @@ class HomeController
         }
     }
 
-    public function redirectUrl(Request $request): void
+    public function redirectUrl(Request $request)
     {
         # Code ...
     }

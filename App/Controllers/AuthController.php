@@ -21,12 +21,16 @@ class AuthController
         $this->Email = new Email();
     }
 
-    public function index() :void
+    public function index()
     {
-        return view('home.login');
+        if (Auth::chackLogin()) {
+            Url::redirect('./panel');
+        } else {
+            return view('home.login');
+        }
     }
 
-    public function handelrAuth(Request $request) :void
+    public function handelrAuth(Request $request): void
     {
         $action = $_POST['action'];
 
@@ -37,7 +41,7 @@ class AuthController
         }
     }
 
-    public function Login(Request $request) :void
+    public function Login(Request $request)
     {
         if ($request->method() === 'post' && isset($request->params()['email']) && !empty($request->param('email'))) {
             $email = filter_var($request->param('email'), FILTER_SANITIZE_EMAIL);
@@ -94,7 +98,7 @@ class AuthController
         }
     }
 
-    public function register(Request $request) :void
+    public function register(Request $request)
     {
         if (filter_var($request->param('verifyCode'), FILTER_VALIDATE_INT)) {
             $email = Session::get('UserData',)['email'];
