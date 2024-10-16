@@ -4,11 +4,10 @@ namespace App\Utilities;
 
 class Url
 {
-    # Create A Short Url
-    public static function shortCreate()
+    public static function shortCreate() : string
     {
         $length = rand(3, rand(5, 10));
-        $characters = 'aA0bBcC1dDeE2fFgG3hHiI4jJkK5lLmM6nNoO7pPqQ8rRsS9tTuUvVwWxXyYzZ';
+        $characters = 'aA0bBcC1dDeE2fFgG3hHiI4jJkK5lLmM6nNoO7pPqQ8rRsS9tTuUvVwWxXyYzZ-';
         $charactersLength = strlen($characters);
         $randomString = '';
         for ($i = 0; $i < $length; $i++) {

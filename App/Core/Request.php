@@ -19,6 +19,16 @@ class Request
         $this->ip = $_SERVER['REMOTE_ADDR'];
     }
 
+    public function AddParams(string $property, string $value) :void
+    {
+        $this->params[$property] = $value;
+    }
+
+    public function param(string $key) :string
+    {
+        return $this->params[$key];
+    }
+
     public function params(): array
     {
         return $this->params;

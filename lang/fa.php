@@ -1,7 +1,7 @@
 <?php
 
 return [
-    // Config Persian[fa] Language
+    # Config Persian[fa] Language
     'lang' => 'fa',
     'dir' => 'rtl',
     'font' => 'https://fonts.cdnfonts.com/css/lalezar',
@@ -12,6 +12,7 @@ return [
     'indexjs' => 'js/fa/index.js',
     'direction-1' => 'right',
     'direction-2' => 'left',
+    'position-alarm' => 'top-end',
     # Persian words for file index
     'index-title' => 'کوتاه کننده لینک',
     'clear' => 'پاک کردن',
@@ -53,4 +54,9 @@ return [
     'emailMs' => 'رمز عبور یکبار مصرف شما : ',
     'emailTitle' => 'کارشناس قهرمان',
     'welcome' => 'سلام دوست گرامی',
+    # Perian Errors For Display
+    'Er-InvalidEmail' => 'ایمیل وارد شده معتبر نمی باشد',
+    'Er-TryAgain' => 'خطایی رخ داد لطفا مجدد تلاش کنید',
+    'Er-Expired' => 'انقضای کد شما به پایان رسیده لطفا مجدد تلاش کنید',
+    'Er-InvalidCode' => 'کد وارد شده اشتباه است لطفا مجدد نلاش کنید',
 ];

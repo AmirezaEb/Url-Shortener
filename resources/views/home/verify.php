@@ -1,6 +1,8 @@
 <?php
+use App\Utilities\Lang;
+use App\Utilities\Session;
+?>
 
-use App\Utilities\Lang; ?>
 <!DOCTYPE html>
 <html lang="<?= Lang::get('lang') ?>" dir="<?= Lang::get('dir') ?>">
 
@@ -20,14 +22,14 @@ use App\Utilities\Lang; ?>
 
         <div class="verify-div" id="verify-div">
             <h2 class="verify-header"><?= Lang::get('verify') ?></h2>
-            <form action="" class="verify-form">
+            <form action="/auth" method="post" class="verify-form">
                 <div class="verify-val-div">
                     <i class="ri-error-warning-line verify-valid-icon d-none"></i>
                     <input type="text" class="verify-input" name="verifyCode" id="verify-input" placeholder="<?= Lang::get('inputverify') ?>" />
                     <p class="verify-validation-text d-none"><?= Lang::get('pverify') ?></p>
                     <span class="verify-validation-span d-none"></span>
                 </div>
-                <button class="verify-submit-btn"><?= Lang::get('sub') ?></button>
+                <button name="action" value="register" class="verify-submit-btn"><?= Lang::get('sub') ?></button>
             </form>
         </div>
 
@@ -43,3 +45,13 @@ use App\Utilities\Lang; ?>
 </body>
 
 </html>
+<?php
+if (Session::has('error') && !Session::empty('error')) {
+    echo '1';
+    echo alarm('error', Session::get('error'), '22em',Lang::get('position-alarm'));
+    Session::delete('error');
+} elseif (Session::has('message') && !Session::empty('message')) {
+    alarm('success', Session::get('message'), '22em', Lang::get('position-alarm'));
+    Session::delete('message');
+}
+?>

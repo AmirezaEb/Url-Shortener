@@ -31,7 +31,7 @@ class Email
         $this->mailer->FromName = "DO NOT REPLY";
     }
 
-    public function send($to, $OTP)
+    public function send(string $to, string $OTP): bool
     {
         try {
             $this->mailer->addAddress($to);
@@ -43,7 +43,6 @@ class Email
 
             return true;
         } catch (Exception $e) {
-            echo $e->getMessage();
             return false;
         }
     }

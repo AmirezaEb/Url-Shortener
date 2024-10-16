@@ -1,6 +1,7 @@
 <?php 
 namespace App\Models;
 
+use App\Contracts\CrudInterface;
 use Illuminate\Database\Eloquent\Model;
 
 class Url extends Model{

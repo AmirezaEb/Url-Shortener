@@ -1,0 +1,704 @@
+[2024-10-14 14:39:50] Exception : eror in C:\xampp\htdocs\App\Controllers\AuthController.php on line 79
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(33): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 14:41:23] Exception : eror in C:\xampp\htdocs\App\Controllers\AuthController.php on line 79
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(33): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 14:50:46] Exception : eror in C:\xampp\htdocs\App\Controllers\AuthController.php on line 79
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(33): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 14:51:50] ParseError : syntax error, unexpected identifier "s", expecting "function" or "const" in C:\xampp\htdocs\App\Controllers\AuthController.php on line 90
+Stack Trace:
+#0 C:\xampp\htdocs\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\xampp\\htdocs...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Controllers...')
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(67): is_callable(Array)
+#3 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#4 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#5 {main}
+
+[2024-10-14 14:52:51] ParseError : syntax error, unexpected identifier "s", expecting "function" or "const" in C:\xampp\htdocs\App\Controllers\AuthController.php on line 90
+Stack Trace:
+#0 C:\xampp\htdocs\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\xampp\\htdocs...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Controllers...')
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(67): is_callable(Array)
+#3 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#4 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#5 {main}
+
+[2024-10-14 14:55:03] ParseError : syntax error, unexpected identifier "s", expecting "function" or "const" in C:\xampp\htdocs\App\Controllers\AuthController.php on line 90
+Stack Trace:
+#0 C:\xampp\htdocs\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\xampp\\htdocs...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Controllers...')
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(67): is_callable(Array)
+#3 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#4 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#5 {main}
+
+[2024-10-14 14:56:15] ParseError : syntax error, unexpected identifier "s", expecting "function" or "const" in C:\xampp\htdocs\App\Controllers\AuthController.php on line 90
+Stack Trace:
+#0 C:\xampp\htdocs\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\xampp\\htdocs...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Controllers...')
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(67): is_callable(Array)
+#3 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#4 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#5 {main}
+
+[2024-10-14 14:56:33] ParseError : syntax error, unexpected identifier "s", expecting "function" or "const" in C:\xampp\htdocs\App\Controllers\AuthController.php on line 90
+Stack Trace:
+#0 C:\xampp\htdocs\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\xampp\\htdocs...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Controllers...')
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(67): is_callable(Array)
+#3 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#4 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#5 {main}
+
+[2024-10-14 14:56:43] ParseError : syntax error, unexpected identifier "s", expecting "function" or "const" in C:\xampp\htdocs\App\Controllers\AuthController.php on line 90
+Stack Trace:
+#0 C:\xampp\htdocs\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\xampp\\htdocs...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Controllers...')
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(67): is_callable(Array)
+#3 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#4 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#5 {main}
+
+[2024-10-14 14:56:51] ParseError : syntax error, unexpected identifier "s", expecting "function" or "const" in C:\xampp\htdocs\App\Controllers\AuthController.php on line 90
+Stack Trace:
+#0 C:\xampp\htdocs\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\xampp\\htdocs...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Controllers...')
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(67): is_callable(Array)
+#3 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#4 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#5 {main}
+
+[2024-10-14 14:57:18] ParseError : syntax error, unexpected identifier "s", expecting "function" or "const" in C:\xampp\htdocs\App\Controllers\AuthController.php on line 90
+Stack Trace:
+#0 C:\xampp\htdocs\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\xampp\\htdocs...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Controllers...')
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(67): is_callable(Array)
+#3 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#4 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#5 {main}
+
+[2024-10-14 14:57:31] ParseError : syntax error, unexpected identifier "s", expecting "function" or "const" in C:\xampp\htdocs\App\Controllers\AuthController.php on line 90
+Stack Trace:
+#0 C:\xampp\htdocs\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\xampp\\htdocs...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Controllers...')
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(67): is_callable(Array)
+#3 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#4 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#5 {main}
+
+[2024-10-14 14:57:54] ParseError : syntax error, unexpected identifier "s", expecting "function" or "const" in C:\xampp\htdocs\App\Controllers\AuthController.php on line 90
+Stack Trace:
+#0 C:\xampp\htdocs\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\xampp\\htdocs...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Controllers...')
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(67): is_callable(Array)
+#3 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#4 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#5 {main}
+
+[2024-10-14 15:02:52] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:06:38] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:19:32] Error : Call to undefined method App\Utilities\ExceptionHandler::ddisplayError() in C:\xampp\htdocs\App\Controllers\AuthController.php on line 88
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(35): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:21:00] Error : Call to undefined method App\Utilities\ExceptionHandler::ddisplayError() in C:\xampp\htdocs\App\Controllers\AuthController.php on line 88
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(35): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:21:11] Error : Call to undefined method App\Utilities\ExceptionHandler::ddisplayError() in C:\xampp\htdocs\App\Controllers\AuthController.php on line 88
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(35): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:21:11] ErrorException : Uncaught Error: Call to a member function getMessage() on null in C:\xampp\htdocs\resources\views\errors\production.php:71
+Stack trace:
+#0 C:\xampp\htdocs\helpers\helper.php(20): include()
+#1 C:\xampp\htdocs\App\Utilities\ExceptionHandler.php(60): view('errors.producti...')
+#2 C:\xampp\htdocs\App\Utilities\ExceptionHandler.php(16): App\Utilities\ExceptionHandler::displayGenericError()
+#3 [internal function]: App\Utilities\ExceptionHandler::handler(Object(Error))
+#4 {main}
+  thrown in C:\xampp\htdocs\resources\views\errors\production.php on line 71
+Stack Trace:
+#0 [internal function]: App\Utilities\ExceptionHandler::handlerShutdown()
+#1 {main}
+
+[2024-10-14 15:23:02] Error : Call to undefined method App\Utilities\ExceptionHandler::ddisplayError() in C:\xampp\htdocs\App\Controllers\AuthController.php on line 88
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(35): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:23:02] ErrorException : Uncaught Error: Call to a member function getMessage() on null in C:\xampp\htdocs\resources\views\errors\production.php:84
+Stack trace:
+#0 C:\xampp\htdocs\helpers\helper.php(20): include()
+#1 C:\xampp\htdocs\App\Utilities\ExceptionHandler.php(60): view('errors.producti...')
+#2 C:\xampp\htdocs\App\Utilities\ExceptionHandler.php(16): App\Utilities\ExceptionHandler::displayGenericError()
+#3 [internal function]: App\Utilities\ExceptionHandler::handler(Object(Error))
+#4 {main}
+  thrown in C:\xampp\htdocs\resources\views\errors\production.php on line 84
+Stack Trace:
+#0 [internal function]: App\Utilities\ExceptionHandler::handlerShutdown()
+#1 {main}
+
+[2024-10-14 15:24:04] Error : Call to undefined method App\Utilities\ExceptionHandler::ddisplayError() in C:\xampp\htdocs\App\Controllers\AuthController.php on line 88
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(35): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:25:25] Error : Call to undefined method App\Utilities\ExceptionHandler::ddisplayError() in C:\xampp\htdocs\App\Controllers\AuthController.php on line 88
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(35): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:26:02] Error : Call to undefined method App\Utilities\ExceptionHandler::ddisplayError() in C:\xampp\htdocs\App\Controllers\AuthController.php on line 88
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(35): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:26:48] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:28:05] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:28:17] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:28:17] ErrorException : Uncaught TypeError: view(): Argument #2 ($data) must be of type array, Exception given, called in C:\xampp\htdocs\App\Utilities\ExceptionHandler.php on line 47 and defined in C:\xampp\htdocs\helpers\helper.php:16
+Stack trace:
+#0 C:\xampp\htdocs\App\Utilities\ExceptionHandler.php(47): view('errors.developm...', Object(Exception))
+#1 C:\xampp\htdocs\App\Utilities\ExceptionHandler.php(14): App\Utilities\ExceptionHandler::displayDetailedError(Object(Exception))
+#2 [internal function]: App\Utilities\ExceptionHandler::handler(Object(Exception))
+#3 {main}
+  thrown in C:\xampp\htdocs\helpers\helper.php on line 16
+Stack Trace:
+#0 [internal function]: App\Utilities\ExceptionHandler::handlerShutdown()
+#1 {main}
+
+[2024-10-14 15:28:50] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:28:50] ErrorException : Uncaught Error: Call to a member function getMessage() on null in C:\xampp\htdocs\resources\views\errors\development.php:84
+Stack trace:
+#0 C:\xampp\htdocs\helpers\helper.php(20): include()
+#1 C:\xampp\htdocs\App\Utilities\ExceptionHandler.php(47): view('errors.developm...', Array)
+#2 C:\xampp\htdocs\App\Utilities\ExceptionHandler.php(14): App\Utilities\ExceptionHandler::displayDetailedError(Object(Exception))
+#3 [internal function]: App\Utilities\ExceptionHandler::handler(Object(Exception))
+#4 {main}
+  thrown in C:\xampp\htdocs\resources\views\errors\development.php on line 84
+Stack Trace:
+#0 [internal function]: App\Utilities\ExceptionHandler::handlerShutdown()
+#1 {main}
+
+[2024-10-14 15:30:52] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:30:52] ErrorException : Uncaught Error: Call to a member function getMessage() on null in C:\xampp\htdocs\resources\views\errors\development.php:85
+Stack trace:
+#0 C:\xampp\htdocs\helpers\helper.php(20): include()
+#1 C:\xampp\htdocs\App\Utilities\ExceptionHandler.php(47): view('errors.developm...', Array)
+#2 C:\xampp\htdocs\App\Utilities\ExceptionHandler.php(14): App\Utilities\ExceptionHandler::displayDetailedError(Object(Exception))
+#3 [internal function]: App\Utilities\ExceptionHandler::handler(Object(Exception))
+#4 {main}
+  thrown in C:\xampp\htdocs\resources\views\errors\development.php on line 85
+Stack Trace:
+#0 [internal function]: App\Utilities\ExceptionHandler::handlerShutdown()
+#1 {main}
+
+[2024-10-14 15:31:34] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:31:34] ErrorException : Uncaught TypeError: extract(): Argument #1 ($array) must be of type array, Exception given in C:\xampp\htdocs\helpers\helper.php:18
+Stack trace:
+#0 C:\xampp\htdocs\helpers\helper.php(18): extract(Object(Exception))
+#1 C:\xampp\htdocs\App\Utilities\ExceptionHandler.php(47): view('errors.developm...', Object(Exception))
+#2 C:\xampp\htdocs\App\Utilities\ExceptionHandler.php(14): App\Utilities\ExceptionHandler::displayDetailedError(Object(Exception))
+#3 [internal function]: App\Utilities\ExceptionHandler::handler(Object(Exception))
+#4 {main}
+  thrown in C:\xampp\htdocs\helpers\helper.php on line 18
+Stack Trace:
+#0 [internal function]: App\Utilities\ExceptionHandler::handlerShutdown()
+#1 {main}
+
+[2024-10-14 15:31:53] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:31:53] ErrorException : Uncaught TypeError: extract(): Argument #1 ($array) must be of type array, Exception given in C:\xampp\htdocs\helpers\helper.php:18
+Stack trace:
+#0 C:\xampp\htdocs\helpers\helper.php(18): extract(Object(Exception))
+#1 C:\xampp\htdocs\App\Utilities\ExceptionHandler.php(47): view('errors.developm...', Object(Exception))
+#2 C:\xampp\htdocs\App\Utilities\ExceptionHandler.php(14): App\Utilities\ExceptionHandler::displayDetailedError(Object(Exception))
+#3 [internal function]: App\Utilities\ExceptionHandler::handler(Object(Exception))
+#4 {main}
+  thrown in C:\xampp\htdocs\helpers\helper.php on line 18
+Stack Trace:
+#0 [internal function]: App\Utilities\ExceptionHandler::handlerShutdown()
+#1 {main}
+
+[2024-10-14 15:32:03] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:32:03] ErrorException : Uncaught Error: Call to a member function getMessage() on null in C:\xampp\htdocs\resources\views\errors\development.php:85
+Stack trace:
+#0 C:\xampp\htdocs\helpers\helper.php(20): include()
+#1 C:\xampp\htdocs\App\Utilities\ExceptionHandler.php(47): view('errors.developm...', Object(Exception))
+#2 C:\xampp\htdocs\App\Utilities\ExceptionHandler.php(14): App\Utilities\ExceptionHandler::displayDetailedError(Object(Exception))
+#3 [internal function]: App\Utilities\ExceptionHandler::handler(Object(Exception))
+#4 {main}
+  thrown in C:\xampp\htdocs\resources\views\errors\development.php on line 85
+Stack Trace:
+#0 [internal function]: App\Utilities\ExceptionHandler::handlerShutdown()
+#1 {main}
+
+[2024-10-14 15:33:22] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:33:22] ErrorException : Uncaught Error: Call to a member function getMessage() on null in C:\xampp\htdocs\resources\views\errors\development.php:85
+Stack trace:
+#0 C:\xampp\htdocs\helpers\helper.php(20): include()
+#1 C:\xampp\htdocs\App\Utilities\ExceptionHandler.php(47): view('errors.developm...', Object(Exception))
+#2 C:\xampp\htdocs\App\Utilities\ExceptionHandler.php(14): App\Utilities\ExceptionHandler::displayDetailedError(Object(Exception))
+#3 [internal function]: App\Utilities\ExceptionHandler::handler(Object(Exception))
+#4 {main}
+  thrown in C:\xampp\htdocs\resources\views\errors\development.php on line 85
+Stack Trace:
+#0 [internal function]: App\Utilities\ExceptionHandler::handlerShutdown()
+#1 {main}
+
+[2024-10-14 15:33:32] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:33:32] ErrorException : Uncaught Error: Call to a member function getMessage() on null in C:\xampp\htdocs\resources\views\errors\development.php:85
+Stack trace:
+#0 C:\xampp\htdocs\helpers\helper.php(20): include()
+#1 C:\xampp\htdocs\App\Utilities\ExceptionHandler.php(47): view('errors.developm...', Object(Exception))
+#2 C:\xampp\htdocs\App\Utilities\ExceptionHandler.php(14): App\Utilities\ExceptionHandler::displayDetailedError(Object(Exception))
+#3 [internal function]: App\Utilities\ExceptionHandler::handler(Object(Exception))
+#4 {main}
+  thrown in C:\xampp\htdocs\resources\views\errors\development.php on line 85
+Stack Trace:
+#0 [internal function]: App\Utilities\ExceptionHandler::handlerShutdown()
+#1 {main}
+
+[2024-10-14 15:34:09] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:34:47] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:35:09] Error : Class "App\Controllers\Exczeption" not found in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:35:27] ParseError : syntax error, unexpected token "public" in C:\xampp\htdocs\App\Controllers\AuthController.php on line 92
+Stack Trace:
+#0 C:\xampp\htdocs\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\xampp\\htdocs...')
+#1 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Controllers...')
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(67): is_callable(Array)
+#3 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#4 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#5 {main}
+
+[2024-10-14 15:37:02] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:37:22] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:37:44] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:38:21] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:38:21] ErrorException : Uncaught Error: Call to a member function getMessage() on null in C:\xampp\htdocs\resources\views\errors\production.php:84
+Stack trace:
+#0 C:\xampp\htdocs\helpers\helper.php(20): include()
+#1 C:\xampp\htdocs\App\Utilities\ExceptionHandler.php(42): view('errors.producti...')
+#2 C:\xampp\htdocs\App\Utilities\ExceptionHandler.php(16): App\Utilities\ExceptionHandler::displayGenericError()
+#3 [internal function]: App\Utilities\ExceptionHandler::handler(Object(Exception))
+#4 {main}
+  thrown in C:\xampp\htdocs\resources\views\errors\production.php on line 84
+Stack Trace:
+#0 [internal function]: App\Utilities\ExceptionHandler::handlerShutdown()
+#1 {main}
+
+[2024-10-14 15:39:01] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:39:01] ErrorException : Uncaught Error: Call to a member function getMessage() on null in C:\xampp\htdocs\resources\views\errors\production.php:84
+Stack trace:
+#0 C:\xampp\htdocs\helpers\helper.php(20): include()
+#1 C:\xampp\htdocs\App\Utilities\ExceptionHandler.php(42): view('errors.producti...')
+#2 C:\xampp\htdocs\App\Utilities\ExceptionHandler.php(16): App\Utilities\ExceptionHandler::displayGenericError()
+#3 [internal function]: App\Utilities\ExceptionHandler::handler(Object(Exception))
+#4 {main}
+  thrown in C:\xampp\htdocs\resources\views\errors\production.php on line 84
+Stack Trace:
+#0 [internal function]: App\Utilities\ExceptionHandler::handlerShutdown()
+#1 {main}
+
+[2024-10-14 15:39:35] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:40:07] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:40:15] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:40:23] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:40:50] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 15:41:39] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 17:07:40] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 17:07:57] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 17:09:51] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 17:11:02] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 17:11:05] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 17:11:23] Exception : The Email You Entered Is Not Valid in C:\xampp\htdocs\App\Controllers\AuthController.php on line 87
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->Login(Object(App\Core\Request))
+#1 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#3 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#4 {main}
+
+[2024-10-14 23:11:34] ArgumentCountError : Too few arguments to function alarm(), 3 passed in C:\xampp\htdocs\resources\views\home\login.php on line 52 and exactly 4 expected in C:\xampp\htdocs\helpers\helper.php on line 23
+Stack Trace:
+#0 C:\xampp\htdocs\resources\views\home\login.php(52): alarm('error', 'An Error Has Oc...', '27em')
+#1 C:\xampp\htdocs\helpers\helper.php(20): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\App\Controllers\AuthController.php(25): view('home.login')
+#3 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->index(Object(App\Core\Request))
+#4 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#5 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#6 {main}
+
+[2024-10-14 23:11:38] ArgumentCountError : Too few arguments to function alarm(), 3 passed in C:\xampp\htdocs\resources\views\home\login.php on line 52 and exactly 4 expected in C:\xampp\htdocs\helpers\helper.php on line 23
+Stack Trace:
+#0 C:\xampp\htdocs\resources\views\home\login.php(52): alarm('error', 'An Error Has Oc...', '27em')
+#1 C:\xampp\htdocs\helpers\helper.php(20): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\App\Controllers\AuthController.php(25): view('home.login')
+#3 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->index(Object(App\Core\Request))
+#4 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#5 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#6 {main}
+
+[2024-10-15 00:14:59] TypeError : alarm(): Argument #2 ($message) must be of type string, null given, called in C:\xampp\htdocs\App\Controllers\AuthController.php on line 110 in C:\xampp\htdocs\helpers\helper.php on line 23
+Stack Trace:
+#0 C:\xampp\htdocs\App\Controllers\AuthController.php(110): alarm('error', NULL, '22em', 'Er-InvalidCode')
+#1 C:\xampp\htdocs\App\Controllers\AuthController.php(35): App\Controllers\AuthController->register(Object(App\Core\Request))
+#2 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#3 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#4 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#5 {main}
+
+[2024-10-15 17:02:36] ValueError : setcookie(): "path" option cannot contain ",", ";", " ", "\t", "\r", "\n", "\013", or "\014" in C:\xampp\htdocs\App\Utilities\Cookie.php on line 14
+Stack Trace:
+#0 C:\xampp\htdocs\App\Utilities\Cookie.php(14): setcookie('Auth', 'njAdT0XBVikxpp7...', 1729008156, '/; samesite=Str...', '', false, true)
+#1 C:\xampp\htdocs\App\Utilities\Cookie.php(34): App\Utilities\Cookie::setSecureCookie('Auth', 'njAdT0XBVikxpp7...', 3600)
+#2 C:\xampp\htdocs\App\Controllers\AuthController.php(112): App\Utilities\Cookie::setEncryptedCookie('Auth', 'aabrahimi1718@g...')
+#3 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->register(Object(App\Core\Request))
+#4 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#5 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#6 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#7 {main}
+
+[2024-10-15 17:05:26] ValueError : setcookie(): "path" option cannot contain ",", ";", " ", "\t", "\r", "\n", "\013", or "\014" in C:\xampp\htdocs\App\Utilities\Cookie.php on line 14
+Stack Trace:
+#0 C:\xampp\htdocs\App\Utilities\Cookie.php(14): setcookie('Auth', 'iVq6RjBOoiikAIv...', 1729008326, '/; samesite=Str...', '', false, true)
+#1 C:\xampp\htdocs\App\Utilities\Cookie.php(34): App\Utilities\Cookie::setSecureCookie('Auth', 'iVq6RjBOoiikAIv...', 3600)
+#2 C:\xampp\htdocs\App\Controllers\AuthController.php(112): App\Utilities\Cookie::setEncryptedCookie('Auth', 'aabrahimi1718@g...')
+#3 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->register(Object(App\Core\Request))
+#4 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#5 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#6 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#7 {main}
+
+[2024-10-15 17:08:58] BadMethodCallException : Call to undefined method App\Models\Url::Redirect() in C:\xampp\htdocs\vendor\illuminate\support\Traits\ForwardsCalls.php on line 67
+Stack Trace:
+#0 C:\xampp\htdocs\vendor\illuminate\support\Traits\ForwardsCalls.php(36): Illuminate\Database\Eloquent\Model::throwBadMethodCallException('Redirect')
+#1 C:\xampp\htdocs\vendor\illuminate\database\Eloquent\Model.php(2367): Illuminate\Database\Eloquent\Model->forwardCallTo(Object(Illuminate\Database\Eloquent\Builder), 'Redirect', Array)
+#2 C:\xampp\htdocs\vendor\illuminate\database\Eloquent\Model.php(2379): Illuminate\Database\Eloquent\Model->__call('Redirect', Array)
+#3 C:\xampp\htdocs\App\Controllers\AuthController.php(114): Illuminate\Database\Eloquent\Model::__callStatic('Redirect', Array)
+#4 C:\xampp\htdocs\App\Controllers\AuthController.php(34): App\Controllers\AuthController->register(Object(App\Core\Request))
+#5 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\AuthController->handelrAuth(Object(App\Core\Request))
+#6 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#7 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#8 {main}
+
+[2024-10-15 17:35:33] Illuminate\Database\QueryException : SQLSTATE[42S22]: Column not found: 1054 Unknown column '' in 'field list' (Connection: default, SQL: select `` from `users` where `users`.`id` = email limit 1) in C:\xampp\htdocs\vendor\illuminate\database\Connection.php on line 825
+Stack Trace:
+#0 C:\xampp\htdocs\vendor\illuminate\database\Connection.php(779): Illuminate\Database\Connection->runQueryCallback('select `` from ...', Array, Object(Closure))
+#1 C:\xampp\htdocs\vendor\illuminate\database\Connection.php(398): Illuminate\Database\Connection->run('select `` from ...', Array, Object(Closure))
+#2 C:\xampp\htdocs\vendor\illuminate\database\Query\Builder.php(3130): Illuminate\Database\Connection->select('select `` from ...', Array, true)
+#3 C:\xampp\htdocs\vendor\illuminate\database\Query\Builder.php(3115): Illuminate\Database\Query\Builder->runSelect()
+#4 C:\xampp\htdocs\vendor\illuminate\database\Query\Builder.php(3703): Illuminate\Database\Query\Builder->Illuminate\Database\Query\{closure}()
+#5 C:\xampp\htdocs\vendor\illuminate\database\Query\Builder.php(3114): Illuminate\Database\Query\Builder->onceWithColumns(Array, Object(Closure))
+#6 C:\xampp\htdocs\vendor\illuminate\database\Eloquent\Builder.php(759): Illuminate\Database\Query\Builder->get(false)
+#7 C:\xampp\htdocs\vendor\illuminate\database\Eloquent\Builder.php(741): Illuminate\Database\Eloquent\Builder->getModels(false)
+#8 C:\xampp\htdocs\vendor\illuminate\database\Concerns\BuildsQueries.php(344): Illuminate\Database\Eloquent\Builder->get(false)
+#9 C:\xampp\htdocs\vendor\illuminate\database\Eloquent\Builder.php(459): Illuminate\Database\Eloquent\Builder->first(false)
+#10 C:\xampp\htdocs\vendor\illuminate\support\Traits\ForwardsCalls.php(23): Illuminate\Database\Eloquent\Builder->find('email', false)
+#11 C:\xampp\htdocs\vendor\illuminate\database\Eloquent\Model.php(2367): Illuminate\Database\Eloquent\Model->forwardCallTo(Object(Illuminate\Database\Eloquent\Builder), 'find', Array)
+#12 C:\xampp\htdocs\vendor\illuminate\database\Eloquent\Model.php(2379): Illuminate\Database\Eloquent\Model->__call('find', Array)
+#13 C:\xampp\htdocs\App\Controllers\PanelController.php(12): Illuminate\Database\Eloquent\Model::__callStatic('find', Array)
+#14 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\PanelController->index(Object(App\Core\Request))
+#15 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#16 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#17 {main}
+
+[2024-10-15 17:37:55] Illuminate\Database\QueryException : SQLSTATE[42S22]: Column not found: 1054 Unknown column '' in 'field list' (Connection: default, SQL: select `` from `users` where `users`.`id` = email limit 1) in C:\xampp\htdocs\vendor\illuminate\database\Connection.php on line 825
+Stack Trace:
+#0 C:\xampp\htdocs\vendor\illuminate\database\Connection.php(779): Illuminate\Database\Connection->runQueryCallback('select `` from ...', Array, Object(Closure))
+#1 C:\xampp\htdocs\vendor\illuminate\database\Connection.php(398): Illuminate\Database\Connection->run('select `` from ...', Array, Object(Closure))
+#2 C:\xampp\htdocs\vendor\illuminate\database\Query\Builder.php(3130): Illuminate\Database\Connection->select('select `` from ...', Array, true)
+#3 C:\xampp\htdocs\vendor\illuminate\database\Query\Builder.php(3115): Illuminate\Database\Query\Builder->runSelect()
+#4 C:\xampp\htdocs\vendor\illuminate\database\Query\Builder.php(3703): Illuminate\Database\Query\Builder->Illuminate\Database\Query\{closure}()
+#5 C:\xampp\htdocs\vendor\illuminate\database\Query\Builder.php(3114): Illuminate\Database\Query\Builder->onceWithColumns(Array, Object(Closure))
+#6 C:\xampp\htdocs\vendor\illuminate\database\Eloquent\Builder.php(759): Illuminate\Database\Query\Builder->get(false)
+#7 C:\xampp\htdocs\vendor\illuminate\database\Eloquent\Builder.php(741): Illuminate\Database\Eloquent\Builder->getModels(false)
+#8 C:\xampp\htdocs\vendor\illuminate\database\Concerns\BuildsQueries.php(344): Illuminate\Database\Eloquent\Builder->get(false)
+#9 C:\xampp\htdocs\vendor\illuminate\database\Eloquent\Builder.php(459): Illuminate\Database\Eloquent\Builder->first(false)
+#10 C:\xampp\htdocs\vendor\illuminate\support\Traits\ForwardsCalls.php(23): Illuminate\Database\Eloquent\Builder->find('email', false)
+#11 C:\xampp\htdocs\vendor\illuminate\database\Eloquent\Model.php(2367): Illuminate\Database\Eloquent\Model->forwardCallTo(Object(Illuminate\Database\Eloquent\Builder), 'find', Array)
+#12 C:\xampp\htdocs\vendor\illuminate\database\Eloquent\Model.php(2379): Illuminate\Database\Eloquent\Model->__call('find', Array)
+#13 C:\xampp\htdocs\App\Controllers\PanelController.php(12): Illuminate\Database\Eloquent\Model::__callStatic('find', Array)
+#14 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\PanelController->index(Object(App\Core\Request))
+#15 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#16 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#17 {main}
+
+[2024-10-15 17:37:56] Illuminate\Database\QueryException : SQLSTATE[42S22]: Column not found: 1054 Unknown column '' in 'field list' (Connection: default, SQL: select `` from `users` where `users`.`id` = email limit 1) in C:\xampp\htdocs\vendor\illuminate\database\Connection.php on line 825
+Stack Trace:
+#0 C:\xampp\htdocs\vendor\illuminate\database\Connection.php(779): Illuminate\Database\Connection->runQueryCallback('select `` from ...', Array, Object(Closure))
+#1 C:\xampp\htdocs\vendor\illuminate\database\Connection.php(398): Illuminate\Database\Connection->run('select `` from ...', Array, Object(Closure))
+#2 C:\xampp\htdocs\vendor\illuminate\database\Query\Builder.php(3130): Illuminate\Database\Connection->select('select `` from ...', Array, true)
+#3 C:\xampp\htdocs\vendor\illuminate\database\Query\Builder.php(3115): Illuminate\Database\Query\Builder->runSelect()
+#4 C:\xampp\htdocs\vendor\illuminate\database\Query\Builder.php(3703): Illuminate\Database\Query\Builder->Illuminate\Database\Query\{closure}()
+#5 C:\xampp\htdocs\vendor\illuminate\database\Query\Builder.php(3114): Illuminate\Database\Query\Builder->onceWithColumns(Array, Object(Closure))
+#6 C:\xampp\htdocs\vendor\illuminate\database\Eloquent\Builder.php(759): Illuminate\Database\Query\Builder->get(false)
+#7 C:\xampp\htdocs\vendor\illuminate\database\Eloquent\Builder.php(741): Illuminate\Database\Eloquent\Builder->getModels(false)
+#8 C:\xampp\htdocs\vendor\illuminate\database\Concerns\BuildsQueries.php(344): Illuminate\Database\Eloquent\Builder->get(false)
+#9 C:\xampp\htdocs\vendor\illuminate\database\Eloquent\Builder.php(459): Illuminate\Database\Eloquent\Builder->first(false)
+#10 C:\xampp\htdocs\vendor\illuminate\support\Traits\ForwardsCalls.php(23): Illuminate\Database\Eloquent\Builder->find('email', false)
+#11 C:\xampp\htdocs\vendor\illuminate\database\Eloquent\Model.php(2367): Illuminate\Database\Eloquent\Model->forwardCallTo(Object(Illuminate\Database\Eloquent\Builder), 'find', Array)
+#12 C:\xampp\htdocs\vendor\illuminate\database\Eloquent\Model.php(2379): Illuminate\Database\Eloquent\Model->__call('find', Array)
+#13 C:\xampp\htdocs\App\Controllers\PanelController.php(12): Illuminate\Database\Eloquent\Model::__callStatic('find', Array)
+#14 C:\xampp\htdocs\App\Core\Routing\Router.php(89): App\Controllers\PanelController->index(Object(App\Core\Request))
+#15 C:\xampp\htdocs\App\Core\Routing\Router.php(119): App\Core\Routing\Router->dispatch()
+#16 C:\xampp\htdocs\index.php(10): App\Core\Routing\Router->run()
+#17 {main}
+

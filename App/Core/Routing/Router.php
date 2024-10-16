@@ -24,10 +24,13 @@ class Router
         foreach ($this->routes as $route) {
             if ($request->method() == $route['method']) {
                 if (strpos($route['uri'], '{') !== false) {
-                    $pattern = preg_replace('/\{([a-zA-Z_]+)\}/', '([a-zA-Z0-9_-]+)', $route['uri']);
-                    if (preg_match("#^$pattern$#", $request->uri(), $matches)) {
-                        array_shift($matches);
-                        $rote['params'] = $matches;
+                    $pattern = "/^" . str_replace(['/', '{', '}'], ['\/', '(?<', '>[a-zA-z0-9-]+)'], $route['uri']) . "$/";
+                    if (preg_match($pattern, $request->uri(), $matches)) {
+                        foreach ($matches as $key => $value) {
+                            if (is_string($key) && is_string($value)) {
+                                $request->AddParams($key, $value);
+                            }
+                        }
                         return $route;
                     }
                 } else {
@@ -44,19 +47,17 @@ class Router
     {
         $foundRoute = false;
         foreach ($this->routes as $route) {
-            $pattern = preg_replace('/\{([a-zA-Z_]+)\}/', '([a-zA-Z0-9_-]+)', $route['uri']);
+            $pattern = preg_replace('/\{([a-zA-Z_]+)\}/', '([a-zA-Z0-9-]+)', $route['uri']);
             if (preg_match("#^$pattern$#", $request->uri())) {
-                $foundRoute = true;
-                if ($request->method() == $route['method']) {
-                    return false;
+                if ($request->method() != $route['method']) {
+                    $foundRoute = true;
                 }
-                // return true;
             }
         }
         return $foundRoute;
     }
 
-    private function dispatch()
+    private function dispatch() :void
     {
         $action = $this->currentRoute['action'];
         if (is_null($action) || empty($action)) {
@@ -85,8 +86,7 @@ class Router
             if (!method_exists($className, $methodName)) {
                 throw new \Exception("Method '$methodName' Not Exists In Class '$className'");
             }
-            $request = new Request();
-            $controller->{$methodName}($request);
+            $controller->{$methodName}($this->request);
         }
     }
 
@@ -106,7 +106,8 @@ class Router
 
     public function run(): void
     {
-        if ($this->invalidRequest($this->request) && !$this->currentRoute) {
+        if ($this->invalidRequest($this->request) && !$this->currentRoute){
+            // echo ;
             $this->despatch405();
             die();
         }

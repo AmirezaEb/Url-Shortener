@@ -1,7 +1,7 @@
 <?php 
 
 return [
-    // Config English[en] Language
+    # Config English[en] Language
     'lang' => 'en',
     'dir' => 'ltr',
     'font' => 'https://fonts.cdnfonts.com/css/going-to-school',
@@ -12,6 +12,7 @@ return [
     'indexjs' => 'js/en/index.js',
     'direction-1' => 'left',
     'direction-2' => 'right',
+    'position-alarm' => 'top-start',
     # English Words For File Index View
     'index-title' => 'Url Shortener',
     'clear' => 'Clear',
@@ -53,9 +54,11 @@ return [
     'emailMs'=>'Your New Account Password Is : ',
     'emailTitle' => 'Hero Expert',
     'welcome' => 'Welcome',
-
-
-
+    #English Errors For Display
+    'Er-InvalidEmail' => 'The Email You Entered Is Not Valid',
+    'Er-TryAgain' => 'An Error Has Occurred Please Try Again',
+    'Er-Expired' => 'The Code Has Expired Please Try Again',
+    'Er-InvalidCode' => 'The Code you Entered is Incorrect Please Try Again',
 ];
 
 ?>

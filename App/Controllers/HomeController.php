@@ -8,25 +8,22 @@ use App\Utilities\Auth;
 
 class HomeController
 {
-    // private $request = new Request();
-
-    public function index()
+    public function index(): void
     {
         return view('home.index');
     }
 
-    public function createUrl(Request $request)
+    public function createUrl(Request $request): void
     {
 
         if ($request->method() === 'post' && isset($request->params()['sub-create']) && !empty($request->params()['Url'])) {
             $users = User::all();
             $authUser = Auth::chackLogin();
-            // if (isset($_COOKIE[''])){}
         }
     }
 
-    public function redirectUrl(Request $request){
-        echo "<pre>";
-        var_dump($request);
+    public function redirectUrl(Request $request): void
+    {
+        # Code ...
     }
 }
