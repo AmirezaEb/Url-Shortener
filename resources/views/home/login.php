@@ -1,8 +1,6 @@
 <?php
-
 use App\Utilities\Lang;
 use App\Utilities\Session;
-
 ?>
 
 <!DOCTYPE html>
@@ -48,12 +46,10 @@ use App\Utilities\Session;
 </html>
 <?php
 if (Session::has('error') && !Session::empty('error')) {
-    echo '1';
     echo alarm('error', Session::get('error'), '22em',Lang::get('position-alarm'));
     Session::delete('error');
 } elseif (Session::has('message') && !Session::empty('message')) {
-    alarm('success', Session::get('message'), '22em', Lang::get('position-alarm'));
+    echo alarm('success', Session::get('message'), '22em', Lang::get('position-alarm'));
     Session::delete('message');
 }
-
 ?>

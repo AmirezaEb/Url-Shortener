@@ -59,6 +59,11 @@ return [
     'Er-TryAgain' => 'An Error Has Occurred Please Try Again',
     'Er-Expired' => 'The Code Has Expired Please Try Again',
     'Er-InvalidCode' => 'The Code you Entered is Incorrect Please Try Again',
+    'Er-TryAgin' => 'Please Try Again...',
+    #English Messages For Display
+    'Ms-EditSuccess' => 'The Link Has Been SuccessFully Updated',
+    'Ms-DeleteSuccess' => 'The Link Has Been SuccessFully Deleted',
+    'Ms-LogOut' => 'You Have SuccessFully Logged Out Of Your Account',
 ];
 
 ?>

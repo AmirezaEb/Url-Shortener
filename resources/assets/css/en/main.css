@@ -190,6 +190,15 @@ input[type=url] {
     overflow: hidden;
 }
 
+.disabled {
+    pointer-events: none;
+    color: #706984 !important;
+}
+
+.cursorDefult{
+    cursor: default;
+}
+
 .email-val-div, .verify-val-div{
     position: relative;
 }
@@ -332,6 +341,7 @@ input[type=url] {
     margin-left: .5rem;
     text-decoration: none;
     font-size: 1vw;
+    cursor: default !important;
 }
 .left-header__icons {
     margin: 0rem ;

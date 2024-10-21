@@ -73,6 +73,12 @@ class ExceptionHandler
         Url::Redirect(siteUrl($target));
     }
 
+    public static function setMessageAndRedirect(string $message, string $target): void
+    {
+        Session::set('message', $message);
+        Url::Redirect(siteUrl($target));
+    }
+    
     public static function setError(string $message): void
     {
         Session::set('error', $message);

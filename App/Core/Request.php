@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Core;
 
 class Request
@@ -19,12 +18,17 @@ class Request
         $this->ip = $_SERVER['REMOTE_ADDR'];
     }
 
-    public function AddParams(string $property, string $value) :void
+    public function AddParams(string $property, string $value): void
     {
         $this->params[$property] = $value;
     }
 
-    public function param(string $key) :string
+    public function has(string $key): bool
+    {
+        return isset($this->params[$key]);
+    }
+
+    public function param(string $key): string
     {
         return $this->params[$key];
     }

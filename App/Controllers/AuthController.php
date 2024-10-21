@@ -117,6 +117,10 @@ class AuthController
                     if (!$setCookie) {
                         ExceptionHandler::setError(Lang::get('Er-TryAgain'));
                     }
+                    $updateUser = User::where('id', $user->id)->update([
+                        'otpCode' => NULL,
+                        'otpExpired' => NULL
+                    ]);
                     Url::Redirect('./panel');
                 } else {
                     $countInvalidLogin = Session::get('invalidLogin');

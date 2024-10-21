@@ -17,7 +17,7 @@ A Fast, Powerful And Simple URL Shortener Made By The Following Languages
 
 
 ## Requirements
-* PHP 7.3+
+* PHP 8.2+
 * Apache
 * MySQL
   

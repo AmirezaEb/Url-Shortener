@@ -39,3 +39,24 @@ function alarm(string $mode, string $message, string $size, string $position): s
     </script>";
     return $alarm;
 }
+
+function generateQrCode(string $text, string $name): bool
+{
+    $options = new chillerlan\QRCode\QROptions([
+        'version' => 5,
+        'outputType' => chillerlan\QRCode\QRCode::OUTPUT_IMAGE_PNG,
+        'eccLevel' => chillerlan\QRCode\QRCode::ECC_L,
+        'scale' => 10,
+        'imageBase64' => false,
+        'quietzoneSiza' => 4,
+        'addQuietzone' => true,
+    ]);
+
+    $qrCode = new chillerlan\QRCode\QRCode($options);
+    $saveQr = file_put_contents(BASEPATH . 'public/QrCode/' . $name . '.png', $qrCode->render($text));
+
+    if (!$saveQr) {
+        return false;
+    }
+    return true;
+}

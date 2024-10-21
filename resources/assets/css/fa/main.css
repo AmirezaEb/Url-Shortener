@@ -24,6 +24,15 @@ main {
     right: 2rem;
 }
 
+.disabled {
+    pointer-events: none;
+    color: #706984 !important;
+}
+
+.cursorDefult{
+    cursor: default;
+}
+
 .user-panel-btn {
     padding: 1rem 2rem;
     background-color: #4e0de5;
@@ -344,6 +353,7 @@ input[type=url] {
     margin-left: .5rem;
     text-decoration: none;
     font-size: 1vw;
+    cursor: default;
 }
 .right-header__icons {
     margin: 0rem ;

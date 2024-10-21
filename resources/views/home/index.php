@@ -1,4 +1,8 @@
-<?php use App\Utilities\Lang; ?>
+<?php 
+use App\Utilities\Lang;
+use App\Utilities\Session; 
+
+?>
 <!DOCTYPE html>
 <html lang="<?= Lang::get('lang') ?>" dir="<?= Lang::get('dir') ?>">
 
@@ -52,7 +56,18 @@
 </body>
 <!--App script-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="<?= assetUrl('js/clipboard.min.js') ?>"></script>
 <script type="module" src="<?= assetUrl(Lang::get('appjs')) ?>"></script>
-
-
+<script src="<?= assetUrl(Lang::get('indexjs')) ?>"></script>
 </html>
+
+<?php
+
+if (Session::has('error') && !Session::empty('error')) {
+    echo alarm('error', Session::get('error'), '22em',Lang::get('position-alarm'));
+    Session::delete('error');
+} elseif (Session::has('message') && !Session::empty('message')) {
+    echo alarm('success', Session::get('message'), '22em', Lang::get('position-alarm'));
+    Session::delete('message');
+}
+?>
