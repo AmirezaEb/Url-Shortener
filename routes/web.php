@@ -5,13 +5,31 @@ use App\Controllers\HomeController;
 use App\Controllers\AuthController;
 use App\Controllers\PanelController;
 
-Route::get('/auth', [AuthController::class, 'index']);
-Route::post('/auth', [AuthController::class, 'handelrAuth']);
+/**
+ * Define authentication routes
+ * 
+ * These routes handle displaying the login page and processing
+ * authentication requests (e.g., login or OTP).
+ */
+Route::get('/auth', [AuthController::class, 'index']); # Show the authentication form (login, OTP, etc.)
+Route::post('/auth', [AuthController::class, 'handleAuth']); # Handle authentication form submission
 
-Route::get('/panel', [PanelController::class, 'index']);
-Route::get('/panel/edit/{url_id}', [PanelController::class, 'edit']);
-Route::post('/panel/edit/{url_id}', [PanelController::class, 'edit']);
-Route::get('/panel/delete/{url_id}', [PanelController::class, 'delete']);
-Route::get('/panel/logout', [PanelController::class, 'logout']);
+/**
+ * Define user panel routes
+ * 
+ * These routes manage the user panel, including viewing, editing, 
+ * deleting URLs, and logging out.
+ */
+Route::get('/panel', [PanelController::class, 'index']); # Show the user panel dashboard
+Route::get('/panel/edit/{url_id}', [PanelController::class, 'edit']); # Display the edit form for a specific URL
+Route::post('/panel/edit/{url_id}', [PanelController::class, 'edit']); # Handle the URL edit form submission
+Route::get('/panel/delete/{url_id}', [PanelController::class, 'delete']); # Handle URL deletion
+Route::get('/panel/logout', [PanelController::class, 'logout']); # Log the user out of the panel
 
-Route::get('/', [HomeController::class, 'index']);
+/**
+ * Define the home page route
+ * 
+ * This route handles displaying the main landing page where users 
+ * can shorten URLs or access the user panel.
+ */
+Route::get('/', [HomeController::class, 'index']); # Show the home page (URL shortener form)

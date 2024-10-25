@@ -1,69 +1,84 @@
-<?php 
+<?php
+
+/**
+ * English Language Configuration File
+ * 
+ * This file defines the configuration for the English language, including
+ * general settings such as directionality, font, and stylesheets, as well
+ * as localized strings for the user interface.
+ */
 
 return [
-    # Config English[en] Language
-    'lang' => 'en',
-    'dir' => 'ltr',
-    'font' => 'https://fonts.cdnfonts.com/css/going-to-school',
-    'maincss' => 'css/en/main.css',
-    'resonsecss' => 'css/en/responsive.css',
-    'emailcss' => 'css/en/email.css',
-    'appjs' => 'js/en/app.js',
-    'indexjs' => 'js/en/index.js',
-    'direction-1' => 'left',
-    'direction-2' => 'right',
-    'position-alarm' => 'top-start',
-    # English Words For File Index View
-    'index-title' => 'Url Shortener',
-    'clear' => 'Clear',
-    'copy' => 'Copy',
-    'short' => 'Shorten Url',
-    'panel' => 'User Panel',
-    'yourshort' => 'Your Short Url',
-    'yourlink' => 'Enter Url Here',
-    # English Words For File Login View
-    'login-title' => 'Sign In | Sign Up',
-    'signin' => 'Sign In',
-    'sendcode' => 'Send Code',
-    'pemail' =>'Please Enter Valid Email !',
-    'inputemail' => 'Enter Your Email...',
-    # English Words For File Verify View
-    'verify-title' => 'Verify Email',
-    'verify' => 'Verify your Email',
-    'sub' => 'Submit',
-    'pverify' => 'Please Enter Valid Verify Code !',
-    'inputverify' => 'Enter Your Code',
-    # English Words For File User Panel View
-    'panel-h1' => 'Hero Expert',
-    'panel-title' => 'User Panel',
-    'dash' => 'Dashboard',
-    'stats' => 'Stats',
-    'profile' => 'Profile [Soon...]',
-    'settings' => 'Settings [Soon...]',
-    'desturl' => 'Dest URL',
-    'view' => 'Views',
-    'qr' => 'QR Code',
-    'edit' => 'Edit',
-    'delete' => 'Delete',
-    'shorturl' => 'Short URL',
-    # English Words For Edit Url Panel View
-    'edit-title' => 'Edit Url',
-    'edit-h2' => 'Edit Destenition URL',
-    'edit-input' => 'Enter Your Destenition Url...',
-    # English Worlds For Send Email
-    'emailMs'=>'Your New Account Password Is : ',
-    'emailTitle' => 'Hero Expert',
-    'welcome' => 'Welcome',
-    #English Errors For Display
-    'Er-InvalidEmail' => 'The Email You Entered Is Not Valid',
-    'Er-TryAgain' => 'An Error Has Occurred Please Try Again',
-    'Er-Expired' => 'The Code Has Expired Please Try Again',
-    'Er-InvalidCode' => 'The Code you Entered is Incorrect Please Try Again',
-    'Er-TryAgin' => 'Please Try Again...',
-    #English Messages For Display
-    'Ms-EditSuccess' => 'The Link Has Been SuccessFully Updated',
-    'Ms-DeleteSuccess' => 'The Link Has Been SuccessFully Deleted',
-    'Ms-LogOut' => 'You Have SuccessFully Logged Out Of Your Account',
-];
+    # General Configuration for English [en] Language
+    'lang' => 'en', # Language code
+    'dir' => 'ltr', # Text direction (left-to-right)
+    'font' => 'https://fonts.cdnfonts.com/css/going-to-school', # Font URL for English text
+    'maincss' => 'css/en/main.css', # Main stylesheet for English layout
+    'resonsecss' => 'css/en/responsive.css', # Responsive stylesheet for English layout
+    'emailcss' => 'css/en/email.css', # Email-related stylesheet for English layout
+    'appjs' => 'js/en/app.js', # Main JavaScript file for English layout
+    'indexjs' => 'js/en/index.js', # Index page JavaScript for English layout
+    'direction-1' => 'left', # Primary text alignment direction
+    'direction-2' => 'right', # Secondary text alignment direction
+    'position-alarm' => 'top-start', # Default position for notifications (e.g., SweetAlert)
 
-?>
+    # Localization for the Index View
+    'index-title' => 'Url Shortener', # Title for the index page
+    'clear' => 'Clear', # Button text for clearing input
+    'copy' => 'Copy', # Button text for copying the shortened URL
+    'short' => 'Shorten Url', # Button text for generating a shortened URL
+    'panel' => 'User Panel', # Label for user control panel
+    'yourshort' => 'Your Short Url', # Placeholder for displaying shortened URL
+    'yourlink' => 'Enter Url Here', # Placeholder for entering the URL
+
+    # Localization for the Login View
+    'login-title' => 'Sign In | Sign Up', # Title for the login page
+    'signin' => 'Sign In', # Button text for signing in
+    'sendcode' => 'Send Code', # Button text for sending verification code
+    'pemail' => 'Please Enter Valid Email!', # Error message for invalid email input
+    'inputemail' => 'Enter Your Email...', # Placeholder for email input field
+
+    # Localization for the Verify View
+    'verify-title' => 'Verify Email', # Title for the email verification page
+    'verify' => 'Verify your Email', # Button text for verifying email
+    'sub' => 'Submit', # Button text for form submission
+    'pverify' => 'Please Enter Valid Verify Code!', # Error message for invalid verification code
+    'inputverify' => 'Enter Your Code', # Placeholder for verification code input
+
+    # Localization for the User Panel View
+    'panel-h1' => 'Hero Expert', # Header text for the user panel
+    'panel-title' => 'User Panel', # Title for the user panel page
+    'dash' => 'Dashboard', # Label for the dashboard section
+    'stats' => 'Stats', # Label for the statistics section
+    'profile' => 'Profile [Soon...]', # Placeholder for upcoming profile feature
+    'settings' => 'Settings [Soon...]', # Placeholder for upcoming settings feature
+    'desturl' => 'Dest URL', # Label for the destination URL
+    'view' => 'Views', # Label for the number of views
+    'qr' => 'QR Code', # Label for QR code functionality
+    'edit' => 'Edit', # Button text for editing the URL
+    'delete' => 'Delete', # Button text for deleting the URL
+    'shorturl' => 'Short URL', # Label for displaying the shortened URL
+
+    # Localization for the Edit URL Panel View
+    'edit-title' => 'Edit Url', # Title for the edit URL page
+    'edit-h2' => 'Edit Destination URL', # Header text for the edit URL form
+    'edit-input' => 'Enter Your Destination Url...', # Placeholder for the destination URL input
+
+    # Localization for Sending Email Notifications
+    'emailMs' => 'Your New Account Password Is: ', # Email message for sending a new password
+    'emailTitle' => 'Hero Expert', # Email subject/title
+    'welcome' => 'Welcome', # Email greeting
+
+    # Error Messages for Display
+    'Er-InvalidEmail' => 'The Email You Entered Is Not Valid', # Error message for invalid email
+    'Er-TryAgain' => 'An Error Has Occurred, Please Try Again', # Generic error message
+    'Er-Expired' => 'The Code Has Expired, Please Try Again', # Error message for expired verification code
+    'Er-InvalidCode' => 'The Code You Entered Is Incorrect, Please Try Again', # Error message for incorrect verification code
+    'Er-TryAgin' => 'Please Try Again...', # Retry message for errors
+    
+    # Success Messages for Display
+    'Ms-LoginSuccess' => 'Dear User, Welcome To Your Account', # Success message for login
+    'Ms-EditSuccess' => 'The Link Has Been Successfully Updated', # Success message for URL update
+    'Ms-DeleteSuccess' => 'The Link Has Been Successfully Deleted', # Success message for URL deletion
+    'Ms-LogOut' => 'You Have Successfully Logged Out Of Your Account', # Success message for logout
+];

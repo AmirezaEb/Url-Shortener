@@ -18,7 +18,7 @@ class HomeController
 
         if ($request->method() === 'post' && isset($request->params()['sub-create']) && !empty($request->params()['Url'])) {
             $users = User::all();
-            $authUser = Auth::chackLogin();
+            $authUser = Auth::checkLogin();
         }
     }
 

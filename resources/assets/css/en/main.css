@@ -17,6 +17,11 @@ main {
     position: relative;
 }
 
+input:focus {
+    outline: none !important;
+    /* border: none !important; */
+}
+
 .user-panel {
     position: absolute;
     z-index: 1000;

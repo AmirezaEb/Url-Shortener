@@ -355,6 +355,12 @@ input[type=url] {
     font-size: 1vw;
     cursor: default;
 }
+
+input:focus {
+    outline: none !important;
+    /* border: none !important; */
+}
+
 .right-header__icons {
     margin: 0rem ;
     padding: .5rem .75rem;

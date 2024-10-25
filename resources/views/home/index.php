@@ -10,61 +10,80 @@ use App\Utilities\Session;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= Lang::get('index-title') ?></title>
+    
+    <!-- SweetAlert2 for alerts -->
     <script src="<?= assetUrl('js/sweetalert2@11.js') ?>"></script>
+    
+    <!-- RemixIcon CDN for icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
-    <link href="<?= Lang::get('font'); ?>" rel="stylesheet">
+    
+    <!-- Dynamic font loading based on the language -->
+    <link href="<?= Lang::get('font') ?>" rel="stylesheet">
+    
+    <!-- Main and responsive CSS -->
     <link rel="stylesheet" href="<?= assetUrl(Lang::get('maincss')) ?>">
     <link rel="stylesheet" href="<?= assetUrl(Lang::get('resonsecss')) ?>">
 </head>
 
-    <!-- 
-    Developed by Hero Expert 
-    Telegram channel : @HeroExpert_ir 
-    -->
-
 <body>
     <header>
         <div class="user-panel">
+            <!-- Link to the user panel -->
             <a href="./auth" class="user-panel-btn"><?= Lang::get('panel') ?></a>
         </div>
     </header>
+
     <main>
-        <div id="header-div" class="">
+        <div id="header-div">
             <h1><?= Lang::get('index-title') ?></h1>
         </div>
-        <!-- Url input and shorten button -->
+
+        <!-- URL input form for shortening URLs -->
         <div id="content-div">
             <form id="input-div" action="/" method="post">
                 <input type="url" name="Url" class="content-row" placeholder="<?= Lang::get('yourlink') ?> . . ." id="input-field" required />
+                
                 <div class="buttons">
+                    <!-- Shorten URL button -->
                     <button type="submit" name="sub-create" class="content-row button shortenURL"><?= Lang::get('short') ?></button>
+                    
+                    <!-- Clear input field button -->
                     <button type="button" id="clear-btn" class="content-row button"><?= Lang::get('clear') ?></button>
                 </div>
             </form>
-            <!-- Output and copy -->
+
+            <!-- Output section for displaying the shortened URL -->
             <div id="output-div">
                 <div class="content-row" id="new-url-label"><?= Lang::get('yourshort') ?> : </div>
-                <div id="new-url" class="content-row"> <a href="<?= $data[0] ?>"><?= $data[0] ?? '' ?></a> </div>
+                <div id="new-url" class="content-row">
+                    <a href=""></a>
+                </div>
+
+                <!-- Copy button for the shortened URL -->
                 <button type="button" id="copy-btn" data-clipboard-target="#new-url" class="content-row button">
                     <span class="copy-text"><?= Lang::get('copy') ?></span>
                     <i class="ri-file-copy-line copy-icon"></i>
                 </button>
             </div>
         </div>
+        
         <div class="bg-opacity"></div>
     </main>
 </body>
-<!--App script-->
+
+<!-- App scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="<?= assetUrl('js/clipboard.min.js') ?>"></script>
 <script type="module" src="<?= assetUrl(Lang::get('appjs')) ?>"></script>
 <script src="<?= assetUrl(Lang::get('indexjs')) ?>"></script>
+
 </html>
 
 <?php
 
+# Display an error or success message using SweetAlert if session data exists
 if (Session::has('error') && !Session::empty('error')) {
-    echo alarm('error', Session::get('error'), '22em',Lang::get('position-alarm'));
+    echo alarm('error', Session::get('error'), '22em', Lang::get('position-alarm'));
     Session::delete('error');
 } elseif (Session::has('message') && !Session::empty('message')) {
     echo alarm('success', Session::get('message'), '22em', Lang::get('position-alarm'));
