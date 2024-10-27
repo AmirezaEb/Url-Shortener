@@ -65,7 +65,7 @@ return [
     'edit-input' => 'لینک مقصد را وارد کنید...', # Placeholder for the destination URL input
 
     # Localization for Sending Email Notifications
-    'emailMs' => 'رمز عبور یکبار مصرف شما: ', # Email message for sending a one-time password
+    'emailMs' => 'رمز عبور احراز هویت شما: ', # Email message for sending a one-time password
     'emailTitle' => 'کارشناس قهرمان', # Email subject/title
     'welcome' => 'سلام دوست گرامی', # Email greeting
 
@@ -75,12 +75,18 @@ return [
     'Er-Expired' => 'انقضای کد شما به پایان رسیده لطفا مجدد تلاش کنید', # Error message for expired verification code
     'Er-InvalidCode' => 'کد وارد شده اشتباه است لطفا مجدد تلاش کنید', # Error message for incorrect verification code
     'Er-TryAgin' => 'لطفا مجددا تلاش کنید...', # Retry message for errors
+    'Er-Login' => 'برای استفاده از خدمات لطفا وارد حساب کاربری خود شوید', # Login error message
+    'Er-InvalidUrl' => 'لینک وارد شده معتبر نمی باشد...', # Error message for invalid URL
+
+
 
     # Success Messages for Display
     'Ms-LoginSuccess' => 'کاربر محترم، به حساب کاربری خود خوش آمدید', # Success message for login
     'Ms-EditSuccess' => 'لینک شما با موفقیت ویرایش شد', # Success message for URL update
     'Ms-DeleteSuccess' => 'لینک شما با موفقیت حذف شد', # Success message for URL deletion
     'Ms-LogOut' => 'شما با موفقیت از حساب کاربری خود خارج شدید', # Success message for logout
+    'Ms-Create' => 'لینک کوتاه شما با موفقیت ایجاد شد', # Success message for Create Shor Url
+
 ];
 
 ?>

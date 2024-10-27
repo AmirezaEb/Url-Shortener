@@ -40,7 +40,7 @@ use App\Utilities\Session;
 
         <!-- URL input form for shortening URLs -->
         <div id="content-div">
-            <form id="input-div" action="/" method="post">
+            <form id="input-div" action="./" method="post">
                 <input type="url" name="Url" class="content-row" placeholder="<?= Lang::get('yourlink') ?> . . ." id="input-field" required />
                 
                 <div class="buttons">
@@ -56,7 +56,7 @@ use App\Utilities\Session;
             <div id="output-div">
                 <div class="content-row" id="new-url-label"><?= Lang::get('yourshort') ?> : </div>
                 <div id="new-url" class="content-row">
-                    <a href=""></a>
+                    <a href="<?= $data->ShortUrl ?? '' ?>"><?= $data->ShortUrl ?? ''?></a>
                 </div>
 
                 <!-- Copy button for the shortened URL -->

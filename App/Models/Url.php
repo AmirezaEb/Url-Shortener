@@ -14,11 +14,12 @@ class Url extends Model
 
     # Define the attributes that are mass assignable (for bulk operations like insert/update)
     protected $fillable = [
-        'created_by',   // Foreign key, refers to the user who created the URL
-        'url',          // The original long URL
-        'shortUrl',     // The shortened version of the URL
-        'views',        // Number of times the short URL has been accessed
-        'created_at'    // Timestamp when the URL was created
+        'created_by',   # Foreign key, refers to the user who created the URL
+        'url',          # The original long URL
+        'shortUrl',     # The shortened version of the URL
+        'qrCode',       # The qr code address of the URL
+        'views',        # Number of times the short URL has been accessed
+        'created_at'    # Timestamp when the URL was created
     ];
 
     /**

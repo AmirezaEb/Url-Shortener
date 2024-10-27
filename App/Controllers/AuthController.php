@@ -5,7 +5,6 @@ namespace App\Controllers;
 use App\Core\Request;
 use App\Models\User;
 use App\Services\Email;
-// use App\Utilities\Url;
 use App\Utilities\Auth;
 use App\Utilities\Cookie;
 use App\Utilities\Lang;
@@ -111,7 +110,7 @@ class AuthController
                 if ($user) {
                     # If OTP has expired, clear session and throw error
                     if ($user->otpExpired <= time()) {
-                        Session::clear();
+                        Session::delete('UserData');
                         throw new Exception(Lang::get('Er-Expired')); # OTP expired error
                     }
 

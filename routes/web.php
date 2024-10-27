@@ -33,3 +33,5 @@ Route::get('/panel/logout', [PanelController::class, 'logout']); # Log the user 
  * can shorten URLs or access the user panel.
  */
 Route::get('/', [HomeController::class, 'index']); # Show the home page (URL shortener form)
+Route::post('/', [HomeController::class, 'createUrl']);
+Route::get('/{short_url}', [HomeController::class, 'redirectUrl']);

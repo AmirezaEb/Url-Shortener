@@ -2,7 +2,7 @@
 
 # Server settings
 $serv = (object)[
-    'host' => '127.0.0.1', # The IP address where the server will run
+    'host' => 'localhost', # The IP address where the server will run
     'port' => '8181' # The port number for the server
 ];
 

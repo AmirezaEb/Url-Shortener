@@ -65,7 +65,7 @@ return [
     'edit-input' => 'Enter Your Destination Url...', # Placeholder for the destination URL input
 
     # Localization for Sending Email Notifications
-    'emailMs' => 'Your New Account Password Is: ', # Email message for sending a new password
+    'emailMs' => 'Your Email Authentication Code : ', # Email message for sending a new password
     'emailTitle' => 'Hero Expert', # Email subject/title
     'welcome' => 'Welcome', # Email greeting
 
@@ -75,10 +75,13 @@ return [
     'Er-Expired' => 'The Code Has Expired, Please Try Again', # Error message for expired verification code
     'Er-InvalidCode' => 'The Code You Entered Is Incorrect, Please Try Again', # Error message for incorrect verification code
     'Er-TryAgin' => 'Please Try Again...', # Retry message for errors
+    'Er-Login' => 'Please Log In To Your Account To Create a Short Link', # Login error message
+    'Er-InvalidUrl' => 'The URL You Entered Is Not Valid...', # Error message for invalid URL
     
     # Success Messages for Display
     'Ms-LoginSuccess' => 'Dear User, Welcome To Your Account', # Success message for login
     'Ms-EditSuccess' => 'The Link Has Been Successfully Updated', # Success message for URL update
     'Ms-DeleteSuccess' => 'The Link Has Been Successfully Deleted', # Success message for URL deletion
     'Ms-LogOut' => 'You Have Successfully Logged Out Of Your Account', # Success message for logout
+    'Ms-Create' => 'Your ShortUrl Has Been Successfully Created', # Success message for Create Shor Url
 ];

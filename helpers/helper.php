@@ -78,35 +78,6 @@ function alarm(string $mode, string $message, string $size, string $position): s
     </script>";
 }
 
-/**
- * Generate a QR code image file.
- *
- * @param string $text The text to encode in the QR code.
- * @param string $name The name for the saved QR code image.
- * @return bool True on success, false on failure.
- */
-function generateQrCode(string $text, string $name): bool
-{
-    # Configure QR code generation options
-    $options = new chillerlan\QRCode\QROptions([
-        'version' => 5,
-        'outputType' => chillerlan\QRCode\QRCode::OUTPUT_IMAGE_PNG,
-        'eccLevel' => chillerlan\QRCode\QRCode::ECC_L,
-        'scale' => 10,
-        'imageBase64' => false,
-        'quietzoneSize' => 4,
-        'addQuietzone' => true,
-    ]);
-
-    # Create a QR code instance
-    $qrCode = new chillerlan\QRCode\QRCode($options);
-
-    # Save the generated QR code image to the specified path
-    $savePath = BASEPATH . 'public/QrCode/' . $name . '.png';
-    $saveQr = file_put_contents($savePath, $qrCode->render($text));
-
-    return $saveQr !== false; # Return true if saved successfully
-}
 
 /**
  * Generate a random short string.
@@ -155,4 +126,31 @@ function getNow(): string
 {
     # Construct the full URL based on the request
     return (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+}
+
+/**
+ * Validate the URL format, protocol, and length.
+ *
+ * @param string $url
+ * @return bool
+ */
+function validateUrl(string $url): bool
+{
+
+    $result = true;
+    $url = urldecode($url);
+
+    if (!filter_var($url, FILTER_VALIDATE_URL)) {
+        $result = false;
+    }
+
+    if (!preg_match('/^https?:\/\//', $url)) {
+        $result = false;
+    }
+
+    if (stripos($url, 'javascript:') !== false || stripos($url, '<script>') !== false) {
+        $result = false;
+    }
+
+    return $result;
 }

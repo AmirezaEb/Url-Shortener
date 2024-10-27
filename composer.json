@@ -23,5 +23,9 @@
 
     "scripts": {
         "serve" : "php config/serve.php"
+    },
+    
+    "config": {
+        "process-timeout": 0
     }
 }

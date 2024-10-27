@@ -13,122 +13,144 @@ use Exception;
 
 class PanelController
 {
-    # Number of items per page for pagination
+    # Define items per page for pagination
     private $perPage = 10;
 
     /**
-     * Display the user's dashboard with paginated URLs
+     * Display the user's dashboard with their URLs in a paginated format.
      * 
-     * @param Request $request
+     * @param Request $request  The incoming HTTP request containing user data, parameters, etc.
      */
     public function index(Request $request)
     {
         try {
-            $cookie = Auth::checkLogin(); # Check if the user is logged in via cookie
+            # Check if the user is logged in by verifying their cookie.
+            $cookie = Auth::checkLogin();
             if ($cookie) {
-                # Fetch user data based on cookie
+                # Retrieve the user's data based on their email from the cookie.
                 $user = User::where('email', $cookie)->first();
 
-                # If user exists, paginate URLs and prepare data for view
-                if ($user) {
-                    $pagination = $this->paginate($request, $user->id);
-                    $data = (object)[
-                        'userName' => $user->email,
-                        'urls' => $pagination->items,
-                        'page' => $pagination->page,
-                        'totalPage' => $pagination->totalPage,
-                        'startPaginate' => $pagination->startPaginate
-                    ];
-
-                    view('panel.index', $data); # Render the view with user data
-                } else {
+                # If user data does not exist, throw an exception with an error message.
+                if (!$user) {
                     throw new Exception(Lang::get('Er-UserNotFound'));
                 }
+
+                # Retrieve pagination data for URLs associated with the user.
+                $pagination = $this->paginate($request, $user->id);
+
+                # Package the data to pass into the view.
+                $data = (object)[
+                    'userName' => $user->email,
+                    'urls' => $pagination->items,
+                    'page' => $pagination->page,
+                    'totalPage' => $pagination->totalPage,
+                    'startPaginate' => $pagination->startPaginate
+                ];
+
+                # Render the user's dashboard view with their data.
+                view('panel.index', $data);
             } else {
+                # If the user is not logged in, redirect to the login page with an error message.
                 throw new Exception(Lang::get('Er-TryLogin'));
             }
         } catch (Exception $e) {
+            # Handle any exceptions and redirect to the auth page with an error message.
             ExceptionHandler::setErrorAndRedirect($e->getMessage(), './auth');
         }
     }
 
     /**
-     * Handle URL editing (GET to show, POST to update)
+     * Display or process the URL editing form.
      * 
-     * @param Request $request
+     * @param Request $request  The HTTP request containing the URL ID and edit data.
      */
     public function edit(Request $request)
     {
         try {
-            $urlId = $request->param('url_id'); # Get the ID of the URL to edit
-            $infoUrl = Url::find($urlId); # Fetch URL details
+            # Get the URL ID from the request parameters.
+            $urlId = $request->param('url_id');
 
-            # Ensure the URL exists before proceeding
-            if ($infoUrl) {
-                $creatorUrl = $infoUrl->user; # Fetch the user who created the URL
+            # Retrieve the URL details based on the given ID.
+            $infoUrl = Url::find($urlId);
 
-                # Check if logged-in user is the creator of the URL and handle request
-                if ($this->isUserAuthorized($creatorUrl->email)) {
-                    if ($request->method() === 'get') {
-                        $data = (object)['url' => $infoUrl];
-                        view('panel.editUrl', $data); # Show the edit URL page
-                    } elseif ($request->method() === 'post') {
-                        $this->processUrlEdit($request, $urlId);
-                    }
-                } else {
-                    throw new Exception(Lang::get('Er-Unauthorized'));
+            # Ensure the URL exists and the user is authorized to edit it.
+            if ($infoUrl && $this->isUserAuthorized($infoUrl->user->email)) {
+                if ($request->method() === 'get') {
+                    # Display the URL edit form with the current URL information.
+                    $data = (object)['url' => $infoUrl];
+                    view('panel.editUrl', $data);
+                } elseif ($request->method() === 'post') {
+                    # Process the submitted URL edit form.
+                    $this->processUrlEdit($request, $urlId);
                 }
             } else {
-                throw new Exception(Lang::get('Er-UrlNotFound'));
+                # If the URL does not exist or the user is unauthorized, throw an exception.
+                throw new Exception(Lang::get('Er-Unauthorized'));
             }
         } catch (Exception $e) {
+            # Handle exceptions and redirect back to the panel with an error message.
             ExceptionHandler::setErrorAndRedirect($e->getMessage(), './panel');
         }
     }
 
     /**
-     * Handle URL deletion
+     * Delete a URL if the logged-in user is authorized.
      * 
-     * @param Request $request
+     * @param Request $request  The request containing the URL ID to delete.
      */
     public function delete(Request $request)
     {
         try {
-            $urlId = $request->param('url_id'); # Get the ID of the URL to delete
-            $url = Url::find($urlId); # Fetch URL details
+            # Get the URL ID from the request.
+            $urlId = $request->param('url_id');
 
-            # Check if URL exists and if the logged-in user is the creator
+            # Find the URL entry based on the given ID.
+            $url = Url::find($urlId);
+
+            # Check if the URL exists and if the logged-in user is the creator.
             if ($url && $this->isUserAuthorized($url->user->email)) {
-                $deleteUrl = Url::where('id', $urlId)->delete(); # Delete the URL from the database
+                # Delete the URL entry from the database.
+                $deleteUrl = Url::where('id', $urlId)->delete();
 
-                if ($deleteUrl) {
+                #Delete the associated QR code image file from the system.
+                $deleteQrCode = unlink(BASEPATH . 'public/QrCode/' . $url->shortUrl . '.png');
+
+                # Confirm the deletion of both the URL entry and the QR code image.
+                if ($deleteUrl && $deleteQrCode) {
+                    // Redirect back to the panel with a success message.
                     ExceptionHandler::setMessageAndRedirect(Lang::get('Ms-DeleteSuccess'), './panel');
                 } else {
+                    # If deletion fails, throw an exception with an error message.
                     throw new Exception(Lang::get('Er-TryAgin'));
                 }
             } else {
+                # If the URL doesn't exist or the user is unauthorized, throw an exception.
                 throw new Exception(Lang::get('Er-Unauthorized'));
             }
         } catch (Exception $e) {
+            # Handle exceptions and redirect back to the panel with an error message.
             ExceptionHandler::setErrorAndRedirect($e->getMessage(), './panel');
         }
     }
 
     /**
-     * Handle user logout
+     * Handle user logout by deleting the authentication cookie and redirecting to the home page.
      */
     public function logout()
     {
-        Cookie::deleteCookie('Auth'); # Delete the authentication cookie
-        ExceptionHandler::setMessageAndRedirect(Lang::get('Ms-LogOut'), '../'); # Redirect to the home page
+        # Delete the authentication cookie to log out the user.
+        Cookie::deleteCookie('Auth');
+
+        # Redirect to the home page with a logout success message.
+        ExceptionHandler::setMessageAndRedirect(Lang::get('Ms-LogOut'), '../');
     }
 
     /**
-     * Paginate the user's URLs
+     * Paginate the user's URLs for display on the dashboard.
      * 
-     * @param Request $request
-     * @param int $userId
-     * @return object
+     * @param Request $request  The incoming HTTP request containing pagination parameters.
+     * @param int $userId       The user's ID to filter URLs.
+     * @return object           Pagination data including items and pagination details.
      */
     private function paginate(Request $request, int $userId)
     {
@@ -163,33 +185,59 @@ class PanelController
     }
 
     /**
-     * Check if the logged-in user is authorized
+     * Check if the currently logged-in user is the owner of the URL.
      * 
-     * @param string $email
-     * @return bool
+     * @param string $email  The email of the user who created the URL.
+     * @return bool          True if authorized, false otherwise.
      */
     private function isUserAuthorized(string $email): bool
     {
+        # Verify if the email of the logged-in user matches the provided email.
         return Auth::checkLogin() === $email;
     }
 
     /**
-     * Process the URL edit request (POST)
+     * Process the URL edit form submission (POST request).
      * 
-     * @param Request $request
-     * @param int $urlId
+     * @param Request $request  The HTTP request containing the updated URL data.
+     * @param int $urlId        The ID of the URL to be updated.
      */
     private function processUrlEdit(Request $request, int $urlId)
     {
-        # Validate the new URL format
-        if (filter_var($request->param('editURL'), FILTER_VALIDATE_URL)) {
-            # Update the URL in the database
+        # Get the new URL from the request.
+        $editURL = $request->param('editURL');
+
+        # Validate the new URL format.
+        if ($this->validateUrl($editURL)) {
+            # Update the URL in the database.
             Url::where('id', $urlId)->update([
-                'url' => htmlspecialchars($request->param('editURL'))
+                'url' => htmlspecialchars($editURL)
             ]);
+
+            # Redirect back to the panel with a success message.
             ExceptionHandler::setMessageAndRedirect(Lang::get('Ms-EditSuccess'), './panel');
         } else {
+            # If validation fails, redirect back to the edit form with an error message.
             ExceptionHandler::setErrorAndRedirect(Lang::get('Er-TryAgin'), "./panel/edit/$urlId");
         }
+    }
+
+    /**
+     * Validate the format and security of a URL.
+     * 
+     * @param string $url  The URL to be validated.
+     * @return bool        True if the URL is valid, false otherwise.
+     */
+    private function validateUrl(string $url): bool
+    {
+        # Decode the URL to prevent double-encoded data.
+        $url = urldecode($url);
+
+        # Use filter_var to validate URL structure and ensure security.
+        return filter_var($url, FILTER_VALIDATE_URL) &&
+            preg_match('/^https?:\/\//', $url) &&
+            stripos($url, 'javascript:') === false &&
+            stripos($url, '<script>') === false &&
+            strlen($url) <= 2048;
     }
 }

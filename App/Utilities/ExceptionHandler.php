@@ -141,6 +141,17 @@ class ExceptionHandler extends Exception
     }
 
     /**
+     * Sets an Success message in the session without redirecting.
+     *
+     * @param string $message The Success message to set.
+     * @return void
+     */
+    public static function setMessage(string $message) :void
+    {
+        Session::set('message', $message); # Store the Success message in the session
+    }
+
+    /**
      * Initializes the exception handler and shutdown function.
      *
      * @return void
