@@ -148,7 +148,7 @@ use App\Utilities\Session; ?>
                             <tr class="stats-table__body-row">
                                 <td class="stats-table__body-col"><?= ++$data->startPaginate ?></td>
                                 <td class="stats-table__body-col"><?= htmlspecialchars(substr(str_replace(['https://', 'http://', 'www.', 'Https', 'Http', 'WWW.'], '', $url->url), 0, 25)) . ' ...' ?></td>
-                                <td class="stats-table__body-col" id="testcopy"><?= htmlspecialchars(str_replace(['https://', 'http://', 'www.', 'Https', 'Http', 'WWW.'], '', $_ENV['APP_HOST'] . $url->shortUrl)) ?></td>
+                                <td class="stats-table__body-col" id="testcopy-<?=$url->id?>"><?= htmlspecialchars(str_replace(['https://', 'http://', 'www.', 'Https', 'Http', 'WWW.'], '', $_ENV['APP_HOST'] . $url->shortUrl)) ?></td>
                                 <td class="stats-table__body-col"><?= $url->views ?></td>
                                 <td class="stats-table__body-col">
                                     <a href="<?= $url->qrCode ?>" class="QR-code-span" download><i class="ri-qr-code-line QR-code-icon"></i></a>
@@ -156,8 +156,8 @@ use App\Utilities\Session; ?>
                                 <td class="stats-table__body-col">
                                     <a href="./panel/edit/<?= $url->id ?>" class="stats-table__body-icons"><i class="ri-edit-line stats-table-edit-icon"></i></a>
                                 </td>
-                                <td class="stats-table__body-col">
-                                    <button class="stats-table__body-icons stats-table__copy-btn" data-clipboard-demo="" data-clipboard-target="#testcopy" data-clipboard-action="copy" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="bottom" data-bs-custom-class="custom-popover" data-bs-content="copied!">
+                                <td class="stats-table__body-col" id="<?=$url->id?>">
+                                    <button class="stats-table__body-icons stats-table__copy-btn" data-clipboard-demo="" data-clipboard-target="#testcopy-<?=$url->id?>" data-clipboard-action="copy" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="bottom" data-bs-custom-class="custom-popover" data-bs-content="copied!">
                                         <i class="ri-file-copy-2-line stats-table-copy-icon"></i>
                                     </button>
                                 </td>
