@@ -16,6 +16,7 @@ return [
     'maincss' => 'css/fa/main.css', # Main stylesheet for Persian layout
     'resonsecss' => 'css/fa/responsive.css', # Responsive stylesheet for Persian layout
     'emailcss' => 'css/fa/email.css', # Email-related stylesheet for Persian layout
+    'GDLibrary' => 'css/fa/GDLibrary.css',
     'appjs' => 'js/fa/app.js', # Main JavaScript file for Persian layout
     'indexjs' => 'js/fa/index.js', # Index page JavaScript for Persian layout
     'direction-1' => 'right', # Primary text alignment direction
@@ -59,6 +60,13 @@ return [
     'delete' => 'حذف', # Button text for deleting the URL
     'shorturl' => 'لینک کوتاه', # Label for displaying the shortened URL
 
+    # Localization for the erroe GDLibrary View
+    'GD-title' => 'خطای فعال سازی GD',
+    'GD-h1' => 'خطای فعال‌سازی GD',
+    'GD-p1' => 'کتابخانه GD در سرور شما فعال نیست. برای استفاده از این ویژگی، باید GD را در فایل <code>php.ini</code> فعال کنید.',
+    'GD-p2' => 'لطفاً پس از فعال‌سازی  GD، سرور را مجدداً راه‌اندازی کنید.',
+    'GD-a' => 'راهنمای فعال‌سازی GD',
+
     # Localization for the Edit URL Panel View
     'edit-title' => 'ویرایش لینک', # Title for the edit URL page
     'edit-h2' => 'ویرایش لینک مقصد', # Header text for the edit URL form
@@ -78,15 +86,13 @@ return [
     'Er-Login' => 'برای استفاده از خدمات لطفا وارد حساب کاربری خود شوید', # Login error message
     'Er-InvalidUrl' => 'لینک وارد شده معتبر نمی باشد...', # Error message for invalid URL
 
-
-
     # Success Messages for Display
     'Ms-LoginSuccess' => 'کاربر محترم، به حساب کاربری خود خوش آمدید', # Success message for login
     'Ms-EditSuccess' => 'لینک شما با موفقیت ویرایش شد', # Success message for URL update
     'Ms-DeleteSuccess' => 'لینک شما با موفقیت حذف شد', # Success message for URL deletion
     'Ms-LogOut' => 'شما با موفقیت از حساب کاربری خود خارج شدید', # Success message for logout
     'Ms-Create' => 'لینک کوتاه شما با موفقیت ایجاد شد', # Success message for Create Shor Url
-
+    'Ms-Copied' => 'کپی شد!' # Success message for Copying Url
 ];
 
 ?>

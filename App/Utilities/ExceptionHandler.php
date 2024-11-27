@@ -79,7 +79,9 @@ class ExceptionHandler extends Exception
     private static function displayGenericError(): void
     {
         # Render the production error view
-        view('errors.production');
+        header("HTTP/1.1 404 Not Found");
+        header("Status: 404 Not Found");
+        view('errors.404');
     }
 
     /**
@@ -146,7 +148,7 @@ class ExceptionHandler extends Exception
      * @param string $message The Success message to set.
      * @return void
      */
-    public static function setMessage(string $message) :void
+    public static function setMessage(string $message): void
     {
         Session::set('message', $message); # Store the Success message in the session
     }
@@ -162,5 +164,10 @@ class ExceptionHandler extends Exception
         set_exception_handler([self::class, 'handler']);
         # Register the shutdown function to handle fatal errors
         register_shutdown_function([self::class, 'handlerShutdown']);
+
+        if (!self::isDevelopment()) {
+            error_reporting(0);
+            ini_set('display_errors', 0);
+        }
     }
 }

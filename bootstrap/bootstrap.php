@@ -1,7 +1,7 @@
 <?php
 
 # Define the base path for the application
-define('BASEPATH', __DIR__ . '/../');
+define('BASEPATH', realpath(__DIR__ . '/../') . '/');
 
 # Check if necessary files exist before including them
 if (file_exists(BASEPATH . 'vendor/autoload.php') && file_exists(BASEPATH . 'helpers/helper.php')) {
@@ -17,7 +17,7 @@ if (file_exists(BASEPATH . 'vendor/autoload.php') && file_exists(BASEPATH . 'hel
 
     # Run the global exception handler to manage errors and exceptions
     App\Utilities\ExceptionHandler::run();
-
+    
     # Initialize the session management
     App\Utilities\Session::run();
 
@@ -29,6 +29,11 @@ if (file_exists(BASEPATH . 'vendor/autoload.php') && file_exists(BASEPATH . 'hel
 
     # Include the database configuration settings
     require BASEPATH . 'config/database.php';
+
+    if (!extension_loaded('gd')) {
+        view('errors.GDLibrary');
+    }
+    
 } else {
     # If required files are missing, display a 500 error page
     include BASEPATH . 'resources/views/errors/500.php';

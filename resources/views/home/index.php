@@ -1,7 +1,6 @@
 <?php 
 use App\Utilities\Lang;
 use App\Utilities\Session; 
-
 ?>
 <!DOCTYPE html>
 <html lang="<?= Lang::get('lang') ?>" dir="<?= Lang::get('dir') ?>">

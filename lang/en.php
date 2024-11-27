@@ -17,6 +17,7 @@ return [
     'resonsecss' => 'css/en/responsive.css', # Responsive stylesheet for English layout
     'emailcss' => 'css/en/email.css', # Email-related stylesheet for English layout
     'appjs' => 'js/en/app.js', # Main JavaScript file for English layout
+    'GDLibrary' => 'css/en/GDLibrary.css',
     'indexjs' => 'js/en/index.js', # Index page JavaScript for English layout
     'direction-1' => 'left', # Primary text alignment direction
     'direction-2' => 'right', # Secondary text alignment direction
@@ -59,6 +60,13 @@ return [
     'delete' => 'Delete', # Button text for deleting the URL
     'shorturl' => 'Short URL', # Label for displaying the shortened URL
 
+    # Localization for the erroe GDLibrary View
+    'GD-title' => 'GD Activation Error',
+    'GD-h1' => 'GD Library Error',
+    'GD-p1' => 'The GD Library is not enabled on your server. To use this feature, you need to enable GD in your <code>php.ini</code> file.',
+    'GD-p2' => 'Please restart the server after enabling GD.',
+    'GD-a' => 'How to Enable GD',
+
     # Localization for the Edit URL Panel View
     'edit-title' => 'Edit Url', # Title for the edit URL page
     'edit-h2' => 'Edit Destination URL', # Header text for the edit URL form
@@ -77,11 +85,12 @@ return [
     'Er-TryAgin' => 'Please Try Again...', # Retry message for errors
     'Er-Login' => 'Please Log In To Your Account To Create a Short Link', # Login error message
     'Er-InvalidUrl' => 'The URL You Entered Is Not Valid...', # Error message for invalid URL
-    
+
     # Success Messages for Display
     'Ms-LoginSuccess' => 'Dear User, Welcome To Your Account', # Success message for login
     'Ms-EditSuccess' => 'The Link Has Been Successfully Updated', # Success message for URL update
     'Ms-DeleteSuccess' => 'The Link Has Been Successfully Deleted', # Success message for URL deletion
     'Ms-LogOut' => 'You Have Successfully Logged Out Of Your Account', # Success message for logout
     'Ms-Create' => 'Your ShortUrl Has Been Successfully Created', # Success message for Create Shor Url
+    'Ms-Copied' => 'Copied!' # Success message for Copying Url
 ];

@@ -1,9 +1,9 @@
 <?php
 
-use App\Core\Routing\Route;
+use App\Controllers\PanelController;
 use App\Controllers\HomeController;
 use App\Controllers\AuthController;
-use App\Controllers\PanelController;
+use App\Core\Routing\Route;
 
 /**
  * Define authentication routes

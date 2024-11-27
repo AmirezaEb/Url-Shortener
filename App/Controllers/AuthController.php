@@ -2,14 +2,14 @@
 
 namespace App\Controllers;
 
-use App\Core\Request;
-use App\Models\User;
+use App\Utilities\ExceptionHandler;
+use App\Utilities\Session;
+use App\Utilities\Cookie;
 use App\Services\Email;
 use App\Utilities\Auth;
-use App\Utilities\Cookie;
 use App\Utilities\Lang;
-use App\Utilities\Session;
-use App\Utilities\ExceptionHandler;
+use App\Core\Request;
+use App\Models\User;
 use Exception;
 
 class AuthController
@@ -29,10 +29,13 @@ class AuthController
      */
     public function index()
     {
-        if (Auth::checkLogin()) { # Check if user is logged in
-            redirect('./panel'); # Redirect to user panel
+        # Check if user is logged in
+        if (Auth::checkLogin()) {
+            # Redirect to user panel
+            redirect('./panel');
         } else {
-            return view('home.login'); # Show login view
+            # Show login view
+            return view('home.login');
         }
     }
 
@@ -43,11 +46,12 @@ class AuthController
      */
     public function handleAuth(Request $request): void
     {
-        $action = $_POST['action'] ?? null; # Get the action type (register or login)
+        # Get the action type (register or login)
+        $action = $request->param('action') ?? null;
 
         # If action is 'register' and user data exists in session, process registration
         if ($action === 'register' && Session::has('UserData') && !empty($request->param('verifyCode'))) {
-            $this->register($request);
+            $this->register($request); # Otherwise, process register
         } else {
             $this->login($request); # Otherwise, process login
         }
@@ -62,29 +66,34 @@ class AuthController
     {
         try {
             # Check if request method is POST and email is provided
-            if ($request->method() === 'post' && !empty($request->param('email'))) {
-                $email = filter_var($request->param('email'), FILTER_SANITIZE_EMAIL); # Sanitize email input
-
-                if (filter_var($email, FILTER_VALIDATE_EMAIL)) { // Validate email format
-                    # Attempt to find user by email
-                    $user = User::where('email', $email)->first();
-                    $otp = Auth::generateOtp(); # Generate OTP for authentication
-
-                    # If user exists, update OTP and send via email
-                    if ($user) {
-                        $this->updateUserOtp($user, $otp);
-                    } else {
-                        # If user does not exist, create a new user with OTP
-                        $this->createUserWithOtp($email, $otp);
-                    }
-                    # Show OTP verification page
-                    view('home.verify');
-                } else {
-                    # Clear session if email is invalid
-                    Session::clear();
-                    throw new Exception(Lang::get('Er-InvalidEmail')); // Throw invalid email error
-                }
+            if ($request->method() !== 'post' && empty($request->param('email') && !$request->has('email'))) {
+                # Delete session And Throw Error if email is invalid
+                $this->throwExceptionAndDeleteSession('UserData', 'InvalidEmail');
             }
+
+            # Sanitize email input
+            $email = filter_var($request->param('email'), FILTER_SANITIZE_EMAIL);
+
+            # Validate email format
+            if (!validateEmail($email)) {
+                # Delete session And Throw Error if email is invalid
+                $this->throwExceptionAndDeleteSession('UserData', 'InvalidEmail');
+            }
+
+            $user = User::where('email', $email)->first(); # Attempt to find user by email
+            $otp = Auth::generateOtp(); # Generate OTP for authentication
+
+            # If user exists, update OTP and send via email
+            if ($user) {
+                $this->updateUserOtp($user, $otp);
+            } else {
+                # If user does not exist, create a new user with OTP
+                $this->createUserWithOtp($email, $otp);
+            }
+
+            # Show OTP verification page
+            view('home.verify');
+
         } catch (Exception $e) {
             # Handle any exceptions and redirect to authentication page with error
             ExceptionHandler::setErrorAndRedirect($e->getMessage(), './auth');
@@ -100,35 +109,36 @@ class AuthController
     {
         try {
             # Validate OTP code received from user
-            if (filter_var($request->param('verifyCode'), FILTER_VALIDATE_INT)) {
-                $email = Session::get('UserData')['email']; # Get email from session
-                $user = User::where('email', $email)->first(); # Find user by email
-                $otpCode = $user->otpCode ?? null; # Get OTP code from user
-                $verifyCode = $request->param('verifyCode'); # Get verification code from request
-
-                # Check if user exists and has valid OTP
-                if ($user) {
-                    # If OTP has expired, clear session and throw error
-                    if ($user->otpExpired <= time()) {
-                        Session::delete('UserData');
-                        throw new Exception(Lang::get('Er-Expired')); # OTP expired error
-                    }
-
-                    # If OTP matches, complete registration
-                    if ($verifyCode === $otpCode) {
-                        $this->completeRegistration($user);
-                    } else {
-                        # Handle invalid OTP attempts
-                        $this->handleInvalidOtpAttempt();
-                    }
-                } else {
-                    Session::clear(); # Clear session if user not found
-                    throw new Exception(Lang::get('Er-TryAgain1')); // Retry error
-                }
-            } else {
-                Session::clear(); # Clear session if OTP is invalid
-                throw new Exception(Lang::get('Er-TryAgain2')); // Retry error
+            if (!filter_var($request->param('verifyCode'), FILTER_VALIDATE_INT)) {
+                # Delete session And Throw Error if VerifyCode invalid
+                $this->throwExceptionAndDeleteSession('UserData');
             }
+
+            $email = Session::get('UserData')['email']; # Get email from session
+            $user = User::where('email', $email)->first(); # Find user by email
+            $otpCode = $user->otpCode ?? null; # Get OTP code from user
+            $verifyCode = $request->param('verifyCode'); # Get verification code from request
+
+            # Check if user exists and has valid OTP
+            if (!$user) {
+                # Delete session And Throw Error if user dont exists
+                $this->throwExceptionAndDeleteSession('UserData');
+            }
+
+            # If OTP has expired, clear session and throw error
+            if ($user->otpExpired <= time()) {
+                # Delete session And Throw Error if OTP has expired
+                $this->throwExceptionAndDeleteSession('UserData','Expired');
+            }
+
+            # If OTP matches, complete registration
+            if ($verifyCode === $otpCode) {
+                $this->completeRegistration($user);
+            } else {
+                # Handle invalid OTP attempts
+                $this->handleInvalidOtpAttempt();
+            }
+
         } catch (Exception $e) {
             # Handle any exceptions and redirect to authentication page with error
             ExceptionHandler::setErrorAndRedirect($e->getMessage(), './auth');
@@ -157,8 +167,8 @@ class AuthController
 
         # Check for failures
         if (!$updateSuccess ||  !Session::has('UserData') || !$emailSent) {
-            Session::clear(); # Clear session on failure
-            throw new Exception(Lang::get('Er-TryAgain3')); # Throw retry error
+            # Delete session And Throw Error if failures proccess Update User And Send Email
+            $this->throwExceptionAndDeleteSession('UserData');
         }
     }
 
@@ -184,8 +194,8 @@ class AuthController
 
         # Check for failures
         if (!$createSuccess || !Session::has('UserData') || !$emailSent) {
-            Session::clear(); # Clear session on failure
-            throw new Exception(Lang::get('Er-TryAgain4')); # Throw retry error
+            # Delete session And Throw Error if failures proccess Create User And Send Email
+            $this->throwExceptionAndDeleteSession('UserData');
         }
     }
 
@@ -199,8 +209,10 @@ class AuthController
         Session::delete('UserData'); # Clear session user data
         $setCookie = Cookie::setEncryptedCookie('Auth', $user->email); # Set authentication cookie
 
-        if (!$setCookie) { # If setting cookie fails, throw error
-            throw new Exception(Lang::get('Er-TryAgain')); # Retry error
+        # If setting cookie fails
+        if (!$setCookie) {
+            # Delete session And Throw Error if failures proccess Set Cookies
+            $this->throwExceptionAndDeleteSession('UserData');
         }
 
         # Clear OTP from database
@@ -225,10 +237,16 @@ class AuthController
 
         # If user exceeds 3 invalid attempts, throw error
         if ($countInvalidLogin >= 3) {
-            Session::delete('invalidLogin'); # Reset attempts after 3 failures
-            throw new Exception(Lang::get('Er-TryAgain')); # Retry error
+            # Delete session And Throw Error if attempts after 3 failures
+            $this->throwExceptionAndDeleteSession('invalidLogin');
         }
 
         view('home.verify'); # Show OTP verification page again
+    }
+
+    private function throwExceptionAndDeleteSession(string $sessionName, string $exceptionMessage = 'TryAgain')
+    {
+        Session::delete($sessionName); # Delete session
+        throw new Exception(Lang::get("Er-{$exceptionMessage}")); # Throw Error
     }
 }

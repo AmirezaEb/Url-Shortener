@@ -23,16 +23,17 @@
 
 This project is built using cutting-edge technologies to ensure performance, security, and ease of use:
 
-- **PHP 8.2+** : A robust and modern back-end language for processing requests.
-- **MVC Architecture** : This project uses the Model-View-Controller architecture to effectively separate the business logic, presentation, and request handling.
-- **MySQL** : For reliable, relational database management.
-- **Composer** : PHP package manager for efficient dependency handling.
-- **Laravel Eloquent ORM** : A powerful ORM for working with databases seamlessly.
-- **Apache** : Serving the application and ensuring optimal performance.
-- **Java Script** : Enhancing the interactivity of the front-end.
-- **Bootstrap 5** : The front-end framework for responsive and visually appealing designs.
-- **PHP Mailier** : For handling email notifications and user verification.
-- **Unit Testing** : Automated tests are used with PHPUnit to ensure the correct functionality of the code.
+- **PHP 8.2+**: A robust and modern back-end language for processing server-side requests.  
+- **GD Library**: Used for image processing and generating dynamic images.  
+- **MVC Architecture**: The Model-View-Controller architecture to separate business logic, presentation, and request handling effectively.  
+- **MySQL**: Reliable relational database management.  
+- **Composer**: A PHP package manager for efficient dependency management.  
+- **Laravel Eloquent ORM**: A powerful Object-Relational Mapper (ORM) for seamless database interactions.  
+- **Apache**: A web server to serve the application and ensure optimal performance.  
+- **JavaScript**: Enhances the interactivity of the user interface.  
+- **Bootstrap 5**: A front-end framework for responsive and visually appealing designs.  
+- **PHPMailer**: Handles email notifications and user verification.  
+- **Unit Testing**: Automated tests with PHPUnit to ensure the correct functionality of the code.  
 
 
 ## 🚀 Quick Start

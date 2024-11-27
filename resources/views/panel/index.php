@@ -157,7 +157,7 @@ use App\Utilities\Session; ?>
                                     <a href="./panel/edit/<?= $url->id ?>" class="stats-table__body-icons"><i class="ri-edit-line stats-table-edit-icon"></i></a>
                                 </td>
                                 <td class="stats-table__body-col" id="<?=$url->id?>">
-                                    <button class="stats-table__body-icons stats-table__copy-btn" data-clipboard-demo="" data-clipboard-target="#testcopy-<?=$url->id?>" data-clipboard-action="copy" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="bottom" data-bs-custom-class="custom-popover" data-bs-content="copied!">
+                                    <button class="stats-table__body-icons stats-table__copy-btn" data-clipboard-demo="" data-clipboard-target="#testcopy-<?=$url->id?>" data-clipboard-action="copy" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="bottom" data-bs-custom-class="custom-popover" data-bs-content="<?= Lang::get('Ms-Copied')?>">
                                         <i class="ri-file-copy-2-line stats-table-copy-icon"></i>
                                     </button>
                                 </td>
