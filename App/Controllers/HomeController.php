@@ -3,8 +3,7 @@
 namespace App\Controllers;
 
 use App\Utilities\ExceptionHandler;
-use chillerlan\QRCode\QROptions;
-use chillerlan\QRCode\QRCode;
+use HeroQR\Core\QRCodeGenerator;
 use App\Utilities\Auth;
 use App\Utilities\Lang;
 use App\Core\Request;
@@ -52,7 +51,7 @@ class HomeController
 
             # Validate the provided URL
             $url = $request->param('Url');
-            if (!validateUrl($url)) {
+            if (!$this->validateUrl($url)) {
                 throw new Exception(Lang::get('Er-InvalidUrl'));
             }
 
@@ -71,7 +70,7 @@ class HomeController
             ]);
 
             # Handle potential save errors
-            if (!$savedUrl || !$qrCodePath) {
+            if (!$savedUrl || !file_exists('public/QrCode/' . $shortUrlData->name . '.png')) {
                 throw new Exception(Lang::get('Er-TryAgain'));
             }
 
@@ -138,28 +137,22 @@ class HomeController
     /**
      * Generate a QR code image for a given URL.
      *
-     * @param string $text The URL text to encode in the QR code.
+     * @param string $url The URL text to encode in the QR code.
      * @param string $name The file name for the QR code image.
      * @return string|bool The URL of the QR code image on success, false on failure.
      */
-    private function generateQrCode(string $text, string $name): string|bool
+    private function generateQrCode(string $url, string $name): string|bool
     {
-        try {
-            # Configure QR code generation options
-            $options = new QROptions([
-                'version' => 5,
-                'outputType' => QRCode::OUTPUT_IMAGE_PNG,
-                'eccLevel' => QRCode::ECC_L,
-                'scale' => 10,
-                'imageBase64' => false,
-                'quietzoneSize' => 4,
-                'addQuietzone' => true,
-            ]);
+        $savePath = BASEPATH . 'public/QrCode/' . $name;
 
+        try {
             # Generate and save the QR code image
-            $qrCode = new QRCode($options);
-            $savePath = BASEPATH . 'public/QrCode/' . $name . '.png';
-            file_put_contents($savePath, $qrCode->render($text));
+            $qrCode = new QRCodeGenerator();
+            $qrCode->setData($url)
+                ->setSize(280)
+                ->setMargin(15)
+                ->generate('png')
+                ->saveTo($savePath);
 
             return $_ENV['APP_HOST'] . 'public/QrCode/' . $name . '.png';
         } catch (Exception $e) {
@@ -198,5 +191,24 @@ class HomeController
             # Increment the URL's view count
             $url->increment('views');
         }
+    }
+
+     /**
+     * Validate the format and security of a URL.
+     * 
+     * @param string $url  The URL to be validated.
+     * @return bool        True if the URL is valid, false otherwise.
+     */
+    private function validateUrl(string $url): bool
+    {
+        # Decode the URL to prevent double-encoded data.
+        $url = urldecode($url);
+
+        # Use filter_var to validate URL structure and ensure security.
+        return filter_var($url, FILTER_VALIDATE_URL) &&
+            preg_match("/^(https?:\/\/(?:www\.)?[a-zA-Z0-9\-\.]+(?:\.[a-zA-Z]{2,})+(?:\/[a-zA-Z0-9\-._~:\/?#[\]@!$&'()*+,;=]*)?)$|^(ftp:\/\/(?:www\.)?[a-zA-Z0-9\-\.]+(?:\.[a-zA-Z]{2,})+(?:\/[a-zA-Z0-9\-._~:\/?#[\]@!$&'()*+,;=]*)?)$|^(tel:\/\/[0-9\+\-\(\) ]+)$|^(file:\/\/[a-zA-Z0-9\-\_\/\.\:]+)$/", $url) &&
+            stripos($url, 'javascript:') === false &&
+            stripos($url, '<script>') === false &&
+            strlen($url) <= 2048;
     }
 }

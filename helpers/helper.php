@@ -127,30 +127,3 @@ function getNow(): string
     # Construct the full URL based on the request
     return (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
 }
-
-/**
- * Validate the URL format, protocol, and length.
- *
- * @param string $url
- * @return bool
- */
-function validateUrl(string $url): bool
-{
-
-    $result = true;
-    $url = urldecode($url);
-
-    if (!filter_var($url, FILTER_VALIDATE_URL)) {
-        $result = false;
-    }
-
-    if (!preg_match('/^https?:\/\//', $url)) {
-        $result = false;
-    }
-
-    if (stripos($url, 'javascript:') !== false || stripos($url, '<script>') !== false) {
-        $result = false;
-    }
-
-    return $result;
-}

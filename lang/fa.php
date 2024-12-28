@@ -12,7 +12,7 @@ return [
     # General Configuration for Persian [fa] Language
     'lang' => 'fa', # Language code
     'dir' => 'rtl', # Text direction (right-to-left)
-    'font' => 'https:#fonts.cdnfonts.com/css/lalezar', # Persian-specific font URL
+    'font' => 'https://fonts.cdnfonts.com/css/lalezar', # Persian-specific font URL
     'maincss' => 'css/fa/main.css', # Main stylesheet for Persian layout
     'resonsecss' => 'css/fa/responsive.css', # Responsive stylesheet for Persian layout
     'emailcss' => 'css/fa/email.css', # Email-related stylesheet for Persian layout
@@ -72,16 +72,13 @@ return [
     'emailTitle' => 'کارشناس قهرمان', # Email subject/title
     'welcome' => 'سلام دوست گرامی', # Email greeting
 
-    # Localization for 404, 405 and 500 Error messages
+    # Localization for 404, 405 Error messages
     'header404' => 'اوه ... !', # Header message of 404 Page
     'header405' => 'مشکلی پیش آمده... !', # Header message of 405 Page
-    'header500' => 'با عرض معذرت... !', # Header message of 500 Page
     'desc404ErrorBody' => "به نظر می رسد که مشکلی پیش آمده است...", # Body of 404 Page message
     'desc405ErrorBody' => "به نظر می رسد خطایی رخ داده است...", # Body of 405 Page message
-    'desc500ErrorBody' => "بنظر میرسد از طرف سرویس دهنده ما خطایی رخ داده باشد ...", # Body of 500 Page message
     'footer404ErrorBody' => "برای بازگشت به صفحه اصلی روی دکمه کلیک کنید !", # footer of 404 Page message
     'footer405ErrorBody' => "لطفا مطمئن شوید که آدرس درست است !", # footer of 405 Page message
-    'footer500ErrorBody' => "ما در حال حاضر در حال تلاش برای رفع مشکل هستیم !", # footer of 500 Page message
     'errors-button' => 'بازگشت به صفحه اصلی', # Button for back to main page of website
 
     # Error Messages for Display
@@ -92,8 +89,6 @@ return [
     'Er-TryAgin' => 'لطفا مجددا تلاش کنید...', # Retry message for errors
     'Er-Login' => 'برای استفاده از خدمات لطفا وارد حساب کاربری خود شوید', # Login error message
     'Er-InvalidUrl' => 'لینک وارد شده معتبر نمی باشد...', # Error message for invalid URL
-
-
 
     # Success Messages for Display
     'Ms-LoginSuccess' => 'کاربر محترم، به حساب کاربری خود خوش آمدید', # Success message for login

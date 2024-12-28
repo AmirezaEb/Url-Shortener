@@ -1,8 +1,11 @@
 <?php
 
-use PHPUnit\Framework\Attributes\Test;
-use PHPUnit\Framework\TestCase;
+namespace Tests\Request;
+
 use App\Core\Request;
+use InvalidArgumentException;
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 final class RequestTest extends TestCase
 {

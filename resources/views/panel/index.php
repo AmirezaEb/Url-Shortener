@@ -34,7 +34,7 @@ use App\Utilities\Session; ?>
                 <div class="<?= Lang::get('direction-1') ?>-header__profile">
                     <div class="<?= Lang::get('direction-1') ?>-header__profile-div">
                         <!-- Display user email without domain part -->
-                         <span class="<?= Lang::get('direction-1') ?>-header__icons">
+                        <span class="<?= Lang::get('direction-1') ?>-header__icons">
                             <i class="ri-user-6-line <?= Lang::get('direction-1') ?>-header__icons-icon"></i>
                         </span>
                         <a class="<?= Lang::get('direction-1') ?>-header__user-email">
@@ -148,7 +148,7 @@ use App\Utilities\Session; ?>
                         foreach ($data->urls as $url): ?>
                             <tr class="stats-table__body-row">
                                 <td class="stats-table__body-col"><?= ++$data->startPaginate ?></td>
-                                <td class="stats-table__body-col url-ltr" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="<?= $url -> url ?>"><?= htmlspecialchars(substr(str_replace(['https://', 'http://', 'www.', 'Https', 'Http', 'WWW.'], '', $url->url), 0, 25)) . ' ...' ?></td>
+                                <td class="stats-table__body-col url-ltr" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="<?= $url->url ?>"><?= htmlspecialchars(substr(str_replace(['https://', 'http://', 'www.', 'Https', 'Http', 'WWW.'], '', $url->url), 0, 20)) . '...' ?></td>
                                 <td class="stats-table__body-col" id="testcopy-<?= $url->id ?>"><?= htmlspecialchars(str_replace(['https://', 'http://', 'www.', 'Https', 'Http', 'WWW.'], '', $_ENV['APP_HOST'] . $url->shortUrl)) ?></td>
                                 <td class="stats-table__body-col"><?= $url->views ?></td>
                                 <td class="stats-table__body-col small-size">
@@ -158,7 +158,7 @@ use App\Utilities\Session; ?>
                                     <a href="./panel/edit/<?= $url->id ?>" class="stats-table__body-icons"><i class="ri-edit-line stats-table-edit-icon"></i></a>
                                 </td>
                                 <td class="stats-table__body-col small-size" id="<?= $url->id ?>">
-                                    <button class="stats-table__body-icons stats-table__copy-btn" data-clipboard-demo="" data-clipboard-target="#testcopy-<?= $url->id ?>" data-clipboard-action="copy" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="bottom"  data-bs-content="<?= Lang::get('copied') ?>">
+                                    <button class="stats-table__body-icons stats-table__copy-btn" data-clipboard-demo="" data-clipboard-target="#testcopy-<?= $url->id ?>" data-clipboard-action="copy" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="bottom" data-bs-content="<?= Lang::get('copied') ?>">
                                         <i class="ri-file-copy-2-line stats-table-copy-icon"></i>
                                     </button>
                                 </td>

@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+use App\Utilities\Auth;
 use App\Utilities\Lang;
 use App\Utilities\Session; 
 
@@ -29,7 +31,7 @@ use App\Utilities\Session;
     <header>
         <div class="user-panel">
             <!-- Link to the user panel -->
-            <a href="./auth" class="user-panel-btn"><?= Lang::get('panel') ?></a>
+            <a href="./auth" class="user-panel-btn"><?= (Auth::checkLogin()) ? Lang::get('panel') : Lang::get('login-title') ?></a>
         </div>
     </header>
 

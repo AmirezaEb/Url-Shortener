@@ -358,7 +358,7 @@ if (editUrlSubmitBtn) {
                 event.preventDefault();
                 editCheckOutFalse();
             } else {
-                const editRegex = /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/;
+                const editRegex = /^(https?:\/\/(?:www\.)?[a-zA-Z0-9\-\.]+(?:\.[a-zA-Z]{2,})+(?:\/[a-zA-Z0-9\-._~:\/?#[\]@!$&'()*+,;=]*)?)$|^(ftp:\/\/(?:www\.)?[a-zA-Z0-9\-\.]+(?:\.[a-zA-Z]{2,})+(?:\/[a-zA-Z0-9\-._~:\/?#[\]@!$&'()*+,;=]*)?)$|^(tel:\/\/[0-9\+\-\(\) ]+)$|^(file:\/\/[a-zA-Z0-9\-\_\/\.\:]+)$/;
                 let editTrust = editRegex.test(editDestInput.value)
 
                 console.log(editTrust)
@@ -391,7 +391,7 @@ if (inputFieldUrlSubmitBtn) {
             editCheckOutInputFalse();
         } else {
             // check for valid email address
-            const editRegex = /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/;
+            const editRegex = /^(https?:\/\/(?:www\.)?[a-zA-Z0-9\-\.]+(?:\.[a-zA-Z]{2,})+(?:\/[a-zA-Z0-9\-._~:\/?#[\]@!$&'()*+,;=]*)?)$|^(ftp:\/\/(?:www\.)?[a-zA-Z0-9\-\.]+(?:\.[a-zA-Z]{2,})+(?:\/[a-zA-Z0-9\-._~:\/?#[\]@!$&'()*+,;=]*)?)$|^(tel:\/\/[0-9\+\-\(\) ]+)$|^(file:\/\/[a-zA-Z0-9\-\_\/\.\:]+)$/;
             let editTrust = editRegex.test(inputField.value)
 
             if (!editTrust) {
@@ -410,7 +410,7 @@ if (inputFieldUrlSubmitBtn) {
                 event.preventDefault();
                 editCheckOutInputFalse();
             } else {
-                const editRegex = /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/;
+                const editRegex = /^(https?:\/\/(?:www\.)?[a-zA-Z0-9\-\.]+(?:\.[a-zA-Z]{2,})+(?:\/[a-zA-Z0-9\-._~:\/?#[\]@!$&'()*+,;=]*)?)$|^(ftp:\/\/(?:www\.)?[a-zA-Z0-9\-\.]+(?:\.[a-zA-Z]{2,})+(?:\/[a-zA-Z0-9\-._~:\/?#[\]@!$&'()*+,;=]*)?)$|^(tel:\/\/[0-9\+\-\(\) ]+)$|^(file:\/\/[a-zA-Z0-9\-\_\/\.\:]+)$/;
                 let editTrust = editRegex.test(inputField.value)
 
                 console.log(editTrust)
