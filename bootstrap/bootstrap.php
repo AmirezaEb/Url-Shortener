@@ -10,7 +10,7 @@ if (file_exists(BASEPATH . 'vendor/autoload.php') && file_exists(BASEPATH . 'hel
     require BASEPATH . 'vendor/autoload.php';
 
     # Load environment variables from the .env file
-    Dotenv\Dotenv::createImmutable(BASEPATH)->load();
+    \Dotenv\Dotenv::createImmutable(BASEPATH)->load();
 
     # Set the application language using the configured environment variable
     App\Utilities\Lang::set($_ENV['APP_LANG']);
@@ -36,5 +36,14 @@ if (file_exists(BASEPATH . 'vendor/autoload.php') && file_exists(BASEPATH . 'hel
     
 } else {
     # If required files are missing, display a 500 error page
-    include BASEPATH . 'resources/views/errors/500.php';
+    $errorPage = BASEPATH . 'resources/views/errors/500.php';
+
+    # Check if the error page exists
+    if (file_exists($errorPage)) {
+        include $errorPage;
+    } else {
+        echo "500 Internal Server Error: Error page not found.";
+    }
+    # Stop further execution
+    exit;
 }

@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\Routing;
+
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 use App\Core\Routing\Route;

@@ -1,6 +1,7 @@
-<?php 
-use App\Utilities\Lang; 
-use App\Utilities\Session; 
+<?php
+
+use App\Utilities\Lang;
+use App\Utilities\Session;
 ?>
 
 <!DOCTYPE html>
@@ -30,14 +31,23 @@ use App\Utilities\Session;
         <!-- URL Edit Form Container -->
         <div class="editDest-div" id="editDest-div">
             <h2 class="editDest-header"><?= Lang::get('edit-h2') ?></h2>
-            
+
             <!-- Edit URL Form -->
             <form action="./<?= $data->url->id ?>" method="post" class="editDest-form">
-                <!-- URL Input Field -->
-                <input type="text" class="editDest-input" name="editURL" 
-                       value="<?= htmlspecialchars($data->url->url, ENT_QUOTES, 'UTF-8') ?>" 
-                       id="editDest-input" placeholder="<?= Lang::get('edit-input') ?>" />
-                
+                <div class="edit-val-div">
+                    <!-- Error icon for edit URL validation (hidden by default) -->
+                    <i class="ri-error-warning-line edit-valid-icon d-none"></i>
+
+                    <!-- URL Input Field -->
+                    <input type="text" class="editDest-input" name="editURL"
+                        value="<?= htmlspecialchars($data->url->url, ENT_QUOTES, 'UTF-8') ?>"
+                        id="editDest-input" placeholder="<?= Lang::get('edit-input') ?>" />
+
+                    <!-- Validation message (hidden by default) -->
+                    <p class="edit-validation-text d-none"><?= Lang::get('pedit') ?></p>
+                    <span class="edit-validation-span d-none"></span>
+                </div>
+
                 <!-- Submit Button -->
                 <button class="editDest-submit-btn"><?= Lang::get('sub') ?></button>
             </form>

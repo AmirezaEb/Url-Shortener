@@ -2,7 +2,7 @@ const token = "503bf5006708dc769617c571f07206858ef8c018"; const button = documen
 const resultDiv = document.querySelector("#output-div")
 const errorDiv = document.querySelector("#error-div"); const errorMessage = document.querySelector("#error-text"); const clearButton = document.querySelector("#clear-btn"); const copyButton = document.querySelector("#copy-btn"); const handleError = (response) => {
     console.log(response); if (!response.ok) {
-        errorMessage.textContent = "Please enter a valid URL."
+        errorMessage.textContent = ""
         hideResult();
     } else { return response; }
 }
