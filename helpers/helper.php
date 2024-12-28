@@ -19,6 +19,7 @@ function siteUrl(string $route = ''): string
  */
 function assetUrl(string $file): string
 {
+    # Construct the full path to the asset file
     return rtrim($_ENV['APP_HOST'], '/') . '/resources/assets/' . ltrim($file, '/');
 }
 
@@ -32,14 +33,15 @@ function assetUrl(string $file): string
 function view(string $view, array|object $data = []): void
 {
     if (is_array($data)) {
-        extract($data); // Extract data to variables if it's an array
+        extract($data); # Extract data to variables if it's an array
     }
 
+    # Construct the view file path
     $viewPath = BASEPATH . 'resources/views/' . str_replace('.', '/', $view) . '.php';
 
+    # Include the view file
     if (file_exists($viewPath)) {
         include $viewPath;
-        exit;
     } else {
         throw new Exception("View file not found: $viewPath");
     }
@@ -56,6 +58,7 @@ function view(string $view, array|object $data = []): void
  */
 function alarm(string $mode, string $message, string $size, string $position): string
 {
+    # Generate SweetAlert script for notifications
     return "<script>
     Swal.fire({
         title: '$message',
@@ -75,6 +78,7 @@ function alarm(string $mode, string $message, string $size, string $position): s
     </script>";
 }
 
+
 /**
  * Generate a random short string.
  *
@@ -82,16 +86,17 @@ function alarm(string $mode, string $message, string $size, string $position): s
  */
 function shortCreate(): string
 {
-    $length = rand(2, 7);
+    $length = rand(3, 10); # Generate a random length between 3 and 10
     $characters = 'aA0bBcC1dDeE2fFgG3hHiI4jJkK5lLmM6nNoO7pPqQ8rRsS9tTuUvVwWxXyYzZ-';
     $charactersLength = strlen($characters);
     $randomString = '';
 
+    # Build the random string
     for ($i = 0; $i < $length; $i++) {
         $randomString .= $characters[random_int(0, $charactersLength - 1)];
     }
 
-    return $randomString;
+    return $randomString; # Return the generated random string
 }
 
 /**
@@ -105,6 +110,7 @@ function redirect(string $url): void
     if (!headers_sent()) {
         header("Location: $url");
     } else {
+        # Fallback for when headers have already been sent
         echo "<script type='text/javascript'>window.location.href='$url'</script>";
         echo "<noscript><meta http-equiv='refresh' content='0;url=$url'/></noscript>";
     }
@@ -118,59 +124,6 @@ function redirect(string $url): void
  */
 function getNow(): string
 {
+    # Construct the full URL based on the request
     return (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
-}
-
-/**
- * Validate the URL format, protocol, and length.
- *
- * @param string $url The URL to validate.
- * @return bool True if valid, false otherwise.
- */
-function validateUrl(string $url): bool
-{
-    $url = urldecode($url);
-
-    if (!filter_var($url, FILTER_VALIDATE_URL) || preg_match('/(\/\.\.\/|\.\.\/|\.\.\/)/', $url)) {
-        return false;
-    }
-
-    if (!preg_match('/^https?:\/\//', $url) || strlen($url) >= 2048) {
-        return false;
-    }
-
-    if (stripos($url, 'javascript:') !== false || stripos($url, '<script>') !== false) {
-        return false;
-    }
-
-    $restrictedChars = ['$',',',"'",'"','~',';', '!', '«', '»', '#', ' ', '\\', '^', '(', ')', '{', '}', '[', ']', '<', '>', '`','*'];
-    foreach ($restrictedChars as $char) {
-        if (strpos($url, $char) !== false) {
-            return false;
-        }
-    }
-
-    $parsedUrl = parse_url($url);
-    if (isset($parsedUrl['host']) && !filter_var($parsedUrl['host'], FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)) {
-        return false;
-    }
-
-    return true;
-}
-
-/**
- * Validate the email format and length.
- *
- * @param string $email The email to validate.
- * @return bool True if valid, false otherwise.
- */
-function validateEmail(string $email): bool
-{
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        return false;
-    }
-
-    list($localPart, $domain) = explode('@', $email);
-
-    return !(strlen($localPart) > 64 || strlen($domain) > 253);
 }

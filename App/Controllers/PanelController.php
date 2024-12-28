@@ -26,7 +26,6 @@ class PanelController
         try {
             # Check if the user is logged in by verifying their cookie.
             $cookie = Auth::checkLogin();
-            
             if ($cookie) {
                 # Retrieve the user's data based on their email from the cookie.
                 $user = User::where('email', $cookie)->first();
@@ -209,7 +208,7 @@ class PanelController
         $editURL = $request->param('editURL');
 
         # Validate the new URL format.
-        if (validateUrl($editURL)) {
+        if ($this->validateUrl($editURL)) {
             # Update the URL in the database.
             Url::where('id', $urlId)->update([
                 'url' => htmlspecialchars($editURL)
@@ -221,5 +220,24 @@ class PanelController
             # If validation fails, redirect back to the edit form with an error message.
             ExceptionHandler::setErrorAndRedirect(Lang::get('Er-TryAgin'), "./panel/edit/$urlId");
         }
+    }
+
+    /**
+     * Validate the format and security of a URL.
+     * 
+     * @param string $url  The URL to be validated.
+     * @return bool        True if the URL is valid, false otherwise.
+     */
+    private function validateUrl(string $url): bool
+    {
+        # Decode the URL to prevent double-encoded data.
+        $url = urldecode($url);
+
+        # Use filter_var to validate URL structure and ensure security.
+        return filter_var($url, FILTER_VALIDATE_URL) &&
+            preg_match("/^(https?:\/\/(?:www\.)?[a-zA-Z0-9\-\.]+(?:\.[a-zA-Z]{2,})+(?:\/[a-zA-Z0-9\-._~:\/?#[\]@!$&'()*+,;=]*)?)$|^(ftp:\/\/(?:www\.)?[a-zA-Z0-9\-\.]+(?:\.[a-zA-Z]{2,})+(?:\/[a-zA-Z0-9\-._~:\/?#[\]@!$&'()*+,;=]*)?)$|^(tel:\/\/[0-9\+\-\(\) ]+)$|^(file:\/\/[a-zA-Z0-9\-\_\/\.\:]+)$/", $url) &&
+            stripos($url, 'javascript:') === false &&
+            stripos($url, '<script>') === false &&
+            strlen($url) <= 2048;
     }
 }

@@ -3,8 +3,7 @@
 namespace App\Controllers;
 
 use App\Utilities\ExceptionHandler;
-use chillerlan\QRCode\QROptions;
-use chillerlan\QRCode\QRCode;
+use HeroQR\Core\QRCodeGenerator;
 use App\Utilities\Auth;
 use App\Utilities\Lang;
 use App\Core\Request;
@@ -19,11 +18,10 @@ class HomeController
      * Display the homepage.
      *
      * @param Request $request The incoming HTTP request.
-     * @return void
+     * @return void Renders the home view.
      */
     public function index(Request $request): void
     {
-        # Render the home view
         view('home.index');
     }
 
@@ -31,34 +29,59 @@ class HomeController
      * Handle URL creation and optional QR code generation.
      *
      * @param Request $request The HTTP request containing user input data.
-     * @return void
+     * @return void Renders the home view or redirects on error.
      */
     public function createUrl(Request $request): void
     {
         try {
-            # Validate the incoming request
-            $this->validateCreateUrlRequest($request);
+            # Check if the request is a POST with the necessary parameters
+            if ($request->method() !== 'post' && !$request->has('sub-create') && !$request->param('Url')) {
+                # Render the home view for non-POST requests
+                view('home.index');
+            }
 
-            # Get the authenticated user
-            $user = $this->getAuthenticatedUser();
+            # Verify user authentication
+            $userEmail = Auth::checkLogin();
+            if (!$userEmail) {
+                throw new Exception(Lang::get('Er-Login'));
+            }
 
-            # Validate and sanitize the provided URL
-            $url = $this->validateAndSanitizeUrl($request->param('Url'));
+            # Retrieve authenticated user
+            $user = User::where('email', $userEmail)->first();
+
+            # Validate the provided URL
+            $url = $request->param('Url');
+            if (!$this->validateUrl($url)) {
+                throw new Exception(Lang::get('Er-InvalidUrl'));
+            }
 
             # Generate a unique short URL
             $shortUrlData = $this->generateShortUrl();
 
-            # Generate a QR code for the short URL
+            # Generate QR code for the short URL
             $qrCodePath = $this->generateQrCode($shortUrlData->url, $shortUrlData->name);
 
-            # Save the URL data in the database
-            $this->saveUrl($user, $url, $shortUrlData, $qrCodePath);
+            # Save the URL details to the database
+            $savedUrl = Url::create([
+                'created_by' => $user->id,
+                'url' => htmlspecialchars($url, ENT_QUOTES, 'UTF-8'),
+                'shortUrl' => $shortUrlData->name,
+                'qrCode' => $qrCodePath,
+            ]);
+
+            # Handle potential save errors
+            if (!$savedUrl || !file_exists('public/QrCode/' . $shortUrlData->name . '.png')) {
+                throw new Exception(Lang::get('Er-TryAgain'));
+            }
+
+            # Prepare data for view
+            $data = (object)['ShortUrl' => $shortUrlData->url];
 
             # Set success message and render the homepage
             ExceptionHandler::setMessage(Lang::get('Ms-Create'));
-            view('home.index', (object)['ShortUrl' => $shortUrlData->url]);
+            view('home.index', $data);
         } catch (Exception $e) {
-            # Handle exceptions and redirect with an error message
+            # Handle exceptions and redirect to the homepage with an error message
             ExceptionHandler::setErrorAndRedirect($e->getMessage(), './');
         }
     }
@@ -67,21 +90,21 @@ class HomeController
      * Redirect the user based on the shortened URL.
      *
      * @param Request $request The request containing the shortened URL parameter.
-     * @return void
+     * @return void Handles the redirect.
      */
     public function redirectUrl(Request $request): void
     {
         try {
-            # Retrieve the short URL from the request
+            # Retrieve the short URL parameter from the request
             $shortUrl = $request->param('short_url');
 
-            # Find the original URL in the database
+            # Find the corresponding URL in the database
             $url = Url::where('shortUrl', $shortUrl)->firstOrFail();
 
-            # Track the unique view for analytics
+            # Track the view for analytics purposes
             $this->trackView($url, $request);
 
-            # Redirect to the original URL
+            # Redirect the user to the original URL
             redirect($url->url);
         } catch (Exception $e) {
             # Redirect to the homepage on error
@@ -90,158 +113,102 @@ class HomeController
     }
 
     /**
-     * Validate the URL creation request.
-     *
-     * @param Request $request The HTTP request.
-     * @return void
-     * @throws Exception If validation fails.
-     */
-    private function validateCreateUrlRequest(Request $request): void
-    {
-        # Ensure the request is POST with required parameters
-        if ($request->method() !== 'post' || !$request->has('sub-create') || !$request->param('Url')) {
-            view('home.index');
-            exit;
-        }
-
-        # Verify user authentication
-        if (!Auth::checkLogin()) {
-            throw new Exception(Lang::get('Er-Login'));
-        }
-    }
-
-    /**
-     * Get the authenticated user from the session.
-     *
-     * @return User The authenticated user.
-     * @throws Exception If user is not authenticated.
-     */
-    private function getAuthenticatedUser(): User
-    {
-        # Retrieve user email from authentication
-        $userEmail = Auth::checkLogin();
-
-        # Find the user by email in the database
-        return User::where('email', $userEmail)->firstOrFail();
-    }
-
-    /**
-     * Validate and sanitize the provided URL.
-     *
-     * @param string $url The URL to validate.
-     * @return string The sanitized URL.
-     * @throws Exception If the URL is invalid.
-     */
-    private function validateAndSanitizeUrl(string $url): string
-    {
-        # Check if the URL is valid
-        if (!validateUrl($url)) {
-            throw new Exception(Lang::get('Er-InvalidUrl'));
-        }
-
-        # Sanitize the URL to prevent XSS
-        return htmlspecialchars($url, ENT_QUOTES, 'UTF-8');
-    }
-
-    /**
-     * Save the generated URL details to the database.
-     *
-     * @param User $user The authenticated user.
-     * @param string $url The original URL.
-     * @param object $shortUrlData The short URL data.
-     * @param string $qrCodePath The path to the generated QR code.
-     * @return void
-     * @throws Exception If saving fails.
-     */
-    private function saveUrl(User $user, string $url, object $shortUrlData, string $qrCodePath): void
-    {
-        # Save the URL data in the database
-        $savedUrl = Url::create([
-            'created_by' => $user->id,
-            'url' => $url,
-            'shortUrl' => $shortUrlData->name,
-            'qrCode' => $qrCodePath,
-        ]);
-
-        # Check if saving was successful
-        if (!$savedUrl || !$qrCodePath) {
-            throw new Exception(Lang::get('Er-TryAgain'));
-        }
-    }
-
-    /**
      * Generate a unique shortened URL.
      *
-     * @return object An object containing the short URL and its identifier.
+     * @return object An object containing the shortened URL and its identifier.
      */
     private function generateShortUrl(): object
     {
         do {
-            # Generate a unique short identifier
+            # Generate a new short URL identifier
             $shortUrlName = shortCreate();
-        } while (Url::where('shortUrl', $shortUrlName)->exists());
+
+            # Check if the short URL already exists in the database
+            $exists = Url::where('shortUrl', $_ENV['APP_HOST'] . $shortUrlName)->exists();
+        } while ($exists);
 
         # Return the generated short URL and its identifier
         return (object)[
             'url' => $_ENV['APP_HOST'] . $shortUrlName,
-            'name' => $shortUrlName,
+            'name' => $shortUrlName
         ];
     }
 
     /**
-     * Generate a QR code for the given URL.
+     * Generate a QR code image for a given URL.
      *
-     * @param string $text The text to encode in the QR code.
-     * @param string $name The file name for the QR code.
-     * @return string The path to the generated QR code.
+     * @param string $url The URL text to encode in the QR code.
+     * @param string $name The file name for the QR code image.
+     * @return string|bool The URL of the QR code image on success, false on failure.
      */
-    private function generateQrCode(string $text, string $name): string
+    private function generateQrCode(string $url, string $name): string|bool
     {
-        # Configure QR code options
-        $options = new QROptions([
-            'version' => 5,
-            'outputType' => QRCode::OUTPUT_IMAGE_PNG,
-            'eccLevel' => QRCode::ECC_L,
-            'scale' => 10,
-            'quietzoneSize' => 4,
-        ]);
+        $savePath = BASEPATH . 'public/QrCode/' . $name;
 
-        # Generate and save the QR code
-        $qrCode = new QRCode($options);
-        $savePath = BASEPATH . 'public/QrCode/' . $name . '.png';
+        try {
+            # Generate and save the QR code image
+            $qrCode = new QRCodeGenerator();
+            $qrCode->setData($url)
+                ->setSize(280)
+                ->setMargin(15)
+                ->generate('png')
+                ->saveTo($savePath);
 
-        file_put_contents($savePath, $qrCode->render($text));
-        return $_ENV['APP_HOST'] . 'public/QrCode/' . $name . '.png';
+            return $_ENV['APP_HOST'] . 'public/QrCode/' . $name . '.png';
+        } catch (Exception $e) {
+            # Return false if QR code generation fails
+            return false;
+        }
     }
 
     /**
-     * Track unique views for a given URL.
+     * Track unique views for a given URL to prevent duplicate view counts.
      *
-     * @param Url $url The URL model.
-     * @param Request $request The HTTP request.
-     * @return void
+     * @param Url $url The URL model instance.
+     * @param Request $request The HTTP request containing client information.
+     * @return void Increments view count if the view is unique.
      */
     private function trackView(Url $url, Request $request): void
     {
-        # Get client IP and User Agent
+        # Retrieve client IP address and User Agent for uniqueness check
         $ipAddress = $request->ip();
         $userAgent = $request->agent();
 
-        # Check if the view is unique
-        if (!View::where('url_id', $url->id)
+        # Check if a view from the same IP and User Agent already exists
+        $viewExists = View::where('url_id', $url->id)
             ->where('ip_address', $ipAddress)
             ->where('user_agent', $userAgent)
-            ->exists()) {
+            ->exists();
 
-            # Log the unique view
+        if (!$viewExists) {
+            # Log the unique view in the database
             View::create([
                 'url_id' => $url->id,
                 'ip_address' => $ipAddress,
                 'user_agent' => $userAgent,
             ]);
 
-            # Increment view count for the URL
+            # Increment the URL's view count
             $url->increment('views');
         }
+    }
+
+     /**
+     * Validate the format and security of a URL.
+     * 
+     * @param string $url  The URL to be validated.
+     * @return bool        True if the URL is valid, false otherwise.
+     */
+    private function validateUrl(string $url): bool
+    {
+        # Decode the URL to prevent double-encoded data.
+        $url = urldecode($url);
+
+        # Use filter_var to validate URL structure and ensure security.
+        return filter_var($url, FILTER_VALIDATE_URL) &&
+            preg_match("/^(https?:\/\/(?:www\.)?[a-zA-Z0-9\-\.]+(?:\.[a-zA-Z]{2,})+(?:\/[a-zA-Z0-9\-._~:\/?#[\]@!$&'()*+,;=]*)?)$|^(ftp:\/\/(?:www\.)?[a-zA-Z0-9\-\.]+(?:\.[a-zA-Z]{2,})+(?:\/[a-zA-Z0-9\-._~:\/?#[\]@!$&'()*+,;=]*)?)$|^(tel:\/\/[0-9\+\-\(\) ]+)$|^(file:\/\/[a-zA-Z0-9\-\_\/\.\:]+)$/", $url) &&
+            stripos($url, 'javascript:') === false &&
+            stripos($url, '<script>') === false &&
+            strlen($url) <= 2048;
     }
 }

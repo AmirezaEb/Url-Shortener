@@ -2,8 +2,9 @@
 
 namespace App\Utilities;
 
-use ErrorException;
+use Error;
 use Exception;
+use ErrorException;
 
 class ExceptionHandler extends Exception
 {
@@ -13,16 +14,36 @@ class ExceptionHandler extends Exception
      * @param Exception $exception The exception to handle.
      * @return void
      */
-    public static function handler(Exception $exception): void
+    public static function handler($exception): void
     {
+        # Check if the exception is an instance of Error or Exception
+        if ($exception instanceof Error) {
+
+            $severity = $exception->getCode(); // Use the error code as the severity
+
+            # Create an ErrorException with the correct severity
+            $exception = new ErrorException(
+                $exception->getMessage(),
+                $exception->getCode(),
+                $severity,  # Correct severity type
+                $exception->getFile(),
+                $exception->getLine()
+            );
+        }
+
         # Log the exception details for debugging purposes
         self::logError($exception);
 
         # Check if the application is in development mode to determine error display
         if (self::isDevelopment()) {
-            self::displayDetailedError($exception); # Show detailed error for development
+            ini_set('display_errors', 1);
+            ini_set('display_startup_errors', 1);
+            error_reporting(E_ALL);
+            self::displayDetailedError($exception);
         } else {
-            self::displayGenericError(); # Show generic error for production
+            ini_set('display_errors', 0);
+            error_reporting(0);
+            self::displayGenericError();
         }
     }
 
@@ -69,6 +90,7 @@ class ExceptionHandler extends Exception
     {
         # Render the development error view with the exception details
         view('errors.development', $exception);
+        exit();
     }
 
     /**
@@ -79,9 +101,8 @@ class ExceptionHandler extends Exception
     private static function displayGenericError(): void
     {
         # Render the production error view
-        header("HTTP/1.1 404 Not Found");
-        header("Status: 404 Not Found");
-        view('errors.404');
+        view('errors.500');
+        exit();
     }
 
     /**
@@ -164,10 +185,5 @@ class ExceptionHandler extends Exception
         set_exception_handler([self::class, 'handler']);
         # Register the shutdown function to handle fatal errors
         register_shutdown_function([self::class, 'handlerShutdown']);
-
-        if (!self::isDevelopment()) {
-            error_reporting(0);
-            ini_set('display_errors', 0);
-        }
     }
 }

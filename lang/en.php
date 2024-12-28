@@ -53,6 +53,8 @@ return [
     'stats' => 'Stats', # Label for the statistics section
     'profile' => 'Profile [Soon...]', # Placeholder for upcoming profile feature
     'settings' => 'Settings [Soon...]', # Placeholder for upcoming settings feature
+    'comingsoon' => 'Comming Soon!', # Label for the comming soon feature
+    'copied' => 'Copied!', # Label for the copied feature
     'desturl' => 'Dest URL', # Label for the destination URL
     'view' => 'Views', # Label for the number of views
     'qr' => 'QR Code', # Label for QR code functionality
@@ -71,11 +73,21 @@ return [
     'edit-title' => 'Edit Url', # Title for the edit URL page
     'edit-h2' => 'Edit Destination URL', # Header text for the edit URL form
     'edit-input' => 'Enter Your Destination Url...', # Placeholder for the destination URL input
+    'pedit' => 'Please Enter Valid URL!', # Error message for invalid Edit URL input
 
     # Localization for Sending Email Notifications
     'emailMs' => 'Your Email Authentication Code : ', # Email message for sending a new password
     'emailTitle' => 'Hero Expert', # Email subject/title
     'welcome' => 'Welcome', # Email greeting
+
+    # Localization for 404, 405 Error messages
+    'header404' => 'Oops... !', # Header message of 404 Page
+    'header405' => 'Error... !', # Header message of 405 Page
+    'desc404ErrorBody' => "It Look Like You're Lost...", # Body of 404 Page message
+    'desc405ErrorBody' => "It Look Like Something Went Wrong...", # Body of 405 Page message
+    'footer404ErrorBody' => "Click On Button To Return Home Page !", # footer of 404 Page message
+    'footer405ErrorBody' => "Please You Sure The Address Is Currect !", # footer of 405 Page message
+    'errors-button' => 'Go Home Page', # Button for back to main page of website
 
     # Error Messages for Display
     'Er-InvalidEmail' => 'The Email You Entered Is Not Valid', # Error message for invalid email

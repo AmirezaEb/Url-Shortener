@@ -1,4 +1,6 @@
-vendor
-.idea
-.vscode
+/vendor
+/.idea
+/.vscode
+/composer.lock
+/.ide
 # public/QrCode/.

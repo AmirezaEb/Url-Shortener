@@ -12,7 +12,7 @@ return [
     # General Configuration for Persian [fa] Language
     'lang' => 'fa', # Language code
     'dir' => 'rtl', # Text direction (right-to-left)
-    'font' => 'https:#fonts.cdnfonts.com/css/lalezar', # Persian-specific font URL
+    'font' => 'https://fonts.cdnfonts.com/css/lalezar', # Persian-specific font URL
     'maincss' => 'css/fa/main.css', # Main stylesheet for Persian layout
     'resonsecss' => 'css/fa/responsive.css', # Responsive stylesheet for Persian layout
     'emailcss' => 'css/fa/email.css', # Email-related stylesheet for Persian layout
@@ -53,6 +53,8 @@ return [
     'stats' => 'آمار', # Label for the statistics section
     'profile' => 'پروفایل [بزودی...]', # Placeholder for upcoming profile feature
     'settings' => 'تنظیمات [بزودی...]', # Placeholder for upcoming settings feature
+    'comingsoon' => 'بزودی ...!', # Label for the comming soon feature
+    'copied' => 'کپی شد!', # Label for the copied feature
     'desturl' => 'لینک مقصد', # Label for the destination URL
     'view' => 'بازدید', # Label for the number of views
     'qr' => 'QR بارکد', # Label for QR code functionality
@@ -71,11 +73,21 @@ return [
     'edit-title' => 'ویرایش لینک', # Title for the edit URL page
     'edit-h2' => 'ویرایش لینک مقصد', # Header text for the edit URL form
     'edit-input' => 'لینک مقصد را وارد کنید...', # Placeholder for the destination URL input
+    'pedit' => 'لطفاً آدرس معتبر وارد کنید!', # Error message for invalid Edit URL input
 
     # Localization for Sending Email Notifications
     'emailMs' => 'رمز عبور احراز هویت شما: ', # Email message for sending a one-time password
     'emailTitle' => 'کارشناس قهرمان', # Email subject/title
     'welcome' => 'سلام دوست گرامی', # Email greeting
+
+    # Localization for 404, 405 Error messages
+    'header404' => 'اوه ... !', # Header message of 404 Page
+    'header405' => 'مشکلی پیش آمده... !', # Header message of 405 Page
+    'desc404ErrorBody' => "به نظر می رسد که مشکلی پیش آمده است...", # Body of 404 Page message
+    'desc405ErrorBody' => "به نظر می رسد خطایی رخ داده است...", # Body of 405 Page message
+    'footer404ErrorBody' => "برای بازگشت به صفحه اصلی روی دکمه کلیک کنید !", # footer of 404 Page message
+    'footer405ErrorBody' => "لطفا مطمئن شوید که آدرس درست است !", # footer of 405 Page message
+    'errors-button' => 'بازگشت به صفحه اصلی', # Button for back to main page of website
 
     # Error Messages for Display
     'Er-InvalidEmail' => 'ایمیل وارد شده معتبر نمی باشد', # Error message for invalid email
@@ -94,5 +106,3 @@ return [
     'Ms-Create' => 'لینک کوتاه شما با موفقیت ایجاد شد', # Success message for Create Shor Url
     'Ms-Copied' => 'کپی شد!' # Success message for Copying Url
 ];
-
-?>
