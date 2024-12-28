@@ -37,16 +37,18 @@ use App\Utilities\Session;
         <div id="header-div">
             <h1><?= Lang::get('index-title') ?></h1>
         </div>
-
         <!-- URL input form for shortening URLs -->
         <div id="content-div">
             <form id="input-div" action="./" method="post">
-                <input type="url" name="Url" class="content-row" placeholder="<?= Lang::get('yourlink') ?> . . ." id="input-field" required />
-                
+                <i class="ri-error-warning-line verify-valid-icon-Url d-none"></i>
+                <!-- URL Input Field -->
+                <input type="url" name="Url" class="input-field" placeholder="<?= Lang::get('yourlink') ?> . . ." id="input-field" />
+                <!-- Validation message (hidden by default) -->
+                <p class="verify-validation-text-Url d-none"><?= Lang::get('pedit') ?></p>
+                <span class="verify-validation-span-Url d-none"></span>
                 <div class="buttons">
                     <!-- Shorten URL button -->
-                    <button type="submit" name="sub-create" class="content-row button shortenURL"><?= Lang::get('short') ?></button>
-                    
+                    <button type="submit" name="sub-create" class="content-row button shortenURL sub-create"><?= Lang::get('short') ?></button
                     <!-- Clear input field button -->
                     <button type="button" id="clear-btn" class="content-row button"><?= Lang::get('clear') ?></button>
                 </div>

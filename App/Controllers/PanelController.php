@@ -235,7 +235,7 @@ class PanelController
 
         # Use filter_var to validate URL structure and ensure security.
         return filter_var($url, FILTER_VALIDATE_URL) &&
-            preg_match('/^https?:\/\//', $url) &&
+            preg_match('/^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/', $url) &&
             stripos($url, 'javascript:') === false &&
             stripos($url, '<script>') === false &&
             strlen($url) <= 2048;
