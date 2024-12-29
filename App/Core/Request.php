@@ -17,7 +17,7 @@ class Request
     {
         $this->params = $_REQUEST;  # Retrieve all request parameters
         $this->method = strtolower($_SERVER['REQUEST_METHOD']);  # Get HTTP method and convert to lowercase
-        $this->agent = $_SERVER['HTTP_USER_AGENT'];  # Get user agent
+        $this->agent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : 'Unknown';  # Get user agent
         $this->uri = strtok($_SERVER['REQUEST_URI'], '?');  # Get URI excluding query string
         $this->ip = $_SERVER['REMOTE_ADDR'];  # Get client IP address
     }

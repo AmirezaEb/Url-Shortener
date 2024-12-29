@@ -42,6 +42,7 @@ function view(string $view, array|object $data = []): void
     # Include the view file
     if (file_exists($viewPath)) {
         include $viewPath;
+        exit;
     } else {
         throw new Exception("View file not found: $viewPath");
     }
@@ -126,4 +127,19 @@ function getNow(): string
 {
     # Construct the full URL based on the request
     return (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+}
+
+/**
+ * Validate the email format and length.
+ *
+ * @param string $email The email to validate.
+ * @return bool True if valid, false otherwise.
+ */
+function validateEmail(string $email): bool
+{
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return false;
+    }
+    list($localPart, $domain) = explode('@', $email);
+    return !(strlen($localPart) > 64 || strlen($domain) > 253);
 }

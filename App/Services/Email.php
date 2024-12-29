@@ -28,12 +28,12 @@ class Email
         $this->mailer->isSMTP();
         $this->mailer->SMTPDebug = 0; # Disable debug output
         $this->mailer->SMTPAuth = true; # Enable SMTP authentication
-        $this->mailer->SMTPSecure = $_ENV['EMAIL_SECURE']; # Use TLS/SSL
+        $this->mailer->SMTPSecure = ($_ENV['EMAIL_SECURE'] == 'TLS') ? PHPMailer::ENCRYPTION_STARTTLS : PHPMailer::ENCRYPTION_SMTPS; # Use TLS/SSL
         $this->mailer->Port = $_ENV['EMAIL_PORT']; # SMTP port
         $this->mailer->Host = $_ENV['EMAIL_HOST']; # SMTP server address
         $this->mailer->Username = $_ENV['EMAIL_USERNAME']; # SMTP username
         $this->mailer->Password = $_ENV['EMAIL_PASSWORD']; # SMTP password
-        $this->mailer->From = filter_var($_ENV['EMAIL_USERNAME'], FILTER_VALIDATE_EMAIL) ?? ''; # Sender's email
+        $this->mailer->From = filter_var($_ENV['EMAIL_USERNAME'], FILTER_VALIDATE_EMAIL) ?? 'info8@HeroExpert.ir'; # Sender's email
         $this->mailer->FromName = "DO NOT REPLY"; # Sender's name
     }
 
@@ -63,7 +63,6 @@ class Email
             return true; # Email sent successfully
         } catch (Exception $e) {
             # Log the error or handle it as needed
-            # echo 'Email could not be sent. Mailer Error: ' . $this->mailer->ErrorInfo; # Uncomment for debugging
             return false; # Email sending failed
         }
     }
@@ -79,7 +78,9 @@ class Email
         return "<html>
             <head>
                 <title>HTML Email</title>
-                <link rel='stylesheet' href='" . assetUrl(Lang::get('emailcss')) . "'>
+                 <style>
+                 * { direction: rtl; text-align: center; } body { overflow: hidden; display: flex; justify-content: center; align-items: center; } .div-container { max-width: 480px; background-color: #fff; width: 360px; margin: 3rem auto; border-top: 4px solid #713dea; border-bottom: 4px solid #713dea; border-radius: 1rem; } .header { text-align: center; } b { display: block; width: 50%; text-align: center; padding: 1rem; margin: 1rem auto; background-color: #713dea; font-size: 1.2rem; border-radius: .5rem; color: #fff; } .p-2 { color: #713dea; } .logo-a { direction: ltr; position: absolute !important; left: 15px; top: 15px; } .logo { width: 75px; height: 40px; } p { margin: 1rem 0; text-align: center; width: 100%; } .resetLogo { max-height: 180px; color: #333; } .p-5 { display: flex; text-align: center !important; padding: 0rem 100px; width: 100%; margin: 0rem; } .icon-link { margin: 16px 4px; display: inline; } .icon { margin: 0 8px; display: inline; width: 25px; height: 25px; max-height: 25px; max-width: 25px; } .icon-telegram { width: 31px; height: 31px; margin: 0 8px; display: inline; max-height: 35px; max-width: 35px; } 
+                 </style>
             </head>
             <body>
                 <div class='div-container'>
@@ -87,7 +88,7 @@ class Email
                         <p class='p-2'>" . Lang::get('emailTitle') . "</p>
                     </div>
                     <p>
-                        <img class='resetLogo' src='" . siteUrl('resources/assets/img/icon/reset-image.png') . "'>
+                        <img class='resetLogo' src='" . assetUrl('img/icon/reset-image.png') . "'>
                     </p>
                     <p class='p2'>" . Lang::get('welcome') . "</p>
                     <h3>" . Lang::get('emailMs') . "<b class='password'>$OTP</b></h3>
