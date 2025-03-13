@@ -2,35 +2,23 @@
 
 namespace App\Utilities;
 
-use Error;
-use Exception;
-use ErrorException;
+/* Developed by Hero Expert
+- Telegram channel: @HeroExpert_ir
+- Author: Amirreza Ebrahimi
+- Telegram Author: @a_m_b_r
+*/
 
-class ExceptionHandler extends Exception
+class ExceptionHandler extends \Exception
 {
     /**
      * Handles an exception by logging it and displaying the appropriate error page.
      *
-     * @param Exception $exception The exception to handle.
+     * @param \Exception $exception The exception to handle.
      * @return void
+     * @throws \Exception
      */
-    public static function handler($exception): void
+    public static function handler(\Exception $exception): void
     {
-        # Check if the exception is an instance of Error or Exception
-        if ($exception instanceof Error) {
-
-            $severity = $exception->getCode(); // Use the error code as the severity
-
-            # Create an ErrorException with the correct severity
-            $exception = new ErrorException(
-                $exception->getMessage(),
-                $exception->getCode(),
-                $severity,  # Correct severity type
-                $exception->getFile(),
-                $exception->getLine()
-            );
-        }
-
         # Log the exception details for debugging purposes
         self::logError($exception);
 
@@ -50,10 +38,10 @@ class ExceptionHandler extends Exception
     /**
      * Logs the exception details to a log file.
      *
-     * @param Exception $exception The exception to log.
+     * @param \Exception $exception The exception to log.
      * @return void
      */
-    private static function logError(Exception $exception): void
+    private static function logError(\Exception $exception): void
     {
         # Format the log message with relevant exception details
         $logMessage = sprintf(
@@ -83,10 +71,11 @@ class ExceptionHandler extends Exception
     /**
      * Displays detailed error information for development.
      *
-     * @param Exception $exception The exception to display.
+     * @param \Exception $exception The exception to display.
      * @return void
+     * @throws \Exception
      */
-    private static function displayDetailedError(Exception $exception): void
+    private static function displayDetailedError(\Exception $exception): void
     {
         # Render the development error view with the exception details
         view('errors.development', $exception);
@@ -97,6 +86,7 @@ class ExceptionHandler extends Exception
      * Displays a generic error message for production.
      *
      * @return void
+     * @throws \Exception
      */
     private static function displayGenericError(): void
     {
@@ -109,6 +99,7 @@ class ExceptionHandler extends Exception
      * Handles shutdown errors by checking for fatal errors.
      *
      * @return void
+     * @throws \Exception
      */
     public static function handlerShutdown(): void
     {
@@ -116,7 +107,7 @@ class ExceptionHandler extends Exception
         # Check if the error is a fatal type
         if ($error && in_array($error['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR])) {
             # Handle the error as an exception
-            self::handler(new ErrorException(
+            self::handler(new \ErrorException(
                 $error['message'],
                 0,
                 $error['type'],

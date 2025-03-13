@@ -1,9 +1,9 @@
 <?php
-
 use App\Utilities\Auth;
 use App\Utilities\Lang;
 use App\Utilities\Session; 
 ?>
+
 <!DOCTYPE html>
 <html lang="<?= Lang::get('lang') ?>" dir="<?= Lang::get('dir') ?>">
 
@@ -59,7 +59,7 @@ use App\Utilities\Session;
             <div id="output-div">
                 <div class="content-row" id="new-url-label"><?= Lang::get('yourshort') ?> : </div>
                 <div id="new-url" class="content-row">
-                    <a href="<?= $data->ShortUrl ?? '' ?>"><?= $data->ShortUrl ?? ''?></a>
+                    <a href="<?= htmlspecialchars($data->ShortUrl ?? '') ?>"><?= htmlspecialchars($data->ShortUrl ?? '')?></a>
                 </div>
 
                 <!-- Copy button for the shortened URL -->

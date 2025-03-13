@@ -3,25 +3,25 @@
 namespace App\Controllers;
 
 use App\Core\Request;
-use App\Models\Url;
-use App\Models\User;
-use App\Utilities\Auth;
-use App\Utilities\Cookie;
-use App\Utilities\ExceptionHandler;
-use App\Utilities\Lang;
-use Exception;
+use App\Models\{Url, User};
+use App\Utilities\{Auth, Cookie, ExceptionHandler, Lang};
 
+/* Developed by Hero Expert
+- Telegram channel: @HeroExpert_ir
+- Author: Amirreza Ebrahimi
+- Telegram Author: @a_m_b_r
+*/
 class PanelController
 {
     # Define items per page for pagination
-    private $perPage = 10;
+    private int $perPage = 10;
 
     /**
      * Display the user's dashboard with their URLs in a paginated format.
-     * 
-     * @param Request $request  The incoming HTTP request containing user data, parameters, etc.
+     *
+     * @param Request $request The incoming HTTP request containing user data, parameters, etc.
      */
-    public function index(Request $request)
+    public function index(Request $request): void
     {
         try {
             # Check if the user is logged in by verifying their cookie.
@@ -32,7 +32,7 @@ class PanelController
 
                 # If user data does not exist, throw an exception with an error message.
                 if (!$user) {
-                    throw new Exception(Lang::get('Er-UserNotFound'));
+                    throw new \Exception(Lang::get('Er-UserNotFound'));
                 }
 
                 # Retrieve pagination data for URLs associated with the user.
@@ -51,9 +51,9 @@ class PanelController
                 view('panel.index', $data);
             } else {
                 # If the user is not logged in, redirect to the login page with an error message.
-                throw new Exception(Lang::get('Er-TryLogin'));
+                throw new \Exception(Lang::get('Er-TryLogin'));
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             # Handle any exceptions and redirect to the auth page with an error message.
             ExceptionHandler::setErrorAndRedirect($e->getMessage(), './auth');
         }
@@ -61,10 +61,10 @@ class PanelController
 
     /**
      * Display or process the URL editing form.
-     * 
-     * @param Request $request  The HTTP request containing the URL ID and edit data.
+     *
+     * @param Request $request The HTTP request containing the URL ID and edit data.
      */
-    public function edit(Request $request)
+    public function edit(Request $request): void
     {
         try {
             # Get the URL ID from the request parameters.
@@ -85,9 +85,9 @@ class PanelController
                 }
             } else {
                 # If the URL does not exist or the user is unauthorized, throw an exception.
-                throw new Exception(Lang::get('Er-Unauthorized'));
+                throw new \Exception(Lang::get('Er-Unauthorized'));
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             # Handle exceptions and redirect back to the panel with an error message.
             ExceptionHandler::setErrorAndRedirect($e->getMessage(), './panel');
         }
@@ -95,10 +95,10 @@ class PanelController
 
     /**
      * Delete a URL if the logged-in user is authorized.
-     * 
-     * @param Request $request  The request containing the URL ID to delete.
+     *
+     * @param Request $request The request containing the URL ID to delete.
      */
-    public function delete(Request $request)
+    public function delete(Request $request): void
     {
         try {
             # Get the URL ID from the request.
@@ -121,13 +121,13 @@ class PanelController
                     ExceptionHandler::setMessageAndRedirect(Lang::get('Ms-DeleteSuccess'), './panel');
                 } else {
                     # If deletion fails, throw an exception with an error message.
-                    throw new Exception(Lang::get('Er-TryAgin'));
+                    throw new \Exception(Lang::get('Er-TryAging'));
                 }
             } else {
                 # If the URL doesn't exist or the user is unauthorized, throw an exception.
-                throw new Exception(Lang::get('Er-Unauthorized'));
+                throw new \Exception(Lang::get('Er-Unauthorized'));
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             # Handle exceptions and redirect back to the panel with an error message.
             ExceptionHandler::setErrorAndRedirect($e->getMessage(), './panel');
         }
@@ -136,7 +136,7 @@ class PanelController
     /**
      * Handle user logout by deleting the authentication cookie and redirecting to the home page.
      */
-    public function logout()
+    public function logout(): void
     {
         # Delete the authentication cookie to log out the user.
         Cookie::deleteCookie('Auth');
@@ -147,21 +147,21 @@ class PanelController
 
     /**
      * Paginate the user's URLs for display on the dashboard.
-     * 
-     * @param Request $request  The incoming HTTP request containing pagination parameters.
-     * @param int $userId       The user's ID to filter URLs.
+     *
+     * @param Request $request The incoming HTTP request containing pagination parameters.
+     * @param int $userId The user's ID to filter URLs.
      * @return object           Pagination data including items and pagination details.
      */
-    private function paginate(Request $request, int $userId)
+    private function paginate(Request $request, int $userId): object
     {
         # Validate or set default page number
         $currentPage = $request->has('page') && ctype_digit($request->param('page')) && $request->param('page') >= 1
-            ? (int) $request->param('page')
+            ? (int)$request->param('page')
             : 1;
 
         # Get the total number of URLs for the user
         $totalItems = Url::where('created_by', $userId)->count();
-        $totalPages = (int) ceil($totalItems / $this->perPage);
+        $totalPages = (int)ceil($totalItems / $this->perPage);
 
         # Ensure the current page does not exceed the total number of pages
         $currentPage = min($currentPage, $totalPages);
@@ -186,8 +186,8 @@ class PanelController
 
     /**
      * Check if the currently logged-in user is the owner of the URL.
-     * 
-     * @param string $email  The email of the user who created the URL.
+     *
+     * @param string $email The email of the user who created the URL.
      * @return bool          True if authorized, false otherwise.
      */
     private function isUserAuthorized(string $email): bool
@@ -198,11 +198,11 @@ class PanelController
 
     /**
      * Process the URL edit form submission (POST request).
-     * 
-     * @param Request $request  The HTTP request containing the updated URL data.
-     * @param int $urlId        The ID of the URL to be updated.
+     *
+     * @param Request $request The HTTP request containing the updated URL data.
+     * @param int $urlId The ID of the URL to be updated.
      */
-    private function processUrlEdit(Request $request, int $urlId)
+    private function processUrlEdit(Request $request, int $urlId): void
     {
         # Get the new URL from the request.
         $editURL = $request->param('editURL');
@@ -218,14 +218,14 @@ class PanelController
             ExceptionHandler::setMessageAndRedirect(Lang::get('Ms-EditSuccess'), './panel');
         } else {
             # If validation fails, redirect back to the edit form with an error message.
-            ExceptionHandler::setErrorAndRedirect(Lang::get('Er-TryAgin'), "./panel/edit/$urlId");
+            ExceptionHandler::setErrorAndRedirect(Lang::get('Er-TryAging'), "./panel/edit/$urlId");
         }
     }
 
     /**
      * Validate the format and security of a URL.
-     * 
-     * @param string $url  The URL to be validated.
+     *
+     * @param string $url The URL to be validated.
      * @return bool        True if the URL is valid, false otherwise.
      */
     private function validateUrl(string $url): bool

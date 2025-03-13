@@ -1,23 +1,6 @@
-const token = "503bf5006708dc769617c571f07206858ef8c018"; const button = document.querySelector(".shortenURL"); const input = document.querySelector("#input-field"); const longUrl = document.querySelector("#input-url"); const shortUrl = document.querySelector("#new-url"); const urlDetail = document.querySelector('#new-url a')
-const resultDiv = document.querySelector("#output-div")
-const errorDiv = document.querySelector("#error-div"); const errorMessage = document.querySelector("#error-text"); const clearButton = document.querySelector("#clear-btn"); const copyButton = document.querySelector("#copy-btn"); const handleError = (response) => {
-    console.log(response); if (!response.ok) {
-        errorMessage.textContent = ""
-        hideResult();
-    } else { return response; }
-}
-const shorten = (input) => { fetch("https://api-ssl.bitly.com/v4/shorten", { method: "POST", headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" }, body: JSON.stringify({ "long_url": input, "domain": "bit.ly" }) }).then(handleError).then(response => response.json()).then((json) => { shortUrl.innerHTML = json.link; showResult(); }).catch(error => { console.log(error); }) }
-const clearFields = () => { input.value = ''; urlDetail.innerHTML = ''; hideResult(); }
-clearButton.addEventListener("click", (event) => { event.preventDefault(); clearFields(); window.location.href = './' })
-copyButton.addEventListener('click', event => {
-    event.preventDefault()
-    navigator.clipboard.writeText(urlDetail.innerHTML)
-    if (urlDetail.innerHTML) { Swal.fire({ title: 'Your Short Url Has Been Copied!', icon: 'success', toast: true, position: 'top-start', showConfirmButton: false, timer: 3500, timerProgressBar: true, didOpen: (toast) => { toast.onmouseenter = Swal.stopTimer; toast.onmouseleave = Swal.resumeTimer; } }) }
-})
-const showResult = () => { shortUrl.style.display = "flex"; }
-const hideResult = () => { shortUrl.style.display = 'none'; }
-
-/* 
-Developed by Hero Expert 
-Telegram channel: @HeroExpert_ir
+/* Developed by Hero Expert
+- Telegram channel: @HeroExpert_ir
+- Author: Amirreza Ebrahimi
+- Telegram Author: @a_m_b_r
 */
+const token="503bf5006708dc769617c571f07206858ef8c018",button=document.querySelector(".shortenURL"),input=document.querySelector("#input-field"),longUrl=document.querySelector("#input-url"),shortUrl=document.querySelector("#new-url"),urlDetail=document.querySelector("#new-url a"),resultDiv=document.querySelector("#output-div"),errorDiv=document.querySelector("#error-div"),errorMessage=document.querySelector("#error-text"),clearButton=document.querySelector("#clear-btn"),copyButton=document.querySelector("#copy-btn"),handleError=e=>{if(console.log(e),e.ok)return e;errorMessage.textContent="",hideResult()},shorten=e=>{fetch("https://api-ssl.bitly.com/v4/shorten",{method:"POST",headers:{Authorization:"Bearer 503bf5006708dc769617c571f07206858ef8c018","Content-Type":"application/json"},body:JSON.stringify({long_url:e,domain:"bit.ly"})}).then(handleError).then(e=>e.json()).then(e=>{shortUrl.innerHTML=e.link,showResult()}).catch(e=>{console.log(e)})},clearFields=()=>{input.value="",urlDetail.innerHTML="",hideResult()};clearButton.addEventListener("click",e=>{e.preventDefault(),clearFields(),window.location.href="./"}),copyButton.addEventListener("click",e=>{e.preventDefault(),navigator.clipboard.writeText(urlDetail.innerHTML),urlDetail.innerHTML&&Swal.fire({title:"Your Short Url Has Been Copied!",icon:"success",toast:!0,position:"top-start",showConfirmButton:!1,timer:3500,timerProgressBar:!0,didOpen(e){e.onmouseenter=Swal.stopTimer,e.onmouseleave=Swal.resumeTimer}})});const showResult=()=>{shortUrl.style.display="flex"},hideResult=()=>{shortUrl.style.display="none"};

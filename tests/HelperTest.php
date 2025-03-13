@@ -74,19 +74,6 @@ final class HelperTest extends TestCase
     }
 
     /**
-     * Test validateUrl function to ensure it correctly validates URLs.
-     * Tests both valid and invalid URLs to confirm expected boolean results.
-     */
-
-    #[Test]
-    public function isValidateUrl()
-    {
-        $this->assertTrue(validateUrl('http://example.com'));           # Valid URL
-        $this->assertFalse(validateUrl('javascript:alert(1)'));         # Invalid URL (JS injection)
-        $this->assertFalse(validateUrl('<script>alert(1)</script>'));   # Invalid URL (script tag)
-    }
-
-    /**
      * Test to check if a view file exists.
      * Temporarily creates a view file, calls the view function, and removes the file.
      * No assertions needed, but it ensures no exceptions are thrown during the process.

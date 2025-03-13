@@ -2,10 +2,11 @@
 
 namespace App\Utilities;
 
-/**
- * Class Lang
- * Handles language translations for the application.
- */
+/* Developed by Hero Expert
+- Telegram channel: @HeroExpert_ir
+- Author: Amirreza Ebrahimi
+- Telegram Author: @a_m_b_r
+*/
 class Lang
 {
     # Holds the currently set language
@@ -41,10 +42,10 @@ class Lang
 
         # Check if the translation file exists
         if (file_exists($file)) {
-            self::$translation = include($file); // Load translations into the array
+            self::$translation = include($file); # Load translations into the array
         } else {
             # Log a warning if the file does not exist (optional improvement)
-            error_log("Translation file for language '{self::$lang}' not found.");
+            error_log("Translation file for language " . self::$lang . " not found.");
         }
     }
 

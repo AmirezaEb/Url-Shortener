@@ -17,7 +17,7 @@ if (file_exists(BASEPATH . 'vendor/autoload.php') && file_exists(BASEPATH . 'hel
 
     # Run the global exception handler to manage errors and exceptions
     App\Utilities\ExceptionHandler::run();
-    
+
     # Initialize the session management
     App\Utilities\Session::run();
 
@@ -33,17 +33,17 @@ if (file_exists(BASEPATH . 'vendor/autoload.php') && file_exists(BASEPATH . 'hel
     if (!extension_loaded('gd')) {
         view('errors.GDLibrary');
     }
-    
 } else {
-    # If required files are missing, display a 500 error page
-    $errorPage = BASEPATH . 'resources/views/errors/500.php';
-
-    # Check if the error page exists
-    if (file_exists($errorPage)) {
-        include $errorPage;
-    } else {
-        echo "500 Internal Server Error: Error page not found.";
+    # Load helper functions if available
+    $helperFile = BASEPATH . 'helpers/helper.php';
+    if (file_exists($helperFile)) {
+        require $helperFile;
     }
+
+    # Display a 500 error page if required files are missing
+    $errorPage = BASEPATH . 'resources/views/errors/500.php';
+    include file_exists($errorPage) ? $errorPage : die("500 Internal Server Error: Error page not found.");
+
     # Stop further execution
     exit;
 }

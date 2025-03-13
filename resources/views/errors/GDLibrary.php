@@ -11,9 +11,9 @@
 
 <body>
     <div class="container">
-        <h1><?=Lang::get('GD-h1')?></h1>
-        <p><?=Lang::get('GD-p1')?></p>
-        <p><?=Lang::get('GD-p2')?></p>
+        <h1><?= Lang::get('GD-h1') ?></h1>
+        <p><?= Lang::get('GD-p1') ?></p>
+        <p><?= Lang::get('GD-p2') ?></p>
         <a href="https://www.php.net/manual/en/book.image.php" class="button" target="_blank"><?=Lang::get('GD-a')?></a>
     </div>
 </body>

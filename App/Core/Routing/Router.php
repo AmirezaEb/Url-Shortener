@@ -3,13 +3,12 @@
 namespace App\Core\Routing;
 
 use App\Core\Request;
-use Exception;
 
 class Router
 {
-    private $request;       # Stores the current request object
-    private $routes;        # Stores all the defined routes
-    private $currentRoute;  # Stores the current matched route, if any
+    private Request $request;       # Stores the current request object
+    private array $routes;        # Stores all the defined routes
+    private ?array $currentRoute;  # Stores the current matched route, if any
     const NAMESPACE = 'App\Controllers\\';  # Controller namespace for routing
 
     /**
@@ -36,7 +35,7 @@ class Router
             # Match the HTTP method
             if ($request->method() == $route['method']) {
                 # Check for dynamic parameters in the URI
-                if (strpos($route['uri'], '{') !== false) {
+                if (str_contains($route['uri'], '{')) {
                     # Create a regex pattern to match dynamic parameters in the URI
                     $pattern = "/^" . str_replace(['/', '{', '}'], ['\/', '(?<', '>[a-zA-Z0-9-]+)'], $route['uri']) . "$/";
                     if (preg_match($pattern, $request->uri(), $matches)) {
@@ -83,7 +82,7 @@ class Router
     /**
      * Dispatch the matched route.
      *
-     * @throws Exception If the class or method does not exist
+     * @throws \Exception If the class or method does not exist
      */
     private function dispatch(): void
     {
@@ -108,14 +107,14 @@ class Router
 
             # Throw an exception if the class does not exist
             if (!class_exists($className)) {
-                throw new Exception("Class '$className' Not Exists");
+                throw new \Exception("Class '$className' Not Exists");
             }
 
             $controller = new $className();  # Instantiate the controller
 
             # Throw an exception if the method does not exist
             if (!method_exists($controller, $methodName)) {
-                throw new Exception("Method '$methodName' Not Exists In Class '$className'");
+                throw new \Exception("Method '$methodName' Not Exists In Class '$className'");
             }
 
             # Call the controller method and pass the request
@@ -125,6 +124,7 @@ class Router
 
     /**
      * Dispatch a 404 Not Found response if no route matches.
+     * @throws \Exception
      */
     private function dispatch404(): void
     {
@@ -135,6 +135,7 @@ class Router
 
     /**
      * Dispatch a 405 Method Not Allowed response if the method is invalid.
+     * @throws \Exception
      */
     private function dispatch405(): void
     {
@@ -145,6 +146,7 @@ class Router
 
     /**
      * Run the router to handle the request and route matching.
+     * @throws \Exception
      */
     public function run(): void
     {
@@ -164,4 +166,3 @@ class Router
     }
 }
 
-?>

@@ -4,20 +4,20 @@ namespace App\Core;
 
 class Request
 {
-    private $params;  # Holds request parameters
-    private $method;  # HTTP request method (GET, POST, etc.)
-    private $agent;   # User agent string of the client
-    private $uri;     # Request URI without query string
-    private $ip;      # IP address of the client
+    private array $params;  # Holds request parameters
+    private string $method;  # HTTP request method (GET, POST, etc.)
+    private mixed $agent;   # User agent string of the client
+    private string|false $uri;     # Request URI without query string
+    private mixed $ip;      # IP address of the client
 
     /**
-     * Request constructor initializes properties from superglobals
+     * Request constructor initializes properties from super globals
      */
     public function __construct()
     {
         $this->params = $_REQUEST;  # Retrieve all request parameters
         $this->method = strtolower($_SERVER['REQUEST_METHOD']);  # Get HTTP method and convert to lowercase
-        $this->agent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : 'Unknown';  # Get user agent
+        $this->agent = $_SERVER['HTTP_USER_AGENT'] ?? 'Unknown';  # Get user agent
         $this->uri = strtok($_SERVER['REQUEST_URI'], '?');  # Get URI excluding query string
         $this->ip = $_SERVER['REMOTE_ADDR'];  # Get client IP address
     }

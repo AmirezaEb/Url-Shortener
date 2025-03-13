@@ -3,15 +3,19 @@
 namespace App\Services;
 
 use App\Utilities\Lang;
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\{Exception, PHPMailer};
 
+/* Developed by Hero Expert
+- Telegram channel: @HeroExpert_ir
+- Author: Amirreza Ebrahimi
+- Telegram Author: @a_m_b_r
+*/
 class Email
 {
-    private $mailer;      # PHPMailer instance
-    private $telegram;    # Telegram URL
-    private $github;      # GitHub URL
-    private $linkedin;    # LinkedIn URL
+    private PHPMailer $mailer;      # PHPMailer instance
+    private string $telegram;    # Telegram URL
+    private string $github;      # GitHub URL
+    private string $linkedin;    # LinkedIn URL
 
     /**
      * Email constructor initializes the mailer with SMTP settings
@@ -29,7 +33,7 @@ class Email
         $this->mailer->SMTPDebug = 0; # Disable debug output
         $this->mailer->SMTPAuth = true; # Enable SMTP authentication
         $this->mailer->SMTPSecure = ($_ENV['EMAIL_SECURE'] == 'TLS') ? PHPMailer::ENCRYPTION_STARTTLS : PHPMailer::ENCRYPTION_SMTPS; # Use TLS/SSL
-        $this->mailer->Port = $_ENV['EMAIL_PORT']; # SMTP port
+        $this->mailer->Port = (int)$_ENV['EMAIL_PORT']; # SMTP port
         $this->mailer->Host = $_ENV['EMAIL_HOST']; # SMTP server address
         $this->mailer->Username = $_ENV['EMAIL_USERNAME']; # SMTP username
         $this->mailer->Password = $_ENV['EMAIL_PASSWORD']; # SMTP password
@@ -61,7 +65,7 @@ class Email
             # Send the email
             $this->mailer->send();
             return true; # Email sent successfully
-        } catch (Exception $e) {
+        } catch (Exception) {
             # Log the error or handle it as needed
             return false; # Email sending failed
         }
@@ -79,7 +83,7 @@ class Email
             <head>
                 <title>HTML Email</title>
                  <style>
-                 * { direction: rtl; text-align: center; } body { overflow: hidden; display: flex; justify-content: center; align-items: center; } .div-container { max-width: 480px; background-color: #fff; width: 360px; margin: 3rem auto; border-top: 4px solid #713dea; border-bottom: 4px solid #713dea; border-radius: 1rem; } .header { text-align: center; } b { display: block; width: 50%; text-align: center; padding: 1rem; margin: 1rem auto; background-color: #713dea; font-size: 1.2rem; border-radius: .5rem; color: #fff; } .p-2 { color: #713dea; } .logo-a { direction: ltr; position: absolute !important; left: 15px; top: 15px; } .logo { width: 75px; height: 40px; } p { margin: 1rem 0; text-align: center; width: 100%; } .resetLogo { max-height: 180px; color: #333; } .p-5 { display: flex; text-align: center !important; padding: 0rem 100px; width: 100%; margin: 0rem; } .icon-link { margin: 16px 4px; display: inline; } .icon { margin: 0 8px; display: inline; width: 25px; height: 25px; max-height: 25px; max-width: 25px; } .icon-telegram { width: 31px; height: 31px; margin: 0 8px; display: inline; max-height: 35px; max-width: 35px; } 
+                 * { direction: rtl; text-align: center; } body { overflow: hidden; display: flex; justify-content: center; align-items: center; } .div-container { max-width: 480px; background-color: #fff; width: 360px; margin: 3rem auto; border-top: 4px solid #713dea; border-bottom: 4px solid #713dea; border-radius: 1rem; } .header { text-align: center; } b { display: block; width: 50%; text-align: center; padding: 1rem; margin: 1rem auto; background-color: #713dea; font-size: 1.2rem; border-radius: .5rem; color: #fff; } .p-2 { color: #713dea; } .logo-a { direction: ltr; position: absolute !important; left: 15px; top: 15px; } .logo { width: 75px; height: 40px; } p { margin: 1rem 0; text-align: center; width: 100%; } .resetLogo { max-height: 180px; color: #333; } .p-5 { display: flex; text-align: center !important; padding: 0 100px; width: 100%; margin: 0; } .icon-link { margin: 16px 4px; display: inline; } .icon { margin: 0 8px; display: inline; width: 25px; height: 25px; max-height: 25px; max-width: 25px; } .icon-telegram { width: 31px; height: 31px; margin: 0 8px; display: inline; max-height: 35px; max-width: 35px; } 
                  </style>
             </head>
             <body>

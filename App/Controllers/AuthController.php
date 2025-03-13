@@ -2,19 +2,19 @@
 
 namespace App\Controllers;
 
-use App\Utilities\ExceptionHandler;
-use App\Utilities\Session;
-use App\Utilities\Cookie;
-use App\Services\Email;
-use App\Utilities\Auth;
-use App\Utilities\Lang;
-use App\Core\Request;
-use App\Models\User;
-use Exception;
+use App\{Core\Request, Models\User, Services\Email};
+use App\Utilities\{Auth, Cookie, ExceptionHandler, Lang, Session};
+use Illuminate\Support\Facades\DB;
+
+/* Developed by Hero Expert
+- Telegram channel: @HeroExpert_ir
+- Author: Amirreza Ebrahimi
+- Telegram Author: @a_m_b_r
+*/
 
 class AuthController
 {
-    private $emailService;
+    private Email $emailService;
 
     /**
      * Constructor for initializing the email service
@@ -26,13 +26,14 @@ class AuthController
 
     /**
      * Display the login page or redirect to user panel if already logged in
+     * @throws \Exception
      */
     public function index()
     {
         # Check if user is logged in
         if (Auth::checkLogin()) {
             # Redirect to user panel
-            redirect('./panel');
+            return redirect('./panel');
         } else {
             # Show login view
             return view('home.login');
@@ -62,7 +63,7 @@ class AuthController
      *
      * @param Request $request
      */
-    public function login(Request $request)
+    public function login(Request $request): void
     {
         try {
             # Check if request method is POST and email is provided
@@ -90,11 +91,9 @@ class AuthController
                 # If user does not exist, create a new user with OTP
                 $this->createUserWithOtp($email, $otp);
             }
-
             # Show OTP verification page
             view('home.verify');
-
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             # Handle any exceptions and redirect to authentication page with error
             ExceptionHandler::setErrorAndRedirect($e->getMessage(), './auth');
         }
@@ -105,7 +104,7 @@ class AuthController
      *
      * @param Request $request
      */
-    public function register(Request $request)
+    public function register(Request $request): void
     {
         try {
             # Validate OTP code received from user
@@ -121,14 +120,14 @@ class AuthController
 
             # Check if user exists and has valid OTP
             if (!$user) {
-                # Delete session And Throw Error if user dont exists
+                # Delete session And Throw Error if user don't exist
                 $this->throwExceptionAndDeleteSession('UserData');
             }
 
             # If OTP has expired, clear session and throw error
             if ($user->otpExpired <= time()) {
                 # Delete session And Throw Error if OTP has expired
-                $this->throwExceptionAndDeleteSession('UserData','Expired');
+                $this->throwExceptionAndDeleteSession('UserData', 'Expired');
             }
 
             # If OTP matches, complete registration
@@ -138,8 +137,7 @@ class AuthController
                 # Handle invalid OTP attempts
                 $this->handleInvalidOtpAttempt();
             }
-
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             # Handle any exceptions and redirect to authentication page with error
             ExceptionHandler::setErrorAndRedirect($e->getMessage(), './auth');
         }
@@ -150,24 +148,35 @@ class AuthController
      *
      * @param User $user
      * @param object $otp
+     * @throws \Exception
      */
-    private function updateUserOtp(User $user, object $otp)
+    private function updateUserOtp(User $user, object $otp): void
     {
-        # Update OTP and expiration time for existing user
-        $updateSuccess = User::where('id', $user->id)->update([
-            'otpCode' => $otp->code,
-            'otpExpired' => $otp->expired
-        ]);
+        try {
+            # Start Transaction
+            DB::beginTransaction();
 
-        # Store user data in session
-        Session::set('UserData', ['email' => $user->email]);
+            # Update OTP and expiration time for existing user
+            $updateSuccess = User::where('id', $user->id)->update([
+                'otpCode' => $otp->code,
+                'otpExpired' => $otp->expired
+            ]);
 
-        # Send OTP via email
-        $emailSent = $this->emailService->send($user->email, $otp->code);
+            # Store user data in session
+            Session::set('UserData', ['email' => $user->email]);
 
-        # Check for failures
-        if (!$updateSuccess ||  !Session::has('UserData') || !$emailSent) {
-            # Delete session And Throw Error if failures proccess Update User And Send Email
+            # Send OTP via email
+            $emailSent = $this->emailService->send($user->email, $otp->code);
+            # Check for failures
+            if (!$updateSuccess || !Session::has('UserData') || !$emailSent) {
+                # Delete session And Throw Error if failures process Update User And Send Email
+                throw new \Exception();
+            }
+
+            DB::commit();
+        } catch (\Exception) {
+            DB::rollBack();
+            Session::delete('UserData');
             $this->throwExceptionAndDeleteSession('UserData');
         }
     }
@@ -177,24 +186,36 @@ class AuthController
      *
      * @param string $email
      * @param object $otp
+     * @throws \Exception
      */
-    private function createUserWithOtp(string $email, object $otp)
+    private function createUserWithOtp(string $email, object $otp): void
     {
-        $createSuccess = User::create([
-            'email' => $email,
-            'otpCode' => $otp->code,
-            'otpExpired' => $otp->expired
-        ]);
+        try {
+            # Start Transaction
+            DB::beginTransaction();
 
-        # Store user data in session
-        Session::set('UserData', ['email' => $email]);
+            # Create User
+            $createSuccess = User::create([
+                'email' => $email,
+                'otpCode' => $otp->code,
+                'otpExpired' => $otp->expired
+            ]);
 
-        # Send OTP via email
-        $emailSent = $this->emailService->send($email, $otp->code);
+            # Store user data in session
+            Session::set('UserData', ['email' => $email]);
 
-        # Check for failures
-        if (!$createSuccess || !Session::has('UserData') || !$emailSent) {
-            # Delete session And Throw Error if failures proccess Create User And Send Email
+            # Send OTP via email
+            $emailSent = $this->emailService->send($email, $otp->code);
+
+            # Check for failures
+            if (!$createSuccess || !Session::has('UserData') || !$emailSent) {
+                throw new \Exception();
+            }
+
+            DB::commit();
+        } catch (\Exception) {
+            DB::rollBack();
+            Session::delete('UserData');
             $this->throwExceptionAndDeleteSession('UserData');
         }
     }
@@ -203,15 +224,16 @@ class AuthController
      * Complete the user registration process
      *
      * @param User $user
+     * @throws \Exception
      */
-    private function completeRegistration(User $user)
+    private function completeRegistration(User $user): void
     {
         Session::delete('UserData'); # Clear session user data
         $setCookie = Cookie::setEncryptedCookie('Auth', $user->email); # Set authentication cookie
 
         # If setting cookie fails
         if (!$setCookie) {
-            # Delete session And Throw Error if failures proccess Set Cookies
+            # Delete session And Throw Error if failures process Set Cookies
             $this->throwExceptionAndDeleteSession('UserData');
         }
 
@@ -227,8 +249,9 @@ class AuthController
 
     /**
      * Handle invalid OTP attempts
+     * @throws \Exception
      */
-    private function handleInvalidOtpAttempt()
+    private function handleInvalidOtpAttempt(): void
     {
         $countInvalidLogin = Session::get('invalidLogin') ?? 0;
         Session::set('invalidLogin', $countInvalidLogin + 1); # Increment invalid attempts
@@ -244,9 +267,12 @@ class AuthController
         view('home.verify'); # Show OTP verification page again
     }
 
+    /**
+     * @throws \Exception
+     */
     private function throwExceptionAndDeleteSession(string $sessionName, string $exceptionMessage = 'TryAgain')
     {
         Session::delete($sessionName); # Delete session
-        throw new Exception(Lang::get("Er-{$exceptionMessage}")); # Throw Error
+        throw new \Exception(Lang::get("Er-{$exceptionMessage}")); # Throw Error
     }
 }

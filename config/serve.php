@@ -16,10 +16,10 @@ try {
 
     if ($returnVar === 0) {
         # If the command was successful, output the server URL
-        echo "Server started at http://{$serve->host}:{$serve->port}\n";
+        echo "Server started at http://{$serv->host}:{$serv->port}\n";
     } else {
         # If the command failed, output the error messages
-        throw new Exception("Failed to start server : http://{$serve->host}:{$serve->port}\n");
+        throw new Exception("Failed to start server : http://{$serv->host}:{$serv->port}\n");
     }
 } catch (Exception $e) {
     echo $e->getMessage();

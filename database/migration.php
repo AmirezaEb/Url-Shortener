@@ -33,9 +33,8 @@ function migrate(): void
         } else {
             echo "Migrations Already Exist. No New Migrations To Run.\n";
         }
-    } catch (Exception $e) {
-        # Handle any exceptions and display an error message
-        echo "Migration Failed. Please Check Your Configuration.\n";
+    } catch (Exception) {
+        echo "\e[31m✘ Migration Failed. Please Check Your Configuration.\e[0m\n";
     }
 }
 
@@ -59,8 +58,7 @@ function rollback(): void
         } else {
             echo "No Migrations Found To Roll Back.\n";
         }
-    } catch (Exception $e) {
-        # Handle any exceptions and display an error message
-        echo "Rollback failed. Please Check Your Configuration.\n";
+    } catch (Exception) {
+        echo "\e[31m✘ Rollback failed. Please Check Your Configuration.\e[0m\n";
     }
 }

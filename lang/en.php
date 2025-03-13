@@ -80,15 +80,6 @@ return [
     'emailTitle' => 'Hero Expert', # Email subject/title
     'welcome' => 'Welcome', # Email greeting
 
-    # Localization for 404, 405 Error messages
-    'header404' => 'Oops... !', # Header message of 404 Page
-    'header405' => 'Error... !', # Header message of 405 Page
-    'desc404ErrorBody' => "It Look Like You're Lost...", # Body of 404 Page message
-    'desc405ErrorBody' => "It Look Like Something Went Wrong...", # Body of 405 Page message
-    'footer404ErrorBody' => "Click On Button To Return Home Page !", # footer of 404 Page message
-    'footer405ErrorBody' => "Please You Sure The Address Is Currect !", # footer of 405 Page message
-    'errors-button' => 'Go Home Page', # Button for back to main page of website
-
     # Error Messages for Display
     'Er-InvalidEmail' => 'The Email You Entered Is Not Valid', # Error message for invalid email
     'Er-TryAgain' => 'An Error Has Occurred, Please Try Again', # Generic error message

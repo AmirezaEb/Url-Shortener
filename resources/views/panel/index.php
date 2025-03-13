@@ -38,7 +38,7 @@ use App\Utilities\Session; ?>
                             <i class="ri-user-6-line <?= Lang::get('direction-1') ?>-header__icons-icon"></i>
                         </span>
                         <a class="<?= Lang::get('direction-1') ?>-header__user-email">
-                            <?= str_replace(['@outlook.com', '@yahoo.com', '@gmail.com'], '', $data->userName) ?>
+                            <?= str_replace(['@outlook.com', '@yahoo.com', '@gmail.com'], '', htmlspecialchars($data->userName)) ?>
                         </a>
                     </div>
 
@@ -150,7 +150,7 @@ use App\Utilities\Session; ?>
                                 <td class="stats-table__body-col"><?= ++$data->startPaginate ?></td>
                                 <td class="stats-table__body-col url-ltr" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="<?= $url->url ?>"><?= htmlspecialchars(substr(str_replace(['https://', 'http://', 'www.', 'Https', 'Http', 'WWW.'], '', $url->url), 0, 20)) . '...' ?></td>
                                 <td class="stats-table__body-col" id="testcopy-<?= $url->id ?>"><?= htmlspecialchars(str_replace(['https://', 'http://', 'www.', 'Https', 'Http', 'WWW.'], '', $_ENV['APP_HOST'] . $url->shortUrl)) ?></td>
-                                <td class="stats-table__body-col"><?= $url->views ?></td>
+                                <td class="stats-table__body-col"><?= htmlspecialchars($url->views) ?></td>
                                 <td class="stats-table__body-col small-size">
                                     <a href="<?= $url->qrCode ?>" class="QR-code-span" download><i class="ri-qr-code-line QR-code-icon"></i></a>
                                 </td>

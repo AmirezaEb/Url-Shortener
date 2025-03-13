@@ -2,25 +2,25 @@
 
 namespace App\Controllers;
 
-use App\Utilities\ExceptionHandler;
-use HeroQR\Core\QRCodeGenerator;
-use App\Utilities\Auth;
-use App\Utilities\Lang;
 use App\Core\Request;
-use App\Models\User;
-use App\Models\View;
-use App\Models\Url;
-use Exception;
+use App\Models\{Url, User, View};
+use App\Utilities\{Auth, ExceptionHandler, Lang};
+use HeroQR\Core\QRCodeGenerator;
 
+/* Developed by Hero Expert
+- Telegram channel: @HeroExpert_ir
+- Author: Amirreza Ebrahimi
+- Telegram Author: @a_m_b_r
+*/
 class HomeController
 {
     /**
      * Display the homepage.
      *
-     * @param Request $request The incoming HTTP request.
      * @return void Renders the home view.
+     * @throws \Exception
      */
-    public function index(Request $request): void
+    public function index(): void
     {
         view('home.index');
     }
@@ -43,7 +43,7 @@ class HomeController
             # Verify user authentication
             $userEmail = Auth::checkLogin();
             if (!$userEmail) {
-                throw new Exception(Lang::get('Er-Login'));
+                throw new \Exception(Lang::get('Er-Login'));
             }
 
             # Retrieve authenticated user
@@ -52,7 +52,7 @@ class HomeController
             # Validate the provided URL
             $url = $request->param('Url');
             if (!$this->validateUrl($url)) {
-                throw new Exception(Lang::get('Er-InvalidUrl'));
+                throw new \Exception(Lang::get('Er-InvalidUrl'));
             }
 
             # Generate a unique short URL
@@ -71,7 +71,7 @@ class HomeController
 
             # Handle potential save errors
             if (!$savedUrl || !file_exists('public/QrCode/' . $shortUrlData->name . '.png')) {
-                throw new Exception(Lang::get('Er-TryAgain'));
+                throw new \Exception(Lang::get('Er-TryAgain'));
             }
 
             # Prepare data for view
@@ -80,7 +80,7 @@ class HomeController
             # Set success message and render the homepage
             ExceptionHandler::setMessage(Lang::get('Ms-Create'));
             view('home.index', $data);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             # Handle exceptions and redirect to the homepage with an error message
             ExceptionHandler::setErrorAndRedirect($e->getMessage(), './');
         }
@@ -106,7 +106,7 @@ class HomeController
 
             # Redirect the user to the original URL
             redirect($url->url);
-        } catch (Exception $e) {
+        } catch (\Exception) {
             # Redirect to the homepage on error
             redirect('./');
         }
@@ -149,13 +149,16 @@ class HomeController
             # Generate and save the QR code image
             $qrCode = new QRCodeGenerator();
             $qrCode->setData($url)
-                ->setSize(280)
                 ->setMargin(15)
-                ->generate('png')
+                ->generate('png', [
+                    'Shape' => 'S1',
+                    'Cursor' => 'C3',
+                    'Marker' => 'M3'
+                ])
                 ->saveTo($savePath);
 
             return $_ENV['APP_HOST'] . 'public/QrCode/' . $name . '.png';
-        } catch (Exception $e) {
+        } catch (\Exception) {
             # Return false if QR code generation fails
             return false;
         }
@@ -193,10 +196,10 @@ class HomeController
         }
     }
 
-     /**
+    /**
      * Validate the format and security of a URL.
-     * 
-     * @param string $url  The URL to be validated.
+     *
+     * @param string $url The URL to be validated.
      * @return bool        True if the URL is valid, false otherwise.
      */
     private function validateUrl(string $url): bool

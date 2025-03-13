@@ -1,5 +1,11 @@
 <?php
 
+/* Developed by Hero Expert
+- Telegram channel: @HeroExpert_ir
+- Author: Amirreza Ebrahimi
+- Telegram Author: @a_m_b_r
+*/
+
 /**
  * Generate the full URL for the site.
  *
@@ -29,6 +35,7 @@ function assetUrl(string $file): string
  * @param string $view The name of the view file.
  * @param array|object $data Optional data to extract into the view scope.
  * @return void
+ * @throws \Exception
  */
 function view(string $view, array|object $data = []): void
 {
@@ -84,6 +91,7 @@ function alarm(string $mode, string $message, string $size, string $position): s
  * Generate a random short string.
  *
  * @return string A random string for shortening links.
+ * @throws \Random\RandomException
  */
 function shortCreate(): string
 {

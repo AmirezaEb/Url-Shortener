@@ -2,6 +2,12 @@
 
 namespace App\Utilities;
 
+/* Developed by Hero Expert
+- Telegram channel: @HeroExpert_ir
+- Author: Amirreza Ebrahimi
+- Telegram Author: @a_m_b_r
+*/
+
 class Auth
 {
     /**
@@ -26,6 +32,7 @@ class Auth
      * Generates a One-Time Password (OTP) for authentication purposes.
      *
      * @return object An object containing the OTP code and its expiration time.
+     * @throws \Random\RandomException
      */
     public static function generateOtp(): object
     {
@@ -42,4 +49,3 @@ class Auth
         ];
     }
 }
-?>

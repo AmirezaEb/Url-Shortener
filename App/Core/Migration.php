@@ -2,7 +2,6 @@
 
 namespace App\Core;
 
-use Exception;
 use Illuminate\Database\Capsule\Manager as DataBase;
 
 class Migration
@@ -10,11 +9,12 @@ class Migration
     /**
      * Run the migration files in the specified directory.
      *
-     * @param string $migrationsPath The path to the migrations folder.
+     * @param string $migrationsPath The path to the migrate folder.
      * @return void
      */
     public static function migrate(string $migrationsPath = BASEPATH . 'database/migrations'): void
     {
+        $startTime = microtime(true);
         try {
             # Fetch list of executed migrations
             $executedMigrations = DataBase::table('migrations')->pluck('migration')->toArray();
@@ -37,7 +37,7 @@ class Migration
 
                 # Check if the class exists before instantiation
                 if (!class_exists($migrationClass)) {
-                    echo "Class $migrationClass not found. Check your migration file naming.\n";
+                    echo "\e[31m✘ \e[0m Class $migrationClass not found. Check your migration file naming.\n";
                     continue;
                 }
 
@@ -45,22 +45,24 @@ class Migration
                 (new $migrationClass())->up();
 
                 # Insert record into migrations table
+                $executionTime = round((microtime(true) - $startTime) * 1000, 2);
                 DataBase::table('migrations')->insert(['migration' => $migrationName]);
-                echo "Migrated : " . substr($migrationName, 10) . "\n";
+                echo "\e[32m✔ \e[0m Migrated : " . substr($migrationName, 10) . " {$executionTime} ms\n";
             }
-        } catch (Exception $e) {
-            echo "Migration Failed: " . $e->getMessage() . "\n";
+        } catch (\Exception $e) {
+            echo "\e[31m✘ \e[0m Migration Failed: " . $e->getMessage() . "\n";
         }
     }
 
     /**
      * Rollback the last executed migration.
      *
-     * @param string $migrationsPath The path to the migrations folder.
+     * @param string $migrationsPath The path to the migrate folder.
      * @return void
      */
     public static function rollback(string $migrationsPath = BASEPATH . 'database/migrations'): void
     {
+        $startTime = microtime(true);
         try {
             # Fetch executed migrations in reverse order
             $executedMigrations = DataBase::table('migrations')->orderBy('id', 'desc')->get();
@@ -76,7 +78,7 @@ class Migration
 
                 # Check if the migration file exists
                 if (!file_exists($fileName)) {
-                    echo "Migration File $fileName Not Found. Skipping Rollback.\n";
+                    echo "\e[31m✘ \e[0m Migration File $fileName Not Found. Skipping Rollback.\n";
                     continue;
                 }
 
@@ -89,14 +91,15 @@ class Migration
                 # Run the rollback
                 if (class_exists($migrationClass)) {
                     (new $migrationClass())->down();
+                    $executionTime = round((microtime(true) - $startTime) * 1000, 2);
                     DataBase::table('migrations')->where('migration', $migrationName)->delete();
-                    echo "Rolled back: " . substr($migrationName, 10) . "\n";
+                    echo "\e[32m✔ \e[0m Rolled back: " . substr($migrationName, 10) . " {$executionTime} ms\n";
                 } else {
-                    echo "Class $migrationClass Not Found in $fileName.\n";
+                    echo "\e[31m✘ \e[0m Class $migrationClass Not Found in $fileName.\n";
                 }
             }
-        } catch (Exception $e) {
-            echo "Rollback Failed: " . $e->getMessage() . "\n";
+        } catch (\Exception $e) {
+            echo "\e[31m✘ \e[0m Rollback Failed: " . $e->getMessage() . "\n";
         }
     }
 
@@ -116,7 +119,6 @@ class Migration
     /**
      * Format the migration file name for rollback.
      *
-     * @param int $migrationId The migration ID.
      * @param string $migrationName The migration class name.
      * @return string The formatted file name.
      */

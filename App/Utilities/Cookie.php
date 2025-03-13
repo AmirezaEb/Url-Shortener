@@ -2,10 +2,15 @@
 
 namespace App\Utilities;
 
+/* Developed by Hero Expert
+- Telegram channel: @HeroExpert_ir
+- Author: Amirreza Ebrahimi
+- Telegram Author: @a_m_b_r
+*/
 class Cookie
 {
     # Secret key used for encrypting cookies
-    private static $key = '!@-HeroExpert-@!';
+    private static string $key = '!@-HeroExpert-@!';
 
     /**
      * Sets a secure cookie with optional parameters.
@@ -27,9 +32,8 @@ class Cookie
             $httponly = false; # Allow JavaScript access to cookies on production (adjust as needed)
         }
 
-        # Set the cookie using the PHP setcookie function
-        $setcookie = setcookie($name, $value, time() + $expire, $path, $domain, $secure, $httponly);
-        return $setcookie;
+        # Set the cookie using the PHP set-cookie function
+        return setcookie($name, $value, time() + $expire, $path, $domain, $secure, $httponly);
     }
 
     /**
@@ -40,7 +44,7 @@ class Cookie
      */
     public static function getCookie(string $name): string|null
     {
-        return isset($_COOKIE[$name]) ? $_COOKIE[$name] : null; # Return the cookie value or null
+        return $_COOKIE[$name] ?? null; # Return the cookie value or null
     }
 
     /**
@@ -53,7 +57,7 @@ class Cookie
     public static function deleteCookie(string $name, string $path = '/', string $domain = ''): void
     {
         setcookie($name, '', time() - 3600, $path, $domain); # Set the cookie expiration time to the past
-        unset($_COOKIE[$name]); # Remove the cookie from the superglobal array
+        unset($_COOKIE[$name]); # Remove the cookie from the super global array
     }
 
     /**
@@ -99,42 +103,5 @@ class Cookie
     private static function isLocalhost(): bool
     {
         return in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']); # Check for localhost IP addresses
-    }
-
-    /**
-     * Regenerates and sets a CSRF token cookie.
-     *
-     * @param string $tokenName The name of the CSRF token cookie (default is 'csrf_token').
-     * @return string The newly generated CSRF token.
-     */
-    public static function regenerateCsrfToken(string $tokenName = 'csrf_token'): string
-    {
-        $token = bin2hex(random_bytes(32)); # Generate a random CSRF token
-        self::setSecureCookie($tokenName, $token); # Set the CSRF token as a secure cookie
-        return $token; # Return the generated token
-    }
-
-    /**
-     * Validates the CSRF token against the stored token.
-     *
-     * @param string $tokenName The name of the CSRF token cookie (default is 'csrf_token').
-     * @param string $userToken The token provided by the user for validation.
-     * @return bool Returns true if the tokens match, otherwise false.
-     */
-    public static function validateCsrfToken(string $tokenName = 'csrf_token', string $userToken): bool
-    {
-        $storedToken = self::getCookie($tokenName); # Retrieve the stored CSRF token
-        return hash_equals($storedToken, $userToken); # Use hash_equals to prevent timing attacks
-    }
-
-    /**
-     * Retrieves the expiration timestamp for a cookie.
-     *
-     * @param int $seconds The number of seconds until expiration (default is 6 hours).
-     * @return int Returns the expiration timestamp.
-     */
-    public static function getCookieExpiration(int $seconds = (3600 * 6)): int
-    {
-        return time() + $seconds; # Calculate and return the expiration time
     }
 }

@@ -80,15 +80,6 @@ return [
     'emailTitle' => 'کارشناس قهرمان', # Email subject/title
     'welcome' => 'سلام دوست گرامی', # Email greeting
 
-    # Localization for 404, 405 Error messages
-    'header404' => 'اوه ... !', # Header message of 404 Page
-    'header405' => 'مشکلی پیش آمده... !', # Header message of 405 Page
-    'desc404ErrorBody' => "به نظر می رسد که مشکلی پیش آمده است...", # Body of 404 Page message
-    'desc405ErrorBody' => "به نظر می رسد خطایی رخ داده است...", # Body of 405 Page message
-    'footer404ErrorBody' => "برای بازگشت به صفحه اصلی روی دکمه کلیک کنید !", # footer of 404 Page message
-    'footer405ErrorBody' => "لطفا مطمئن شوید که آدرس درست است !", # footer of 405 Page message
-    'errors-button' => 'بازگشت به صفحه اصلی', # Button for back to main page of website
-
     # Error Messages for Display
     'Er-InvalidEmail' => 'ایمیل وارد شده معتبر نمی باشد', # Error message for invalid email
     'Er-TryAgain' => 'خطایی رخ داد، لطفا مجدد تلاش کنید', # Generic error message

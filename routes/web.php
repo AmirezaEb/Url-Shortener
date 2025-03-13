@@ -4,7 +4,11 @@ use App\Controllers\PanelController;
 use App\Controllers\HomeController;
 use App\Controllers\AuthController;
 use App\Core\Routing\Route;
-
+/* Developed by Hero Expert
+- Telegram channel: @HeroExpert_ir
+- Author: Amirreza Ebrahimi
+- Telegram Author: @a_m_b_r
+*/
 /**
  * Define authentication routes
  * 

@@ -7,16 +7,16 @@ use Closure;
 class Route
 {
     # Holds all registered routes
-    private static $routes = [];
+    private static array $routes = [];
 
     /**
      * Add a new route to the routes array.
      *
      * @param string $method HTTP method (GET, POST, etc.)
      * @param string $uri URI pattern for the route
-     * @param array|Closure|string|null $action Controller action or closure to handle the route
+     * @param array|string|Closure|null $action Controller action or closure to handle the route
      */
-    public static function add(string $method, string $uri, $action = null): void
+    public static function add(string $method, string $uri, array|string|Closure $action = null): void
     {
         # Add a new route to the routes array
         self::$routes[] = [
@@ -120,4 +120,3 @@ class Route
     }
 }
 
-?>
